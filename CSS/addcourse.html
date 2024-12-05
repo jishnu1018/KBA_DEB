@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Course</title>
+    <style>
+        .nav{
+            width: 1838px;
+            height: 70px;
+            background-color: rgb(248, 232, 248);
+            text-align: right;
+            padding-top: 10px;
+            padding-left: 10px;
+            margin-top: -7px;
+            margin-left: -7px;
+            
+        }
+        .img{
+            text-align: left;
+            display: inline;
+            padding-right: 1200px;
+            
+        }
+        
+       
+        .nav a{
+            text-decoration: none;
+            padding-right: 38px;
+            position: relative;   
+            top: -18px;
+            color: black;
+            
+        }
+        .container{
+            background-color: rgb(248, 232, 248);
+            width: 600px;
+            height: 750px;
+            margin-top: 10px;
+            margin-left: 650px;
+            border-radius: 5px;
+            text-align: left;
+            padding-left: 20px;
+            padding-top: 10px;
+            font-family: Arial, Helvetica, sans-serif;
+            color: rgb(0, 0, 0);
+        }
+       
+        .name input{
+            width: 550px;
+            height: 30px;
+            border-radius: 5px;
+        }   
+       
+        .type select{
+            width: 550px;
+            height: 30px;
+            border-radius: 5px;
+            background-color: rgb(234, 235, 236);
+            
+        }
+        
+        .desc textarea{
+            width: 545px;
+            height: 100px;
+            border-radius: 5px;
+        }
+        .price select{
+            width: 550px;
+            height: 30px;
+            border-radius: 5px;
+            background-color: rgb(234, 235, 236);
+        }
+        .submit{
+            padding-top: 40px;
+        }
+        .addcourse{
+            width:550px;
+            height: 40px;
+            background-color: rgb(174, 74, 241);
+            border-radius: 30px;
+            color: rgb(255, 255, 255);
+            font-size: medium;
+            font-weight: 900;
+            padding-top: 10p;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <div class="img">
+        <img src="Logo.png" alt="logo" width="50px">
+     </div>
+        <a href="Home.html">Home</a>
+        <a href="Courses.html">Courses</a>
+        <a href="Contactus.html">Contact Us</a>
+        <a href="addcourse.html">Add Course</a>
+        <a href="Login.html">Logout</a>
+    </div>
+    <div class="container">
+        <h1 style="color: rgb(129, 12, 197); text-align: center;">Add Course</h1>
+        <div class="name">
+            <h4>Course Name</h4>
+            <input type="text" required placeholder="eg. Certified Blockchain Associate">
+        </div>
+        <div class="name">
+            <h4>Course Id</h4>
+            <input type="text" required placeholder="eg. 1">
+        </div>
+        <div class="type">
+            <h4>Course Type</h4>
+            <select>
+                <option value="type">Paced</option>
+                <option value="type" selected>Self-Paced</option>
+                <option value="type">self</option>
+            </select>
+        </div>
+        <div class="desc">
+            <h4>Description</h4>
+            <textarea placeholder="Small description on the course"></textarea>
+        </div>
+        <div class="price">
+            <h4>Price</h4>
+            <select>
+                <option value="price">Rs.2500</option>
+                <option value="price" selected>Rs.5000</option>
+                <option value="price">Rs.4500</option>
+                <option value="price" >Rs.3500</option>
+            </select>
+        </div>
+        <div class="submit">
+            <a><input  class="addcourse" type="submit" value="Add Course"></a>
+        </div>
+    </div>
+
+
+    
+</body>
+</html>
