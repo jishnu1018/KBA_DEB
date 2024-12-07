@@ -1,0 +1,103 @@
+.nav{
+    width: 1839px;
+    height: 50px;
+    background-color: rgb(248, 232, 248);
+    text-align: right;
+    padding-top: 10px;
+    padding-left: 10px;
+    margin-top: -8px;
+    margin-left: -8px;
+    
+}
+.img{
+    text-align: left;
+    display: inline;
+    padding-right: 1200px;
+    
+}
+.nav a{
+    text-decoration: none;
+    padding-right: 38px;
+    position: relative;   
+    top: -18px;
+    color: black;
+}
+.nav p{
+    text-align: center;
+    padding-right: 520px;
+}
+.container{
+    height: 700px;
+    width: 750px;
+    background-color: rgb(248, 232, 248);
+    margin-left: 600px;
+    text-align: left;
+    padding-left: 15px;
+    border-radius: 7px;
+    
+}
+.container img{
+    text-align: center;
+    padding-top: 10px;
+    
+}
+.table{
+    padding-top: 50px;
+}
+.table td{
+    padding-left: 440px;
+    color: red;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.table input{
+    width: 100px;
+    height: 30px;
+    background-color: rgb(174, 74, 241);
+    border-radius: 5px;
+    color: white;
+}
+.description{
+    color: rgb(118, 5, 141);
+    padding-right: 135px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size:large;
+}
+.ul1{
+    padding-left: 2px;
+    list-style-type: none;
+}
+.prerequisites{
+    color: rgb(118, 5, 141);
+    padding-right: 125px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size:large;
+}
+.ul2{
+    padding-left: 15px;
+}
+.features{
+    color: rgb(118, 5, 141);
+    padding-right: 155px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size:large;
+}
+.ul3{
+    padding-left: 15px;
+}
+.button{
+    margin-left: 1300px;
+    margin-top: 20px;
+}
+.button input{
+    margin-left: 10px;
+    border-radius: 10px;
+    width: 120px;
+    height: 30px;
+    background-color: rgb(95, 95, 233);
+    color: white;
+    border-radius: 20px;
+}

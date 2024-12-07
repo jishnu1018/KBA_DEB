@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="/KBA Courses/CSS/signup.css">
+</head>
+<body class="body">
+    <div class="container">
+        <h3>Sign Up</h3>
+        <form>
+            <div class="name">
+                <p>Name:</p>
+                <div>
+                    <input type="text" required>
+                </div>
+            </div>
+            <div class="email">
+                <p>Email:</p>
+                <div>
+                    <input  type="email" required>
+                </div>
+            </div>
+            <div class="password">
+                <p>Password:</p>
+                <div class="passwordtype">
+                    <input type="password" required>
+                </div>
+            </div>
+            <div class="price">
+                <p>price:</p>
+                <select name="select" >
+                    <option value="Owner">Owner</option>
+                    <option value="Admin" selected>Admin</option>
+                    <option value="Staff">Staff</option>
+                    <option value="Student">Student</option>
+                </select>
+            </div>
+            <div class="signup">
+                <a href="Home.html"><input  class="submit" type="submit" value="Sign Up"></a>
+            </div>
+            <div class="login">
+                <p class="login">Already have an account?<a href="Login.html">Login</a></p>
+            </div>
+        </form>
+    </div>
+    
+</body>
+</html>
