@@ -1,0 +1,40 @@
+body{
+    background-color: rgb(255, 255, 255);
+}
+.nav{
+    width: 1839px;
+    height: 50px;
+    background-color: rgb(204, 204, 243);
+    text-align: right;
+    padding-top: 10px;
+    padding-left: 10px;
+    margin-top: -8px;
+    margin-left: -8px;
+    
+}
+
+
+.nav a{
+    text-decoration: none;
+    padding-right: 38px;
+  
+    top: -18px;
+    color: black;
+}
+.heading h2{
+    text-align: center;
+    font-size: xx-large;
+    font-weight: bolder;
+    color: rgb(89, 89, 92);
+}
+.heading p{
+    text-align: center;
+    font-size: medium;
+}
+.table1{
+    margin-left: 200px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    
+
+}

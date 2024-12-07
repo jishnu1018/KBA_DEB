@@ -8,6 +8,9 @@ body{
     background-image: url();
     padding-top: 10px;
     border-radius: 10px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: rgb(88, 85, 85);
     margin-top: 300px;
     margin-left: 700px;
 }
