@@ -1,0 +1,83 @@
+.wraper{
+    width: 430px;
+    height: 450px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(174, 74, 241);
+    margin-top: 150px;
+    margin-bottom: 100px;
+    margin-left: 700px;
+    margin-right: 500px;
+    text-align: center;
+    padding-top: 20px;
+    font-size:x-large;
+    font-family: 'Courier New', Courier, monospace;
+    border-radius: 7px;
+
+}
+.email{
+    font-size: medium;
+    font-weight: 900;
+    text-align: left;
+    padding-left: 60px;
+    color: black
+
+}
+ 
+.emailtype{
+    width: 300px;
+    height: 40px;
+    border-radius: 5px;
+    
+}
+.password{
+    font-size: medium;
+    font-weight: 900;
+    text-align: left;
+    padding-left: 60px;
+    color: black
+
+}
+.passwordtype{
+    width: 300px;
+    height: 40px;
+    border-radius: 5px;
+}
+.login{
+    font-size: medium;
+    font-weight: 900;
+    text-align: left;
+    padding-left: 60px;
+    color: black
+}
+.submit{
+    width: 80px;
+    height: 40px;
+    background-color: rgb(174, 74, 241);
+    border-radius: 6px;
+    color: rgb(255, 255, 255);
+    font-size: medium;
+    
+}
+
+.forgotpassword{
+    display: inline ;
+    font-weight: 100;
+    padding-left: 90px;
+    color: blue;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+.forgotpassword a{
+    text-decoration: none;
+}
+.signup{
+    text-align: center;
+    color: black;
+    font-size: medium;
+    display: inline;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+.signup a{
+    text-decoration: none;
+}

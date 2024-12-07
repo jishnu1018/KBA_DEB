@@ -1,0 +1,105 @@
+.body{
+    background-color: rgb(248, 232, 248);
+}
+.container{
+    width: 430px;
+    height: 600px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(174, 74, 241);
+    margin-top: 150px;
+    margin-bottom: 100px;
+    margin-left: 700px;
+    margin-right: 700px;
+    text-align: center;
+    padding-top: 20px;
+    font-size:x-large;
+    font-family: 'Courier New', Courier, monospace;
+    border-radius: 7px;
+
+    
+}
+.name{
+    color: black;
+    font-size: medium;
+    text-align: left;
+    padding-left: 60px;
+    font-weight: 900;
+}
+.name input{
+    width:300px;
+    height: 40px;
+    border-radius: 5px;
+}
+.email{
+    color: black;
+    font-size: medium;
+    text-align: left;
+    padding-left: 60px;
+    font-weight: 900;
+}
+.email input{
+    width: 300px;
+    height: 40px;
+    border-radius: 3px;
+}
+.password{
+    color: black;
+    font-size: medium;
+    text-align: left;
+    padding-left: 60px;
+    font-weight: 900;
+}
+.passwordtype input{
+    width: 300px;
+    height: 40px;
+    border-radius: 5px;
+}
+.price{
+    color: black;
+    text-align: left;
+    padding-left: 60px;
+    font-size: medium;
+    font-weight: 900;
+}
+.price select{
+    width: 300px;
+    height: 40px;
+    font-size: medium;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 3px;
+    border-color: black;
+}
+.signup{
+    font-size: medium;
+    font-weight: 900;
+    text-align: left;
+    padding-top: 20px;
+    padding-left: 60px;
+    color: black
+}
+.submit{
+    width: 80px;
+    height: 40px;
+    background-color: rgb(174, 74, 241);
+    border-radius: 6px;
+    border-color: white;
+    color: rgb(255, 255, 255);
+    font-size: medium;
+}
+.login{
+    padding-top: 10px;
+    
+}
+.login p{
+    color: black;
+    font-size: medium;
+    display: inline;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    
+    
+}
+.login a{
+    text-decoration: none;
+}
