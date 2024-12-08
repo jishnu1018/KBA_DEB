@@ -1,0 +1,65 @@
+body{
+    background-color: rgb(219, 219, 219);
+}
+.nav h1{
+    font-family:Arial, Helvetica, sans-serif
+}
+.issue{
+    position: relative;
+    text-align: end;
+    margin-top: -55px;
+    margin-right: 20px;
+}
+.nav a{
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+    font-weight: lighter;
+    color: black;
+}
+.nav .issuecertificate{
+    margin-left: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 130px;
+    height: 30px;
+    font-size: medium;
+    background-color: rgb(60, 96, 255);
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+.con{
+    background-color: rgb(255, 255, 255);
+    height: 600px;
+    width: 1400px;
+    margin-top: 90px;
+    margin-left: 200px;
+    border-radius: 5px;
+    padding-left: 80px;
+    padding-top: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+.con h1{
+    
+    font-weight: lighter;    
+}
+.course{
+    width: 400px;
+    height: 35px;
+    font-size: 17px;
+    
+}
+.id{
+    width: 392px;
+    height: 35px;
+    font-size: 17px;
+}
+.button input{
+    width: 120px;
+    height: 30px;
+    border-radius: 4px;
+    background-color: rgb(12, 210, 236);
+    border: none;
+
+}

@@ -1,0 +1,42 @@
+body{
+    background-color:rgb(231, 231, 231) ;
+}
+.con{
+    background-color: rgb(255, 255, 255);
+    height: 650px;
+    width: 1600px;
+    margin: auto;
+    border-style:groove;
+    border-radius: 4px;
+    border-width: 1px;
+    border-color: rgb(211, 211, 211);
+}
+.con1{
+    background-color: rgb(255, 255, 255);
+    width: 1450px;
+    height: 500px;
+    margin-left: 80px;
+    position: absolute;
+    top: 90px;
+    border-style:groove;
+    border-radius: 4px;
+    border-width: 1px;
+    border-color: rgb(211, 211, 211);
+}
+.number{
+    font-family:'Times New Roman', Times, serif;
+    text-align: end;
+}
+.head{
+    text-align: center;
+    font-family:Arial, Helvetica, sans-serif;
+}
+img{
+    width: 250px;
+    padding-left: 600px;
+}
+.last{
+    text-align: center;
+    font-family:Arial, Helvetica, sans-serif;
+
+}
