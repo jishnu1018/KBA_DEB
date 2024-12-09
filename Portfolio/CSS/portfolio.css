@@ -1,0 +1,301 @@
+body{
+    background-color: rgb(0, 0, 0);
+    position: relative;
+    /* background-image: url('/IMAGES/Fe-EX3Pq.jpeg');
+    background-size: cover;
+    background-position: center; */
+}
+
+.jishnu{
+    height: 30px;
+    width: 20px;
+    position: absolute;
+    left: 20px;
+    font-size: xx-large;
+    
+}
+.nav{
+    background-color: rgb(0, 0, 0);
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    color: aqua;
+    display: flex;
+}
+.nav a{
+    text-decoration: none;
+    margin-right: 20px;
+    font-size: large;
+    color: aqua;
+    font-weight: bold;
+}
+.main{
+    background-color: aqua;
+    height: 900px;
+    width: 1600px;
+    margin-top: 6px;
+    margin-left: 102px;
+    padding-left: 30px;
+    padding-top: 20px;
+    position: relative;
+    border-radius: 15px;
+}
+.main .h1{
+    text-align: center;
+}
+.photo{
+    margin-left: 1150px;
+    height: 600px;
+    width: 400px;
+}
+.content{
+    font-size: large;
+}
+.fr{
+    background-color: aqua;
+    font-size: 80px;
+}
+.fr p{
+    display: inline;
+    font-size: xx-large;
+    color: rgb(19, 81, 105);
+}
+.name{
+    height: 300px;
+    width: 1100px;
+    background-color: aqua;
+    position: absolute;
+    top: 150px;
+    left: 30px;
+    padding-left: 12px;
+}
+.front{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.desc{
+    background-color: aqua;
+    height: 70px;
+    width: 1100px;
+    font-size: larger;
+}
+html{
+    scroll-behavior: smooth;
+}
+.con1{
+    background-color: rgb(255, 255, 255);
+    width: 1630px;
+    height: 1000px;
+    position: relative;
+    top: -130px;
+    left: 102px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    padding-top: 50px;
+
+   
+
+}
+.con1 h1{
+    font-size: 60px;
+    text-align: center;
+    padding-top: 20px;
+}
+.amal{
+    height: 110px;
+    width: 1000px;
+    background-color: aqua;
+    font-size: large;
+    font-weight: bolder;
+    margin-left: 80px;
+    padding-left: 50px;
+    padding-top: 50px;
+    border-radius: 50px;
+    margin: auto;
+}
+.amal p{
+    display: inline;
+    font-size: medium;
+    font-weight: normal;
+}
+.cgpa{
+    height: 50px;
+    width: 200px;
+    background-color: aqua;
+    position: relative;
+    left: 750px;
+    top: -38px;
+    text-align: center;
+}
+.snv{
+    height: 110px;
+    width: 1000px;
+    background-color: aqua;
+    font-size: large;
+    font-weight: bolder;
+    margin-top: 20px;
+    margin-left: 290px;
+    padding-left: 50px;
+    padding-top: 50px;
+    border-radius: 50px;
+}
+.snv p{
+    display: inline;
+    font-size: medium;
+    font-weight: normal;
+}
+.cgpa {
+    height: 50px;
+    width: 200px;
+    background-color: aqua;
+    position: relative;
+    left: 750px;
+    top: -38px;
+    text-align: center;
+}
+.sshs{
+    height: 110px;
+    width: 1000px;
+    background-color: aqua;
+    font-size: large;
+    font-weight: bolder;
+    margin-top: 40px;
+    margin-left: -50px;
+    padding-left: 50px;
+    padding-top: 50px;
+    border-radius: 50px;
+}
+.sshs p{
+    display: inline;
+    font-size: medium;
+    font-weight: normal;
+}
+.cgpa{
+    height: 50px;
+    width: 200px;
+    background-color:aqua;
+    position: relative;
+    left: 750px;
+    top: -38px;
+    text-align: center;
+}
+
+.con2{
+    background-color: aqua;
+    height: 1000px;
+    margin-top: 350px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    
+}
+.con2 h1{
+    font-size: 60px;
+    text-align: center;
+    padding-top: 90px;
+}
+.techskill{
+    background-color: rgb(0, 0, 0);
+    height: 250px;
+    width: 350px;
+    font-size: x-large;
+    margin-left: 300px;
+    padding-left: 30px;
+    padding-top: 50px;
+    border-radius: 10px;
+    color: aqua;
+
+}
+.techskill li{
+    font-size: medium;
+    color: aqua;
+}
+
+
+.softskill{
+    background-color: rgb(0, 0, 0);
+    height: 250px;
+    width: 350px;
+    position: relative;
+    margin-top: -300px;
+    font-size: x-large;
+    margin-left: 1000px;
+    padding-left: 30px;
+    padding-top: 50px;
+    border-radius: 10px;
+    color: aqua;
+
+
+}
+.softskill li{
+    font-size: medium;
+    color: aqua;
+
+}
+
+.softskill h1{
+    margin-top: 200px;
+    margin-left: -750px;
+    color: blue;
+}
+.con3{
+    background-color: rgb(255, 255, 255);
+    height: 800px;
+    margin-top: 200px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+.pro1{
+    height: 150px;
+    width: 1000px;
+    background-color: aqua;
+    font-size: x-large;
+    font-weight: bolder;
+    margin: auto;
+    margin-top: 60px;
+    margin-left: 330px;
+    padding-left: 50px;
+    padding-top: 20px;
+    border-radius: 50px;
+}
+
+.pro1 p{
+    display: inline;
+    font-size: large;
+    font-weight: normal;
+}
+.pro2{
+    height: 150px;
+    width: 1000px;
+    background-color: aqua;
+    font-size: x-large;
+    font-weight: bolder;
+    margin: auto;
+    margin-top: 60px;
+    margin-left: 330px;
+    padding-left: 50px;
+    padding-top: 20px;
+    border-radius: 50px;
+}
+
+.pro2 p{
+    display: inline;
+    font-size: large;
+    font-weight: normal;
+}
+.end{
+    background-color: aqua;
+    height: 20px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    width: 1850px;
+    margin-left: -110px;
+    
+}
+.marq{
+    background-color: aqua;
+    height: 20px;
+    width: 1950px;
+    margin-left: -110px;
+    margin-top: 10px;
+    
+}
