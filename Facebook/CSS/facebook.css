@@ -15,12 +15,12 @@ background: #f2f4f7;;
 .main h1{
     font-size: 40px;
     color: rgb(12, 113, 230);
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    
 }
 
 .head{
     background-color: white;
-    height: 300px;
+    height: 290px;
     width: 395px;
     margin-left: 200px;
     margin-top: -7px;
@@ -75,7 +75,7 @@ background: #f2f4f7;;
 
 button{
     margin-top: 10px;
-    width: 370px;
+    width: 360px;
     height: 50px;
     background-color: rgb(12, 113, 230);
     color: white;
