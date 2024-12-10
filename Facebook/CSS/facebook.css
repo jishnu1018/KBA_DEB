@@ -1,0 +1,105 @@
+body{
+background: #f2f4f7;;
+}
+.main{
+
+    height: 600px;
+    width: 800px;
+    margin-top: 53px;
+    margin-left: 520px;
+    text-align: center;
+    position: relative;
+    
+    
+}
+.main h1{
+    font-size: 40px;
+    color: rgb(12, 113, 230);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.head{
+    background-color: white;
+    height: 300px;
+    width: 395px;
+    margin-left: 200px;
+    margin-top: -7px;
+    padding-top: 20px;
+    border-radius: 10px;
+    font-size: large;
+    font-family: Arial, Helvetica, sans-serif;
+    box-shadow: 4px 6px 6px 4px  rgba(0, 0, 0, 0.1);
+    
+}
+.email{
+    width: 340px;
+    height: 50px;
+    border-radius: 5px;
+    padding-left: 15px;
+    margin-left: -px;
+    margin-top: 3px;
+    font-size: 17px;
+    border-style: solid ;
+    border-color: rgb(202, 202, 202);
+    border-width: 1px;
+    color: rgb(165, 165, 165);
+
+}
+.toppass{
+    width: 345px;
+    height: 50px;
+    border-radius: 5px;
+    padding-left: 15px;
+    margin-left: 17px;
+    margin-top: 9px;
+    font-size: 17px;
+    border-style: solid;
+    border-color: rgb(202, 202, 202);
+    border-width: 1px;
+}   
+.password{
+    position: absolute;
+    border-color: white;
+    top: 210px;
+    left: 231px;
+    width: 220px;
+}
+.password input{
+    width: 298px;
+    border: none;
+    height: 23px;
+    font-size: 17px;
+    color: rgb(165, 165, 165);
+
+}
+.password input:hover{
+    border: solid red;
+    border-style: none;
+}
+button{
+    margin-top: 10px;
+    width: 370px;
+    height: 50px;
+    background-color: rgb(12, 113, 230);
+    color: white;
+    font-size: 21px;
+    font-weight: bold;
+    border-radius: 10px;
+    border: none;
+}
+.last{
+    margin-top: 18px;
+    margin-left: 3px;
+    font-size: 14px;
+}
+.forgot{
+    text-decoration: none;
+    color: rgb(12, 113, 230);;
+}
+
+.signup{
+    text-decoration: none;
+    padding-left: 10px;
+    color: rgb(12, 113, 230);;
+    
+}
