@@ -42,7 +42,7 @@ background: #f2f4f7;;
     border-style: solid ;
     border-color: rgb(202, 202, 202);
     border-width: 1px;
-    color: rgb(165, 165, 165);
+
 
 }
 .toppass{
@@ -69,13 +69,10 @@ background: #f2f4f7;;
     border: none;
     height: 23px;
     font-size: 17px;
-    color: rgb(165, 165, 165);
+
 
 }
-.password input:hover{
-    border: solid red;
-    border-style: none;
-}
+
 button{
     margin-top: 10px;
     width: 370px;
