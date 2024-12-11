@@ -265,3 +265,31 @@ button{
    left: 396px;
    font-size: xx-large;
 }
+
+.recall{
+    position: absolute;
+    top: 308px;
+    color: white;
+    left: 678px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.store{
+    position: absolute;
+    top: 308px;
+    color: white;
+    left: 782px;
+    font-size: 11px;
+    font-weight: bold;
+}
+.steps{
+    position: absolute;
+    width: 150px;
+    top: 305px;
+    color: white;
+    left: 880px;
+    font-size: 14px;
+    font-weight: bold;
+
+}
