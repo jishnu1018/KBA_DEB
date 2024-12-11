@@ -131,6 +131,7 @@ button{
     width: 60px;
     margin: 17px;
     box-shadow: 0px 0px 0px 1px rgb(255, 255, 255);
+    font-size: larger;
 }
 
 .row1{
@@ -180,6 +181,8 @@ button{
     width: 60px;
     margin: 17px;
     box-shadow: 0px 0px 0px 1px rgb(255, 255, 255);
+    font-size: larger;
+
 }
 
 .correct{
@@ -215,12 +218,14 @@ button{
 .row3 button{
     width: 60px;
     margin: 17px;
+    font-size: larger;
     box-shadow: 0px 0px 0px 1px rgb(255, 255, 255);
 }
 .row4 button{
     width: 60px;
     margin: 17px;
     box-shadow: 0px 0px 0px 1px rgb(255, 255, 255);
+    font-size: larger;
 
 }
 .row4 .divi{
@@ -238,6 +243,8 @@ button{
     width: 60px;
     margin: 17px;
     box-shadow: 0px 0px 0px 1px rgb(255, 255, 255);
+    font-size: larger;
+
 }
 .AC{
     background-color: rgb(158, 14, 110);
@@ -247,6 +254,8 @@ button{
     width: 60px;
     margin: 17px;
     box-shadow: 0px 0px 0px 1px rgb(255, 255, 255);
+    font-size: larger;
+
 }
 
 .row6 .plus{
