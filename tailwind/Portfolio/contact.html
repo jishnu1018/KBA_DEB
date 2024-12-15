@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes marquee {
+            0% {
+                transform: translateX(110%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .animate-marquee {
+            animation: marquee 15s linear infinite;
+            
+            
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+
+</head>
+<body class="bg-black w-full relative ">
+
+    <div class="bg-black h-20 w-full">
+        <p class="text-cyan-300 text-4xl pt-4 pl-4  font-bold">
+            JISHNU
+           <a href="portfolio.html"><button class="text-cyan-300 text-2xl w-24  h-12 font-bold ml-[600px] hover:bg-cyan-300 hover:text-black rounded-2xl  focus:ring focus:ring-cyan-300">
+                Hola
+            </button></a>
+            <button class="text-cyan-300 text-2xl w-40 h-12  font-bold  ml-4 hover:bg-cyan-300 hover:text-black rounded-2xl focus:ring focus:ring-cyan-300">
+                Contact Me
+            </button>
+        </p>
+    </div>
+
+    <div class="bg-cyan-300 h-5  w-[1840px] flex items-center overflow-hidden">
+        <div class="animate-marquee text-black">
+            <span class="mx-[510px]">Welcome to my world of Tech</span>
+        </div>
+    </div>
+
+    <div class="bg-cyan-300 w-[700px] h-[620px] mt-16 ml-[500px] rounded-2xl">
+        <p class="flex justify-center pt-8 text-4xl font-bold">Contact Me</p>
+        <form>
+        <div class="w-[500px] h-[500px] ml-28 mt-8 text-xl">
+            <p>Name: <br>
+                <input type="text" required class="w-[400px] h-10 ml-6 mt-1 rounded shadow-md shadow-black">
+            </p>
+
+            <p class="mt-4">Email: <br>
+                <input type="email" required class="w-[400px] h-10 ml-6 mt-1 rounded shadow-md shadow-black">
+            </p>
+
+            <p class="mt-4">Comment: <br>
+                <textarea class="w-[400px] h-36 ml-6 mt-1 rounded shadow-md shadow-black"></textarea>
+            </p>
+            <p>
+                <button type="submit" class="w-[100px] h-10 ml-[430px] mt-4 rounded shadow-md shadow-black bg-black text-cyan-300 hover:bg-white hover:text-black">
+                Submit
+                </button>
+            </p>
+
+        </div>
+        </form>
+
+    </div>
+
+
+    <div class="bg-cyan-300 h-[100px] w-[250px] mt-[40px] rounded-2xl" >
+        <a href="https://github.com/jishnu1018"><img src="/Portfolio/IMAGES/github.png" alt="github"  class="pl-[60px] pt-[15px] w-[180px] "></a>
+    </div>
+
+        <div class="bg-cyan-300 h-[100px] w-[250px] rounded-2xl absolute top-[824px] left-[400px]" >
+            <a href="https://www.linkedin.com/in/jishnu-suresh-248b27206/"><img src="/Portfolio/IMAGES/linkedin.png" alt="linkedin" class=" w-[70px] mt-4 ml-[86px] "></a>
+        </div>
+
+        <div class="bg-cyan-300 h-[100px] w-[250px] rounded-2xl absolute top-[824px] left-[800px]" >
+            <a href="https://www.instagram.com/jishnu._suresh_"><img src="/Portfolio/IMAGES/insta.jpeg" alt="insta" class=" w-[70px] mt-4 ml-[86px] "></a>
+        </div>
+
+        <div class="bg-cyan-300 h-[100px] w-[250px] rounded-2xl absolute top-[824px] left-[1200px]" >
+            <a href="https://mail.google.com/mail/u/0/#inbox?compose=
+        CllgCHrhVDKSxHqswjMhNpchggGfwcmJKNsfjLTRKpLlXPGhQnMcZsSCVWBdrCFBngBrWshjdvV"><img src="/Portfolio/IMAGES/email.png" alt="email" class=" w-[70px] mt-4 ml-[86px] "></a>
+        </div>
+
+        <div class="bg-cyan-300 h-[100px] w-[250px] rounded-2xl absolute top-[824px] left-[1600px]" >
+            <a href="https://x.com/s36593966"><img src="/Portfolio/IMAGES/twitter.png" alt="twitter" class=" w-[70px] mt-4 ml-[86px] "></a>
+       </div>
+       
+        
+
+
+
+</body>
+</html>

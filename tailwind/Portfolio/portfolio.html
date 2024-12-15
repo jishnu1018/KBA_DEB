@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes marquee {
+            0% {
+                transform: translateX(110%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .animate-marquee {
+            animation: marquee 15s linear infinite;
+            
+            
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+
+    </style>
+
+</head>
+<body class="bg-black w-full relative ">
+
+    <div class="bg-black h-20 w-full ">
+        <p class="text-cyan-300 text-4xl pt-4 pl-4  font-bold">
+            JISHNU
+            <button class="text-cyan-300 text-2xl w-24  h-12 font-bold ml-[400px] hover:bg-cyan-300 hover:text-black rounded-2xl  focus:ring focus:ring-cyan-300">
+                Hola
+            </button>
+            <a href="contact.html"><button class="text-cyan-300 text-2xl w-40 h-12  font-bold  ml-4 hover:bg-cyan-300 hover:text-black rounded-2xl focus:ring focus:ring-cyan-300">
+                Contact Me
+            </button></a>
+            <a href="#education"><button class="text-cyan-300 text-2xl w-36 h-12  font-bold  ml-4 hover:bg-cyan-300 hover:text-black rounded-2xl  focus:ring focus:ring-cyan-300">
+                Education
+            </button></a>
+            <a href="#skills"><button class="text-cyan-300 text-2xl w-24 h-12  font-bold  ml-4 hover:bg-cyan-300 hover:text-black rounded-2xl  focus:ring focus:ring-cyan-300">
+                Skills
+            </button></a>
+            <a href="#project"><button class="text-cyan-300 text-2xl w-28 h-12  font-bold ml-4 hover:bg-cyan-300 hover:text-black rounded-2xl  focus:ring focus:ring-cyan-300">
+                Project
+            </button></a>
+        </p>
+    </div>
+
+    <div class="bg-cyan-300 h-5  w-[1840px] flex items-center overflow-hidden">
+        <div class="animate-marquee text-black">
+            <span class="mx-[510px]">Welcome to my world of Tech</span>
+        </div>
+    </div>
+
+    <div id="hola" class="bg-cyan-300 w-[1600px] h-[1000px] mt-[-10px]  ml-[102px] rounded-t-[50px]">
+            <div class="ml-[1150px] mt-4">
+                <img src="/Portfolio/IMAGES/imagee.png" alt="image" width="400px" height="600px" >
+            </div>
+
+            <div class=" absolute top-[260px] w-[1010px] left-[140px] ">
+                <p class="text-2xl font-bold">HELLO,I'M A</p>
+                <p class="text-[80px] font-bold">FRONT-END <span class="text-4xl">developer</span></p> 
+                
+                <div class="mt-6">
+                    <p class="text-2xl font-bold">About me</p>
+                    <p class="text-lg pt-4">An enthusiastic software developer who is passionate about front-end technologies,
+                        web development, and machine learning, with basic command of Python.
+                        I am a beginner in JavaScript, HTML, CSS, and frameworks such as React. 
+                        I work in dynamic teams, guaranteeing smooth user experiences and 
+                        approaching problems proactively.
+                    </p> 
+                </div>
+            </div>
+
+    </div>
+
+    <div id="education" class="bg-white w-[1600px] h-[1000px] mt-[-180px] ml-[102px] rounded-t-[50px] ">
+        <p class="text-[80px] font-bold flex justify-center pt-4">
+            EDUCATION
+        </p>
+            <div class="bg-cyan-300 w-[1050px] h-[150px] text-2xl font-bold ml-[250px] mt-16 pl-[50px] pt-[45px] rounded-[50px] ">
+                <p class="inline">Amal Jyothi College of Engineering Kanjirappally <span class="ml-56">2020-2024</span>
+                    <br>
+                   <span class="text-lg font-light "> B.Tech in Computer Science and Engineering  <span class="ml-[431px] text-2xl font-bold">CGPA 6.64</span></span> 
+                </p>
+
+            </div>
+
+                <div class="bg-cyan-300 w-[1050px] h-[150px] text-2xl font-bold ml-[250px] mt-16 pl-[50px] pt-[45px] rounded-[50px] ">
+                    <p class="inline">SNV HSS NR City  <span class="ml-[590px]">2018-2020</span>
+                        <br>
+                    <span class="text-lg font-light ">Higher Secondary Education <span class="ml-[585px] text-2xl font-bold">74.9%</span></span> 
+                    </p>
+
+                </div>
+
+                    <div class="bg-cyan-300 w-[1050px] h-[150px] text-2xl font-bold ml-[250px] mt-16 pl-[50px] pt-[45px] rounded-[50px] ">
+                        <p class="inline">St. Sebastian's High School Pottankad <span class="ml-[346px]">2017-2018</span>
+                            <br>
+                        <span class="text-lg font-light "> High School Education  <span class="ml-[640px] text-2xl font-bold">88%</span></span> 
+                        </p>
+
+                    </div>
+    </div>
+
+    <div id="skills" class="bg-cyan-300 w-[1600px] h-[1000px] mt-[-80px] ml-[102px] rounded-t-[50px]">
+        <p class="text-[80px] font-bold flex justify-center pt-4">
+            SKILLS
+        </p>
+        <p>
+            <div class="bg-black w-[450px] h-[350px] ml-56 mt-32 text-cyan-300 pt-8 rounded-2xl">
+                <p class="text-3xl ml-8 font-bold"> Technical Skills</p>
+                    <ul class="list-disc list-inside ml-16 mt-4 text-lg ">
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JAVASCRIPT</li>
+                        <li>UI/UX DESIGN USING FIGMA</li>
+                        <li>PYTHON</li>
+                        <li>C</li>
+                        <li>MYSQL</li>
+
+                    </ul>
+                
+            </div>
+
+            <div class="bg-black w-[450px] h-[350px] ml-[900px] mt-[-350px] text-cyan-300 pt-8 rounded-2xl ">
+                <p class="text-3xl ml-8 font-bold"> Soft Skills</p>
+                    <ul class="list-disc list-inside ml-16 mt-4 text-lg ">
+                        <li>
+                            Problem-Solving
+                        </li>
+                        <li>
+                            Critical Thinking
+                         </li>
+                        <li>
+                            Leadership
+                        </li>
+                        <li>
+                            Team Collaboration
+                        </li>
+                    </ul>
+                
+            </div>
+        </p>   
+
+    </div>
+  
+    <div id="project" class="bg-white w-[1600px] h-[950px] mt-[-70px] ml-[102px] rounded-[50px] mb-1">
+        <p class="text-[80px] font-bold flex justify-center pt-4">
+            PROJECT
+        </p>
+
+            <div class="bg-cyan-300 w-[1050px] h-[180px] text-2xl font-bold ml-[250px] mt-16 pl-[50px] pt-[30px] rounded-[50px] ">
+                <p class=""> AI based multi robot fire suppression system (main project)</p>
+                <p class="text-xl font-light mt-2">The ”AI-Based Multi-Robot Fire Suppression System” project aims to transform firefighting by 
+                    combining advanced technologies like artificial intelligence (AI) to form a team of highly intelligent robots. </p>
+
+            </div>
+
+            <div class="bg-cyan-300 w-[1050px] h-[180px] text-2xl font-bold ml-[250px] mt-16 pl-[50px] pt-[30px] rounded-[50px] ">
+                <p class=""> JOSO - Online Job Service Provider (mini project)</p>
+                <p class="text-xl font-light mt-2">A business and Employment-Focused mobile platform for Small-Area services, Developed wirh Flutter and Firebase.</p>
+
+            </div>
+
+    </div>
+
+    <div class="bg-cyan-300 h-5  w-[1840px] flex items-center overflow-hidden">
+        <div class="animate-marquee text-black">
+            <span class="mx-[510px]">Welcome to my world of Tech</span>
+        </div>
+    </div>
+
+</body>
+</html>

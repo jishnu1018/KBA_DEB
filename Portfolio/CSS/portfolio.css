@@ -82,7 +82,7 @@ html{
     scroll-behavior: smooth;
 }
 .con1{
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(253, 253, 253);
     width: 1630px;
     height: 1000px;
     position: relative;
@@ -202,6 +202,7 @@ html{
     padding-top: 50px;
     border-radius: 10px;
     color: aqua;
+    
 
 }
 .techskill li{
