@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datatypes</title>
+</head>
+<body>
+    <p id="hi"></p>
+    <script>
+        let a=5; b="hai"; c=true; d=null;
+        document.write("The value of a is:", a , "<br>","The value of b is:",b ,"<br>","The value of c is:",c ,"<br>","The value of d is:",d , "<br>")
+        document.write("The type of a is:" ,typeof a ,"<br>","The type of b is:", typeof b,"<br>","The type of c is:", typeof c,"<br>","The type of d is:", typeof d, )
+        
+        document.getElementById("hi") .innerHTML="21 years 11 months"
+
+        a=7;
+        document.write("<br><br>the value of a is:",a)
+        const m=4;
+        document.write("<br>the value of m is",m)
+        {
+            let a=10
+            let m=5
+            document.write(" <br><br>the value of a in this block is:",a)
+            document.write("<br> the value of m is:",m)
+        }
+        document.write("<br><br>the value of a is:",a)
+        document.write("<br> the value of m is:",m,"<br><br>" )
+
+        s=a>m
+        document.write(s, "<br><br>")
+
+        p=a>m && m<a
+        document.write(p, "<br><br>")
+
+        i=a>m?a:m
+        document.write("ternary","\n",i,"<br><br>")
+
+        d=a++;
+        document.write("increment","\n",d,"\n",a,"<br>")
+
+        d=a--;
+        document.write("decrement","\n",d,"\n",a,"<br>")
+
+        d=a;
+        document.write("post-orer","\n",d,"<br>","<br>" )
+        
+        f=++a;
+        document.write("pre-order","\n",f,"<br>" , a)
+        </script>
+
+
+</body>
+</html>

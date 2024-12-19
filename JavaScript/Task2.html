@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task2</title>
+</head>
+<body>
+
+    <script>
+//swap two numbers using a temporary variable
+document.write("Program to swap two numbers using a temporary variable: <br>")
+    //before swapping
+    let i=5;
+    let j=7;
+    document.write("The value of i before swapping: ",i, "<br> The value of j before swapping: ", j, "<br><br>")
+
+    //after swapping
+    temp=i;
+    i=j;
+    j=temp;
+    
+    document.write("The value of i after swapping: ",i, "<br> The value of j after swapping: ", j, "<br><br>")
+
+
+//swap two numbers w/o using temporary variable
+document.write("Program to swap two numbers w/o using temporary variable: <br>")
+    //before swapping
+    let k=10;
+    let l=18;
+    document.write("The value of a before swapping: ",k, "<br> The value of b before swapping: ", l, "<br><br>")
+
+    //after swapping
+    k=k+l;
+    l=k-l;
+    k=k-l;
+
+    document.write("The value of a after swapping: ",k,"<br> The value of b after swapping: ",l, "<br><br>")
+
+
+//convert Celsius to fahrenheit
+document.write("Program to convert Celsius to fahrenheit: <br>")
+    let c=36;
+    let f=(c * 9/5) + 32;
+    document.write( c," degree celcius is equal to: ",f, "<br><br>")
+
+    
+//square of a number
+document.write("Program to find square of a number: <br>")
+    let d=6
+    document.write("The value of d is: ",d, "<br> The value of d sqaure  is: ", d*d,"<br><br>")
+
+
+//cube of a number
+document.write("Program to find cube of a number: <br>")
+    let e=2
+    document.write("The value of e is: ",e, "<br>The value of e cube  is: ", e*e*e,"<br><br>")
+
+
+// area of square
+document.write("Program to find area of square: <br>")
+    let a=6
+    document.write("a=",a ,"<br> The area of sqaure is: ",a*a,"<br><br>")
+
+
+//area of circle
+document.write("Program to find area of circle: <br>")
+    let r=4;
+    let pi=3.14159265359
+    document.write("the radius of the circle is: ",r,"<br>the area of this circle is: ",pi*(r*r), "<br><br>")
+
+
+//area of rectangle
+document.write("Program to find area of rectangle: <br>")
+    let le=4
+    let wi=7
+    document.write("length= ",le,"<br> width= ",wi,"<br> the area of the rectangle is: ",le*wi,"<br><br>")
+
+
+//area of triangle
+document.write("Program to find area of triangle: <br>")
+    let base=6
+    let height=8
+    document.write("base= ",base, "<br>", "height= ",height,"<br> The area of triangle is: ",1/2*(base*height),"<br><br>")
+
+
+//perimeter of rectangle
+document.write("Program to find perimeter of rectangle: <br>")
+    document.write("length= ",le,"<br> width= ",wi,"<br> the perimeter of the rectangle is: ",2*(le+wi),"<br><br>")
+
+
+//perimeter of square
+document.write("Program to find perimeter of square: <br>")
+    document.write("a=",a ,"<br> The perimeter of sqaure is: ",4*a,"<br><br>")
+
+
+//perimeter of circle
+document.write("Program to find perimeter of circle: <br>")
+    document.write("the radius of the circle is: ",r,"<br>the perimeter of this circle is: ",2*pi*r, "<br><br>")
+
+
+//perimeter of triangle
+document.write("Program to find perimeter of triangle: <br>")
+    let q=3
+    let w=4
+    let t=6
+    document.write("base= ",q, "<br>", "height= ",w, "<br>","width= ",t,"<br> The perimeter of triangle is:" ,q+w+t,"<br><br>")
+
+
+//simple interest 
+document.write("Program to find simple interest: <br>")
+    P=18
+    R=15
+    T=12
+    document.write("Principal amount= ",P,"<br> Rate of Interest= ",R, "<br> Time= ",T,"<br> simple interest= ",(P*R*T)/100,"<br><br>" )
+    
+
+//compound interest
+document.write("Program to find compound interest: <br>")
+    document.write("Principal amount= ",P,"<br> Rate of Interest= ",R, "<br> Time= ",T,"<br> compound interest= ", )// compund interest 
+
+
+//largest among two numbers
+document.write(" <br><br> Program to find largest among two numbers: <br>")
+    let m=5
+    let n=8
+    document.write("The value in m= ",m, "<br> the value in n= ",n," <br> the largest among these is: ",m>n?m:n,"<br><br>")
+    
+
+//smallest among three numbers
+document.write("program to find smallest among three numbers: <br>")
+    let first=3;
+    let second=5;
+    let third=6;
+    document.write("The value in first= ",first, "<br> the value in second= ",second,"<br> the value in third= ",third,"<br> The smallest among these numbers is =",(first<second? first:second) <third? (first<second? first:second):third,"<br><br>")
+
+
+//zero,positive and negative
+document.write("Program to check the given number is zero,positive and negative: <br>")
+    numb=-1
+    document.write("The number is: ",numb,"<br>",(numb > 0) ? "The number is positive." :(numb < 0) ? "The number is negative." :(numb === 0) ? "The number is zero.":"invalid ","<br><br>")
+
+
+//person is eligible for voting using ternary operator
+document.write("Program to find whether the person is eligible for voting using ternary operator:<br>")
+    age=17
+    document.write("The age of the person is: ",age,"<br>",age>=18?" The person is eligible for voting":" The person is not eligible for voting","<br><br>")
+
+
+//the sum of the two given integers.
+document.write("Write a JavaScript program to compute the sum of the two given integers. If the sum is in the range 50..80 return 65 otherwise return 80 (using ternary operator):<br>")
+   z=50
+   v=30
+   document.write("First number= ",z,"<br> Second number= ",v,"<br>","The result is: ",z+v>=50 & z+v<=80?65:80)
+   
+   
+   </script>
+    
+</body>
+</html>

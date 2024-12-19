@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task1</title>
+</head>
+<body>
+    <script>
+
+//Document.Write
+
+        //First 
+        document.write("The value of 2+5 is ",2+5, "<br>")
+        document.write("The value of 5*10 is ",5*10, "<br>")
+        document.write("The value of (23*3)+4 is ",(23*3)+4, "<br>")
+        document.write("The value of 56/5 is ",56/5, "<br> <br>")
+
+        //Second
+        document.write("* <br> * * <br> * * *","<br><br><br>")
+        document.write("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* <br>&nbsp;&nbsp;&nbsp;* * <br> * * *","<br><br>")
+
+        //Third
+        document.write("1 <br>12<br>123","<br><br><br>")
+        document.write("1 <br>23<br>456","<br><br><br>")
+
+
+//Console
+    
+        //First 
+        console.log("The value of 2+5 is",2+5)
+        console.log("The value of 5*10 is",5*10)
+        console.log("The value of (23*3)+4 is",(23*3)+4)
+        console.log("The value of 56/5 is",56/5)
+
+        //Second
+        console.log("*\n**\n***")
+        console.log("  *\n **\n***")
+
+        //Third
+        console.log("1\n12\n123")
+        console.log("1\n23\n456")
+
+    </script>
+
+    <h3>Give the output on document.write(), document.getElement & console</h3>
+
+<!-- document.write(): -->
+    <h4>document.write():</h4>
+
+        Program to find 3+4-1: <br>
+        <script>    
+        document.write("The value of 3+4-1 is: ",3+4-1)
+        </script>
+        <br><br>
+
+        Program to find (3*5)+1: <br>
+        <script>    
+            document.write("The value of (3*5)+1 is: ",(3*5)+1)
+        </script>
+        <br><br>
+
+        Program to find (5*2)/2: <br>
+        <script>    
+            document.write("The value of (5*2)/2 is: ",(5*2)/2)
+        </script>
+        <br><br>
+
+        Program to find 10*2+3-1: <br>
+        <script>    
+            document.write("The value of 10*2+3-1 is: ",10*2+3-1)
+        </script>
+        <br><br>
+
+        Program to find 10%2: <br>
+        <script>    
+            document.write("The value of 10%2 is: ",10%2)
+        </script>
+        <br><br>
+        
+        Program to find 17%2: <br>
+        <script>    
+            document.write("The value of 17%2 is: ",17%2)
+        </script>
+        <br><br>
+        
+        Program to find (5*6)%4: <br>
+        <script>    
+            document.write("The value of (5*6)%4 is: ",(5*6)%4)
+        </script>
+        <br><br>
+        
+        Program to find 3.5+2.4: <br>
+        <script>    
+            document.write("The value of 3.5+2.4 is: ",3.5+2.4)
+        </script>
+        <br><br>
+        
+        Program to find 104.5/5: <br>
+        <script>    
+            document.write("The value of 104.5/5 is: ",104.5/5)
+        </script>
+        <br><br>
+        
+        Program to find 4.5*2: <br>
+        <script>    
+            document.write("The value of 4.5*2 is: ",4.5*2)
+        </script>
+        <br><br>
+
+
+<!-- document.getElement -->
+    <h4>document.getElement:</h4>
+        <p id="A"></p>
+        <p id="B"></p>
+    <script>
+        document.getElementById("A") .innerHTML=" Program to find 3+4-1: <br> The result is "+ (3+4-1) +"<br> <br>" +" Program to find (3*5)+1: <br> The result is "+ ((3*5)+1)
+    </script>
+    <p id="C"></p>
+    <script>
+        document.getElementById("C") .innerHTML=" Program to find (5*2)/2: <br> The result is "+((5*2)/2)
+    </script>
+    <p id="D"></p>
+    <script>
+        document.getElementById("D") .innerHTML=" Program to find 10*2+3-1: <br> The result is "+(10*2+3-1)
+    </script>
+
+    <p id="E"></p>
+    <script>
+        document.getElementById("E") .innerHTML=" Program to find 10%2: <br> The result is "+10%2
+    </script>
+
+    <p id="F"></p>
+    <script>
+        A=17%2
+        document.getElementById("F") .innerHTML=" Program to find 17%2: <br> The result is "+A
+    </script>
+
+    <p id="G"></p>
+    <script>
+        A=(5*6)%4
+        document.getElementById("G") .innerHTML=" Program to find (5*6)%4: <br> The result is "+A
+    </script>
+
+    <p id="H"></p>
+    <script>
+        A=3.5+2.4
+        document.getElementById("H") .innerHTML=" Program to find 3.5+2.4: <br> The result is "+A
+    </script>
+
+    <p id="I"></p>
+    <script>
+        A=104.5/5
+        document.getElementById("I") .innerHTML=" Program to find 104.5/5: <br> The result is "+A
+    </script>
+
+    <p id="J"></p>
+    <script>
+        A=4.5*2
+        document.getElementById("J") .innerHTML=" Program to find 4.5*2: <br> The result is "+A
+    </script>
+
+
+
+
+<!-- console.log -->
+
+        <script>
+            console.log("Program to find 3+4-1:\n","The value of 3+4-1 is:",3+4-1)
+            console.log("Program to find (3*5)+1:\n","The value of (3*5)+1 is:",(3*5)+1)
+            console.log("Program to find (5*2)/2:\n","The value of (5*2)/2 is:",(5*2)/2)
+            console.log("Program to find 10*2+3-1:\n","The value of 10*2+3-1 is:",10*2+3-1)
+            console.log("Program to find 10%2:\n","The value of 10%2 is:",10%2)
+            console.log("Program to find 17%2:\n","The value of 17%2 is:",17%2)
+            console.log("Program to find (5*6)%4:\n","The value of (5*6)%4 is:",(5*6)%4)
+            console.log("Program to find 3.5+2.4:\n","The value of 3.5+2.4 is:",3.5+2.4)
+            console.log("Program to find  104.5/5:\n","The value of  104.5/5 is:", 104.5/5)
+            console.log("Program to find 4.5*2:\n","The value of 4.5*2 is:",4.5*2)
+v
+
+        </script>
+
+</body>
+</html>
