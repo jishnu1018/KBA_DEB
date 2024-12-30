@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+//for in loop
+        document.write("for in loop::<br>")
+        a=[2,4,6,8,6,3]
+        document.write(a)
+        for(i in a){
+            a[i]=a[i]+2
+            
+        }document.write("<br>",a)
+
+//for of loop
+        document.write("<br><br>for of loop::<br>")
+        a=[1,2,3,4,5,6]
+        document.write(a)
+        s=0;
+        for(i of a){
+            s=s+i
+            
+        }document.write("<br> sum of the elements in tha array is: ",s)
+
+
+//for of loop with push
+document.write("<br><br>for of loop with push::<br>")
+        a=[8,6,2,0,3,9]
+        b=[]
+        document.write(a)
+        for(i of a){
+            if(i!=2){
+            b.push(i)
+            }
+        }document.write("<br>",b,"<br><br>")
+
+
+//character check in an aray
+        a="The paste"
+        count=0
+        b="i"
+        for(i of a){
+            if(i==b){
+                document.write("yes,The ch is present")
+                count=1;
+                break;
+            }
+        }
+        if(count==0){
+            document.write("no,The ch is not present")
+        }
+
+    </script>
+    
+</body>
+</html>

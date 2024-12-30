@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ifelse</title>
+</head>
+<body>
+    <script>
+        let a=5
+        let b=7
+        let c=2.5
+        let d="hi"
+        let e=5
+        let f="5"
+
+        //if else
+        if(a>b){
+            document.write("a is greater and the value is: ",a)
+        }
+        else{
+            document.write("b is greater and the value is: ",b, "<br><br>")
+        }
+
+
+        //if elseif else
+        if(a<b & a<c){
+            document.write("<br>a is smaller and value is: ",a)
+        }
+        else if(b<a & b<c){
+            document.write("<br>b is smaller and value is: ",b)
+        }
+        else{
+            document.write("<br>c is smaller and value is: ",c,"<br><br>")
+        }
+
+        //if else using ==
+        if(a==d){
+            document.write("<br>yes a is equal to b")
+        }
+        else if(a==e){
+            document.write("<br>yes a is equal to e")
+        }
+        else{
+            document.write("<br>no")
+        }
+
+
+        //if else using ===
+        if(a===c){
+            document.write("<br>yes a is same as c")
+        }
+        else if(a===f){
+            document.write("<br>Yes a is same as b")
+        }
+        else{
+            document.write("<br> not same")
+        }
+
+
+//switch cases
+        let i="="
+        switch(i){
+            case '+':{
+                z=a+b
+                document.write("<br>the sum is",z)
+                break;
+            }
+            case '*':{
+                document.write(" <br>the value is ",a*b)
+                break;
+            }
+            case '-':{
+                document.write("<br> the value is ",a-b)
+                break;
+            }
+            case '/':{
+                document.write("<br> the value is ",a/b)
+                break;
+            }
+            default:{
+                document.write("<br>no value")
+                break;
+            }
+        }
+
+    </script>
+</body>
+</html>

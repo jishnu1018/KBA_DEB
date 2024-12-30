@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo">
+        <h1>hi broo</h1>
+        <p id="hi">hello</p>
+    </div>
+    <script>
+        let element=document.createElement("p")
+        element.innerHTML="Hi welcome"
+        document.getElementById("demo").appendChild(element)
+
+        let element1=document.createElement("h1")
+        element1.textContent="hello welcome"
+        document.getElementById("hi").appendChild(element1)
+
+        let element2=document.createElement("input")
+        element2.placeholder="enter name"
+        document.getElementById("demo").appendChild(element2)
+
+    </script>
+
+</body>
+</html>

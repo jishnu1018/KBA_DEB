@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+    //number cahanging using index
+        a=[5,6,8,7,9]
+        document.write("the number in 3rd is : ",a[2]=10)
+        document.write("<br>The new array of a is: ",a,"<br>")
+        
+    //add 2 to the numbers in array
+        b=[7,7,2,6,9]
+        document.write("<br> The array b is :",b,"<br>")
+        document.write("The new array of b is: ")
+        for(i=0;i<5;i++){
+           b[i]=b[i]+2
+           document.write(b[i],",") 
+        }
+document.write("<br><br>")
+    //add the first 10 natural numbers to an array
+        a=[];
+        for(i=0;i<10;i++){
+            a[i]=i+1
+        }
+        document.write(a)
+
+document.write("<br><br>")
+    //checking whether a string is in it or not
+        k=["messi","ronaldo","neymar","sandra","suarez"]
+        count=0;
+        for(i=0;i<5;i++){
+            if(k[i]=="sandra"){
+                document.write("yes")
+                count=1;
+                break;
+            }
+        }
+
+       if(count==0){
+        document.write("no")
+       }
+        
+
+    //nested for loop
+    n=3
+    for(i=0;i<n;i++){
+        for(i=0;i<n;i++){
+            document.write("<br>* * *")
+        }
+        
+    }
+    document.write("<br>")
+
+    n=3
+    for(i=0;i<n;i++){
+        for(j=0;j<n;j++){
+            document.write("* ");
+            
+        }
+        document.write("<br>")
+
+    }
+
+//matrix format or 2D array
+    a=[[1,2,3],[4,5,6],[7,8,9]];
+    document.write("the element in [1][2] is: ",a[1][2],"<br>")
+
+
+//matrix format
+    a=[[],[],[]]
+    n=1
+    s=0;
+    for(i=0;i<3;i++){
+        for(j=0;j<3;j++){
+            a[i][j]=n;
+            n++;
+            s=s+a[i][j]
+            document.write(a[i][j]," ")
+
+
+                       
+        }document.write("<br>")
+        
+    }
+    document.write("Sum of the elments in the matrix is: ",s)
+    
+    </script>
+
+</body>
+</html>

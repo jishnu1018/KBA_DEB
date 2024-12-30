@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task4</title>
+</head>
+<body>
+
+
+    <script>
+
+//JS program to find the sum of the elements in array.
+document.write("JS program to find the sum of the elements in array:: <br>")
+        a=[2,5,8,9,4,6];
+        s=0;
+        for(i=0;i<6;i++){
+            s=s+a[i]
+        }
+        document.write("the sum of the elements in array a is: ",s,"<br><br>")
+
+//JS program to store & print even numbers upto 20 in an array
+document.write("JS program to store & print even numbers upto 20 in an array::<br>")
+        a = []; 
+
+        for ( i = 2; i <= 20; i += 2) {
+        a[i / 2] = i
+        }
+
+        document.write(a,"<br><br>")
+
+//JS program to check whether a number is in the array and if present print the location
+document.write("JS program to check whether a number is in the array and if present print the location::")
+        a=[5,4,8,9,7,6,0];
+        n=7;
+        count=0
+        document.write("<br> The array a is ",a)
+        for(i=0;i<7;i++){
+            if(a[i]==n){
+                document.write("<br>The number ",n," is in the array"," and is in the ", i ,"th position")
+                count=1;
+                break;
+            }
+        }
+        if(count==0){
+            document.write("<br>The number ",n," is not in the array")
+        }
+
+
+//JS program to remove an element pesent in a specific location
+document.write("<br><br>JS program to remove an element pesent in a specific location::")
+
+        a=[10, 20, 30, 40, 50];
+        i= 1; 
+        document.write("<br> Array a is ",a)
+
+        if (i>=0&&i<a.length) {
+            a.splice(i, 1);
+            document.write("<br>Updated array: " + a);
+        } else {
+            document.write("Invalid index!");
+        }
+
+
+//JS program to copy an element in an aaray to another array
+document.write("<br><br>JS program to copy an element in an aaray to another array::")
+        a=[1,2,3,4,5]
+        n=a[4]
+        b=[5,7,9,7,]
+        for(i=0;i<a.length;i++)
+        {
+            if(a[i]==n)
+            {
+                b[i]=a[i]
+            }
+            
+        }
+        document.write(`<br> a = ${a} and b = ${b} <br><br>`)
+
+
+//Print the pattern
+document.write("Print the pattern::<br>")
+document.write("Pattern1 <br>")
+        for(i=1;i<4;i++)
+        {
+            for(j=1;j<=i;j++)
+            {
+                document.write(i," ")
+            }
+            document.write("<br>")
+        }
+
+        document.write("<br><br>Pattern2 <br>")
+        for(i=0;i<3;i++)
+        {
+            for(j=0;j<3;j++)
+            {
+                document.write("2 ")
+            }
+            document.write("<br>")
+        }
+
+        document.write("<br><br>Pattern3 <br>")
+        for(i=1;i<4;i++)
+        {
+            for(j=1;j<=4-i;j++)
+            {
+                document.write(i," ")
+            }
+            document.write("<br>")
+        }
+    </script>
+    
+
+
+</body>
+</html>

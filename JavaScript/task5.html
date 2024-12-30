@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<!-- Program to print a para about yourself using createElement() , textContent & append child. -->
+    <div id="About">
+        <h1>
+            JISHNU SURESH
+        </h1>
+    </div>
+
+
+    <script>
+
+
+        hello=document.createElement("p")
+        hello.textContent="Dedicated software development enthusiast with basic Python skills and an interest in machine learning,  web development, and front-end technologies. Proven track record of effective project collaboration, including proficiency in HTML, CSS, JavaScript, and modern frameworks such as React. Expertise in problem solving, critical thinking, communication, and analysis, with a focus on creating scalable, efficient solutions and seamless user experiences. Seeking to combine strong coding skills, client management, and front-end development expertise with a proactive approach to new challenges and project success in a dynamic team setting."
+        name=document.getElementById("About").appendChild(hello)
+
+//Make an unordered list of cinemas on html page using javascript.
+        ul=document.createElement("ul");  
+        movies=["John Wick","Iron Man","MIB"]; 
+
+        for(i=0;i<movies.length; i++) {
+        li=document.createElement("li");  
+        li.textContent=movies[i];
+        ul.appendChild(li); 
+        }
+        document.body.appendChild(ul);
+
+    </script>
+
+
+<select id="pl dropdown"></select>
+    <script>
+//Create a dropdown for programming language classes offered on html page using javascript.    
+            pl= ["Python", "JavaScript", "HTML & CSS"];
+            dropdown=document.getElementById("pl dropdown");
+
+            pl.forEach(language => {
+            option = document.createElement("option");
+            option.textContent = language;
+            dropdown.appendChild(option);
+            });
+    </script>
+<br><br>
+
+<!-- Create a dropdown for list of cakes and print the value of second option. -->
+        <select  id="cake">
+            <option value="chocolate">Chocolate</option>
+            <option value="vanilla">Vanilla</option>
+            <option value="strawberry">Strawberry </option>
+            <option value="redvelvet">Red Cake</option>
+        </select><br>
+
+        <script>
+            document.write("Second option value: " + document.getElementById("cake").options[1].value);
+        </script>
+
+
+<!-- Print your full name storing fname & lname. Print in Uppercase. -->
+        <script>
+            fname="jishnu"
+            lname="suresh"
+            document.write("<br><br>",(fname + " " + lname).toUpperCase());
+
+
+//“You can study anything if you have a will to do it”.Take the substrings “You can study”, “you”,”will”,”do it” and combine as a sentence.
+            s1="You can study";
+            s2="you";
+            s3="will";
+            s4="do it.";
+            document.write(`<br><br> ${s1} anything if ${s2} have a  ${s3} to ${s4}`)
+       
+     
+//“MongoDB is a decentralised distributed ledger . MongoDB can eliminate centralisation.” Replace MongoDB with Blockchain
+            sentence = "MongoDB is a decentralised distributed ledger. MongoDB can eliminate centralisation.";
+            document.write("<br><br>",sentence)
+            updatedSentence = sentence.split("MongoDB").join("Blockchain");
+            document.write("<br>",updatedSentence);
+
+       
+//Print the string “MongoDB is a decentralised distributed ledger” using substring/substr.
+            str = "MongoDB is a decentralised distributed ledger";
+            a = str.substring(0, str.length); 
+            document.write("<br><br>",a);
+
+
+//Compare “Hello World” & “hEllO World” and display the result & its type.
+            str1 = "Hello World";
+            str2 = "hEllO World";
+            a = (str1 === str2);
+            document.write("<br><br>")
+            document.write("Comparison Result: " + a + "<br>");
+            document.write("Type of the result: " + typeof a);
+
+                
+       </script>
+</body>
+</html>
