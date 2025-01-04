@@ -21,14 +21,14 @@
         b = [5, 6, 7, 8];
         document.write("<br><br>array a is: ",a)
         document.write("<br>array b is: ",b)
-        for (i = 0; i < b.length; i++) {
+        for (i = 0;i<b.length; i++) {
         a[a.length] = b[i]; 
         }
         document.write("<br>Concatenated Array: " + a);
 
 
 // JS program to read an array and sort in ascending and descending order
-        arr = [40, 10, 90, 25, 50, 75];
+        arr=[40, 10, 90, 25, 50, 75];
         document.write("<br><br>Array is: ",arr)
         arr.sort();
         document.write("<br>Array sorted in ascending order: " + arr + "<br>");
@@ -37,13 +37,13 @@
 
 // Write a program to read the array [1,6,7,8,2,3,4,2,2].Find the occurance of 2 in this array.
         a=[1,6,7,8,2,3,4,2,2];
-        count=0;
+        c=0;
         for (i=0;i<a.length;i++) {
             if(a[i]===2) {
-                count++;
+                c++;
             }
         }
-        document.write("<br><br>The number 2 appears " + count + " times in the array.");
+        document.write("<br><br>The number 2 appears " + c + " times in the array.");
 
 
     </script>

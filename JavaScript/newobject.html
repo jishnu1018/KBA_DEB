@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>object</title>
+</head>
+<body>
+    <script>
+      const employee= new Object();
+        employee.fname="Lionel"
+        employee.lname="Messi"
+        employee.Knownas="Goat"
+        employee.basicpay=10000
+        employee.TA=5000
+        employee.DA=2500
+        employee.getdetails=function(){
+            return `The details of the person is ${this.fname + this.lname}
+                    <br>The total income is: ${this.basicpay+this.TA+this.DA}`
+        }
+        document.write(employee.getdetails())
+
+        //json
+        const myarray=Object.values(employee)
+        console.log("the array is: ",myarray)
+        const str=JSON.stringify(employee)
+        console.log(str)
+        const parse=JSON.parse(str)
+        console.log("parsed",parse);
+        
+
+    </script>
+    
+</body>
+</html>

@@ -48,11 +48,11 @@
         str = "malayalam";
         rev = "";
 
-        for (i = str.length - 1; i >= 0; i--){
-            rev += str[i];
+        for(i=str.length-1;i>=0;i--){
+            rev+=str[i];
         }
 
-        document.write(str === rev ? `<br>The given string ${str} is Palindrome` : `The given string ${str} is  Not a Palindrome`);
+        document.write(str===rev?`<br>The given string ${str} is Palindrome` : `<br>The given string ${str} is  Not a Palindrome`);
 
 //Write a JS program to print reverse of a number
         document.write("<br><br>5) Write a JS program to print reverse of a number")
@@ -80,7 +80,7 @@
         document.write("<br><br>10,100,1000,10000")
         document.write("<br>The pattern is: ")
          n=10;
-        for(i=n;i<=13;i++) {
+        for(i=1;i<=4;i++) {
             document.write(n,",");
             n=n*10;
         }

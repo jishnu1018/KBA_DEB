@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>events</title>
+</head>
+<body>
+    <label for="">name</label>
+    <input type="text" onchange="handlechange(event)" id="name">  
+    <p id="p"></p>
+    <label for="">name</label>
+    <input type="text" id="id">
+    <input type="button" onclick="click2()" value="button">
+    <p id="pi"></p>
+    <script>
+
+        function handlechange(event){
+            name=event.target.value
+            document.getElementById("name").value;
+            document.getElementById("p").innerHTML=name
+            console.log(name);
+            
+        }
+
+        function click2(){
+        let submit=document.getElementById("id").value;
+        document.getElementById("pi").innerHTML=submit;
+        }
+    </script>
+<label for="">name</label>
+<input type="text" id="id">
+<input type="button" onclick="click()" value="button">
+<p id="p"></p>
+<script>
+     function click(){
+        let submit=document.getElementById("id").value;
+        document.getElementById("p").innerHTML=submit;
+    }
+</script>
+
+</body>
+</html>

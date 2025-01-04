@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>events1</title>
+</head>
+<body>
+    
+    <p>Enter side length of the square</p>
+    <input type="text" id="ok">
+    <input type="button" onclick="yes()" value="Submit">
+    <p id="do"></p>
+    
+    <script>
+        function yes(){
+            let square=document.getElementById("ok").value
+            square=square*square
+            document.getElementById("do").innerHTML=square
+        }
+    </script>
+</body>
+</html>

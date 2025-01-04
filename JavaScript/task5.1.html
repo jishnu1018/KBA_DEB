@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity set 2</title>
+</head>
+<!-- Write a program to calculate the root of a quadratic equation. -->
+<body>
+<!-- Write a JavaScript program to check whether a given positive number is a multiple of 3 or 7. -->
+    <script>
+        num=14; 
+        if(num>0&&(num % 3 === 0||num%7===0)){
+            document.write("yes")
+        } else {
+            document.write("No");
+        }
+
+        document.write("<br><br>")
+//Write a JavaScript conditional statement to find the sign of the product of three numbers. Display with the specified sign.
+        a=4;
+        b=-8;
+        c=2;
+        if(a*b*c>0){
+            document.write("The sign is Positive(+)")
+        }else if(a*b*c<0){
+            document.write("The sign is negative(-)")
+        }else{
+            document.write("The number is 0")
+        }
+
+        document.write("<br><br>")
+//Write a program using switch case to check the CGPA on given condition.
+        ch='8';
+        switch(ch)
+        {
+            case '8':{
+                document.write("You got 8 CGPA.")
+                break;
+            }
+
+            case '10':{
+                document.write("You got 10 CGPA")
+                break;
+            }
+
+            case '7':{
+                document.write("You got 7 CGPA")
+                break;
+            }
+
+            default:{
+                document.write("NO")
+            }
+        }
+
+        document.write("<br><br>")
+//Write a program to print the month name by given number using switch
+        mn='1';
+        switch(mn){
+            case '1':{
+                document.write("January");
+                break;
+            }
+            case'2':{
+                document.write("February")
+                break;
+            }
+            case '3':{
+                document.write("March")
+                break;
+            }
+            case '4':{
+                document.write("April")
+                break;
+            }   
+            case '5':{
+                document.write("May")
+                break;
+            }
+            case '6':{
+                document.write("June")
+                break;
+            }
+            case '7':{
+                document.write("July")
+                break;
+            }
+            case '8':{
+                document.write("August")
+                break;
+            }
+            case '9':{
+                document.write("September")
+                break;
+            }
+            case '10':{
+                document.write("October")
+                break;
+            }
+            case '11':{
+                document.write("November")
+                break;
+            }
+            case '12':{
+                document.write("December")
+                break;
+            }
+        }
+
+        document.write("<br><br>")
+//Write a program to read temperature in centigrade and display a suitable message according to the temperature state below:
+        celcius=10;
+        if(celcius<0){
+            document.write("Freezing weather")
+        }
+        else if(celcius>=0 && celcius<10){
+            document.write("Very Cold weather")
+        }
+        else if(celcius>=10 && celcius<20){
+            document.write("Cold weather")
+        }
+        else if(celcius>=20 && celcius<30){
+            document.write("Normal in Temp")
+        }
+        else if(celcius>=30 && celcius<40){
+            document.write("Its Hot")
+        }
+        else{
+            document.write("Its Very Hot")
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<!-- HTML page containing an input tab to enter temperature in celsius and on a button click, it should be converted to fahreinheit -->
+<h3>HTML page containing an input tab to enter temperature in celsius and on a button click, it should be converted to fahreinheit</h3>
+Enter the celcius: <input type="number" id="celcius">
+<input type="button" onclick="convert()" value="Convert">
+<p id="cel"></p>
+<script>
+function convert(){
+    degree=document.getElementById("celcius").value
+    degree=(degree * 9/5) + 32;
+    document.getElementById("cel").innerHTML=degree
+}
+</script>
+
+<!-- HTML page to read "name, date-of-birth" and diaplay this in format of id card on clicking "generate ID" button. -->
+<h3>HTML page to read "name, date-of-birth" and diaplay this in format of id card on clicking "generate ID" button.</h3>
+
+
+Enter the name: <input type="text" name="" id="name">
+<br>
+Enter the DOB: <input type="date" id="ID" >
+<input type="submit" value="Generate ID" onclick="submit()">
+<div style=" height: 300px; width: 300px; border:2px solid black; margin-top: 10px;">
+<h2 style="text-align: center;">SNVHSS NRCITY</h2>
+
+<h4>Name: <span id="about"></span></h4>
+<h4>Date of Birth: <span id="about1"></span></h4>
+<script>
+    function submit(){
+        generate=document.getElementById("name").value
+        generate1=document.getElementById("ID").value
+        document.getElementById("about").innerHTML=generate
+        document.getElementById("about1").innerHTML=generate1
+
+    }
+</script>
+</div>
+
+<!-- HTML to read a number and on clicking button find the square of the number. -->
+<h3>HTML to read a number and on clicking button find the square of the number.</h3>
+
+Enter the number <input type="number" id="number">
+<input type="button" onclick="square()" value="convert">
+<p id="yes"></p>
+<script>
+    function square(){
+        multi=document.getElementById("number").value
+        multi=multi*multi
+        document.getElementById("yes").innerHTML=multi
+    }
+</script>
+
+<!-- Html page to enter names of fruits and insert the entered name to array and there is a dropdown and on selecting the index from drop down, display the fruit on the index. -->
+<h3>Html page to enter names of fruits and insert the entered name to array and there is a dropdown and on selecting the index from drop down, display the fruit on the index.</h3>
+
+
+
+</body>
+</html>

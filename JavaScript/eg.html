@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=3.0">
+    <title>Document</title>
+
+    <script>
+        
+      const add=new Object();
+      ite=it;
+      quant=qty1;
+      price=1000;
+
+
+
+
+        total=0;
+      function addtocart1(){
+        console.log("ji");
+        qtyy=document.getElementById("qty1").value
+        pri=1000
+        total=total+qtyy*pri
+      }
+
+      function addtocart2(){
+        console.log("ji");
+        qtyy=document.getElementById("qty2").value
+        pri=200
+        total=total+qtyy*pri
+      }
+      
+      function addtocart3(){
+        console.log("ji");
+        qtyy=document.getElementById("qty3").value
+        pri=500
+        total=total+qtyy*pri
+      }
+
+
+      function resultt(){
+        document.getElementById("sum").innerHTML=total
+      }
+
+    
+      
+    </script>
+
+</head>
+<body>
+    <label for="">Item1</label>
+    <input type="text" id="it">
+    <label for="">qty</label>
+    <input type="number" id="qty1">
+    <label for="" id="price1">Price:1000</label>
+    <input type="button" value="Addto cart" onclick="addtocart1()">
+        <br><br>
+        <label for="">Item2</label>
+        <input type="text" id="item2">
+        <label for="">qty</label>
+        <input type="number" id="qty2">
+        <label for="">Price:200</label>
+        <input type="button" value="Addto cart" onclick="addtocart2()">
+            <br><br>
+            <label for="">Item3</label>
+            <input type="text" id="item3">
+            <label for="">qty</label>
+            <input type="number" id="qty3">
+            <label for="">Price:500</label>
+            <input type="button"  value="Addto cart" onclick="addtocart3()">
+    <br><br>
+    <input type="button" value="Check out" onclick="resultt()" name="" id="">
+
+    <p id="sum"></p>
+</body>
+</html>

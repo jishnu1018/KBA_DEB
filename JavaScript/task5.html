@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Activitty set 1</title>
 </head>
+
+<!-- On the KBA-courses site you created add a radio button showing your experience on KBA(like good, bad, average). -->
+<!-- Print this statement “ I am ___ yrs of old and my brother is 10 yrs older to me. He is now __ years old.”   -->
+
 <body>
 
 <!-- Program to print a para about yourself using createElement() , textContent & append child. -->
@@ -93,13 +97,39 @@
 
 //Compare “Hello World” & “hEllO World” and display the result & its type.
             str1 = "Hello World";
-            str2 = "hEllO World";
+            str2 = "Hello World";
             a = (str1 === str2);
             document.write("<br><br>")
             document.write("Comparison Result: " + a + "<br>");
             document.write("Type of the result: " + typeof a);
-
-                
+            
+            
+//Consider this statement “ My name is ________.(declaring fname & lastname in uppercase). I live in ____(uppercase).
+            fname="jishnu"
+            lname="suresh"
+            addr="Munnar"
+            document.write("<br><br>My name is ",(fname + " " + lname).toUpperCase(),". I live in ", addr.toUpperCase())
+       
+//Consider these two statements “I like to play video games.” “I don’t like Hide & seek”. Change 'like' to 'don't like'.
+            sentence1= ("<br><br>I like to play video games.");
+            sentence2=("I don’t like Hide & seek");
+            s3=sentence1+sentence2;
+            document.write(s3);
+            Changed=sentence1.split("like").join("don't like")+sentence2;
+            document.write("<br",Changed,"<br><br>");
+       
+//Write a JavaScript program to compute the sum of the two given integers. If the sum is in the range 50..80 return 65 otherwise return 80 (using ternary operator).
+            a=5;
+            b=50;
+            sum=a+b;
+            document.write(sum>=50&&sum<=80?"value is 65 <br><br>":"value is 80 <br><br>")
+            
+//Program to find whether the person is eligible for voting using ternary operator      
+            age=17;
+            document.write(age>=18?"The person is eligible for voting":"The person is not eligible for voting")
+       
+       
+            
        </script>
 </body>
 </html>

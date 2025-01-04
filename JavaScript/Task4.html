@@ -21,25 +21,23 @@ document.write("JS program to find the sum of the elements in array:: <br>")
 
 //JS program to store & print even numbers upto 20 in an array
 document.write("JS program to store & print even numbers upto 20 in an array::<br>")
-        a = []; 
-
-        for ( i = 2; i <= 20; i += 2) {
-        a[i / 2] = i
+        a=[]; 
+        for(i=0;i<=20;i+=2) {
+        a[i/2]=i
         }
-
         document.write(a,"<br><br>")
 
 //JS program to check whether a number is in the array and if present print the location
 document.write("JS program to check whether a number is in the array and if present print the location::")
-        a=[5,4,8,9,7,6,0];
-        n=7;
+        a=[5,4,8,9,8,7,6,0];
+        n=8;
         count=0
         document.write("<br> The array a is ",a)
         for(i=0;i<7;i++){
             if(a[i]==n){
-                document.write("<br>The number ",n," is in the array"," and is in the ", i ,"th position")
+                document.write("<br>The number ",n," is in the array"," and is in the ", i+1 ,"th position")
                 count=1;
-                break;
+                
             }
         }
         if(count==0){

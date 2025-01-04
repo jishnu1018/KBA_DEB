@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Person Details</title>
+</head>
+<body>
+    
+    <h1>Person Details Form</h1>
+    <label for="">First Name:</label>
+    <input type="text" id="fname">
+    <br><br>
+    <label for="">Last Name:</label>
+    <input type="text" id="lname">
+    <br><br>
+    <label for="">DOB:</label>
+    <input type="date" id="dob">
+    <br><br>
+    <label for="">Phone number</label>
+    <input type="tel" id="phone">
+    <br><br>
+    <label for="">Address :</label>
+    <input type="text" placeholder="House name" id="Hname">
+    <input type="text" placeholder="pincode" id="pincode">
+    <button onclick="generate()">Submit</button>
+    <br><br><br><br>
+
+    <div style="border: solid; height: 400px; width: 500px;">
+        <h2 >ID Proof</h2>
+        <h4 >First Name: <spp  style="display: inline;" id="fname3"></p></h4>
+        <h4>Last Name: <span id="lname3"></span></h4>
+        <h4>D O B : <span id="dob3"></span></h4>
+        <h4>Phone : <span id="phone3"></span></h4>
+        <h4>Address : <span id="hname3"></span>
+        <span id="pincode3"></span>
+        </h4>it
+
+    </div>
+
+
+
+    <script>
+        function generate(){
+            const fname1=document.getElementById("fname").value;
+            const lname1=document.getElementById("lname").value;
+            const dob1=document.getElementById("dob").value;
+            const phone1=document.getElementById("phone").value;
+            const Hname1=document.getElementById("Hname").value;
+            const pincode1=document.getElementById("pincode").value;
+
+            const details={
+                fname2:fname1,
+                lname2:lname1,
+                dob2:dob1,
+                phone2:phone1,
+                  address:{
+                    Hname2:Hname1,
+                    pincode2:pincode1
+                }
+            };
+            document.getElementById("fname3").innerHTML=details.fname2;
+            document.getElementById("lname3").innerHTML=details.lname2;
+            document.getElementById("dob3").innerHTML=details.dob2;
+            document.getElementById("phone3").innerHTML=details.phone2;
+            document.getElementById("hname3").innerHTML=details.address.Hname2;
+            document.getElementById("pincode3").innerText=details.address.pincode2;
+        }
+    </script>
+</body>
+</html>
