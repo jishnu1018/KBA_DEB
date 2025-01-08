@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Activity set 2</title>
 </head>
-<!-- Write a program to calculate the root of a quadratic equation. -->
 <body>
 <!-- Write a JavaScript program to check whether a given positive number is a multiple of 3 or 7. -->
     <script>
@@ -129,7 +128,26 @@
         else{
             document.write("Its Very Hot")
         }
+
+//Write a program to calculate the root of a quadratic equation.
+        document.write("<br><br>")
+        a=1;
+        b=-5;
+        c=6;
+        d=b*b-4*a*c
+        root=(-b+Math.sqrt(d))/(2*a)
+        root1=(-b-Math.sqrt(d))/(2*a)
+        if(d>0){
+        document.write("The roots are ",root, " and " ,root1)
+        }
+        else if(d==0){
+            document.write(root)
+        }else{
+            document.write("no")
+        }
     </script>
+
+
 
 </body>
 </html>

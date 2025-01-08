@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task9</title>
+</head>
+<body>
+    <h1>Map</h1>
+    <h2>Map operations</h2>
+    <button onclick="mapmethods()">Add to cart</button>
+    <div id="all"></div>
+        <script>
+            function mapmethods(){
+            const mymap=new Map([
+            ["Name","Apple"],
+            ['quantity',5],
+            ['price',50]
+            ])
+            let output='';
+            qty=0;
+            pri=0;
+            mymap.forEach((value,key)=>{
+
+                output += key + ' = ' + value + "<br>"
+
+                if(key === 'quantity') qty=value
+                if(key === 'price') pri=value
+
+                if(qty>0 && pri>0){
+                    output+=`Total = ${qty} * ${pri} = ${qty * pri}`
+                }
+            });
+            document.getElementById("all").innerHTML='<br>' + output +'<br>'
+            
+
+        }
+
+        </script>
+</body>
+</html>

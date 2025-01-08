@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Courses</title>
+    <link rel="stylesheet" href="courses.css">
+</head>
+<body>
+    <div class="nav">
+        <div class="img">
+        <img src="Logo.png" alt="logo" width="40px">
+     </div>
+        <a href="Home.html">Home</a>
+        <a href="Courses.html">Courses</a>
+        <a href="Contactus.html">Contact Us</a>
+        <a href="addcourse.html">Add Course</a>
+        <a href="Login.html">Logout</a>
+    </div>
+    
+    <p>Top courses</p>
+
+    <div class="container">
+        <h3>Blockchain</h3>
+        <img src="blockchain.avif" alt="" width="350">
+        <p align="left" style="padding-left: 10px; color: rgb(174, 74, 241);">More</p>
+        <a href=""><input type="button" value="Learn More"></a>
+        
+    </div>
+
+    <!-- On the KBA-courses site you created add a radio button showing your experience on KBA(like good, bad, average). -->
+
+    <div id="experience">
+
+    </div>
+    <script>
+        let name=document.createElement("h3")
+        name.innerHTML="Experience on KBA: "
+        document.getElementById("experience").appendChild(name);
+
+        //Good
+        let radio1=document.createElement("input")
+        radio1.type="radio"
+        radio1.name="button"
+        radio1.id="good"
+        radio1.value="Good"
+        document.getElementById("experience").appendChild(radio1);
+
+        let r1=document.createElement("label")
+        r1.innerHTML="Good"
+        document.getElementById("experience").appendChild(r1);
+        
+        //average
+        let radio2=document.createElement("input")
+        radio2.type="radio"
+        radio2.name="button"
+        radio2.id="average"
+        radio2.value="Average"
+        document.getElementById("experience").appendChild(radio2);
+
+        let r2=document.createElement("label")
+        r2.innerHTML="Average"
+        document.getElementById("experience").appendChild(r2);
+
+        //Bad
+        let radio3=document.createElement("input")
+        radio3.type="radio"
+        radio3.name="button"
+        radio3.id="bad"
+        radio3.value="Bad"
+        document.getElementById("experience").appendChild(radio3);
+
+        let r3=document.createElement("label")
+        r3.innerHTML="Bad"
+        document.getElementById("experience").appendChild(r3);
+
+
+
+    </script>
+</body>
+</html>

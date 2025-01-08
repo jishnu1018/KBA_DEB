@@ -5,10 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Activitty set 1</title>
 </head>
-
-<!-- On the KBA-courses site you created add a radio button showing your experience on KBA(like good, bad, average). -->
-<!-- Print this statement “ I am ___ yrs of old and my brother is 10 yrs older to me. He is now __ years old.”   -->
-
 <body>
 
 <!-- Program to print a para about yourself using createElement() , textContent & append child. -->
@@ -25,7 +21,7 @@
         hello=document.createElement("p")
         hello.textContent="Dedicated software development enthusiast with basic Python skills and an interest in machine learning,  web development, and front-end technologies. Proven track record of effective project collaboration, including proficiency in HTML, CSS, JavaScript, and modern frameworks such as React. Expertise in problem solving, critical thinking, communication, and analysis, with a focus on creating scalable, efficient solutions and seamless user experiences. Seeking to combine strong coding skills, client management, and front-end development expertise with a proactive approach to new challenges and project success in a dynamic team setting."
         name=document.getElementById("About").appendChild(hello)
-
+        HTML
 //Make an unordered list of cinemas on html page using javascript.
         ul=document.createElement("ul");  
         movies=["John Wick","Iron Man","MIB"]; 
@@ -39,30 +35,44 @@
 
     </script>
 
-
-<select id="pl dropdown"></select>
+<!-- Create a dropdown for programming language classes offered on html page using javascript.     -->
+    <select name="" id="pl dropdown"></select>
     <script>
-//Create a dropdown for programming language classes offered on html page using javascript.    
-            pl= ["Python", "JavaScript", "HTML & CSS"];
+
             dropdown=document.getElementById("pl dropdown");
 
-            pl.forEach(language => {
-            option = document.createElement("option");
-            option.textContent = language;
-            dropdown.appendChild(option);
-            });
+            opt1 = document.createElement("option");
+            opt1.textContent = "Python";
+            dropdown.appendChild(opt1);
+
+            opt2 = document.createElement("option");
+            opt2.textContent = "Java";
+            dropdown.appendChild(opt2);
+
+            opt3 = document.createElement("option");
+            opt3.textContent = "HTML";
+            dropdown.appendChild(opt3);
+           
     </script>
 <br><br>
 
 <!-- Create a dropdown for list of cakes and print the value of second option. -->
-        <select  id="cake">
-            <option value="chocolate">Chocolate</option>
-            <option value="vanilla">Vanilla</option>
-            <option value="strawberry">Strawberry </option>
-            <option value="redvelvet">Red Cake</option>
-        </select><br>
-
+        <select  id="cake"></select><br>
         <script>
+             dropdown=document.getElementById("cake");
+
+            opt1 = document.createElement("option");
+            opt1.textContent = "Red Velvet";
+            dropdown.appendChild(opt1);
+
+            opt2 = document.createElement("option");
+            opt2.textContent = "Black Forest";
+            dropdown.appendChild(opt2);
+
+            opt3 = document.createElement("option");
+            opt3.textContent = "White Forest";
+            dropdown.appendChild(opt3);
+            
             document.write("Second option value: " + document.getElementById("cake").options[1].value);
         </script>
 
@@ -75,11 +85,12 @@
 
 
 //“You can study anything if you have a will to do it”.Take the substrings “You can study”, “you”,”will”,”do it” and combine as a sentence.
-            s1="You can study";
-            s2="you";
-            s3="will";
-            s4="do it.";
-            document.write(`<br><br> ${s1} anything if ${s2} have a  ${s3} to ${s4}`)
+            sent="You can study anything if you have a will to do it"
+            sub1=sent.substring(0,13);
+            sub2=sent.substring(26,29,);
+            sub3=sent.substring(37,42);
+            sub4=sent.substring(45,50);
+            document.write(`<br><br>${sub1} anything if ${sub2} have a ${sub3} to ${sub4}`)
        
      
 //“MongoDB is a decentralised distributed ledger . MongoDB can eliminate centralisation.” Replace MongoDB with Blockchain
@@ -97,13 +108,20 @@
 
 //Compare “Hello World” & “hEllO World” and display the result & its type.
             str1 = "Hello World";
-            str2 = "Hello World";
+            str2 = "hEllO World";
             a = (str1 === str2);
             document.write("<br><br>")
             document.write("Comparison Result: " + a + "<br>");
             document.write("Type of the result: " + typeof a);
-            
-            
+
+
+//Print this statement “ I am ___ yrs of old and my brother is 10 yrs older to me. He is now __ years old.”
+            age=18
+            broage=age+10
+            document.write(`<br><br> I am ${age} yrs of old and my brother is 10 yrs older to me. He is now ${broage} years old.`)
+
+
+
 //Consider this statement “ My name is ________.(declaring fname & lastname in uppercase). I live in ____(uppercase).
             fname="jishnu"
             lname="suresh"
@@ -126,10 +144,7 @@
             
 //Program to find whether the person is eligible for voting using ternary operator      
             age=17;
-            document.write(age>=18?"The person is eligible for voting":"The person is not eligible for voting")
-       
-       
-            
+            document.write(age>=18?"The person is eligible for voting":"The person is not eligible for voting")    
        </script>
 </body>
 </html>

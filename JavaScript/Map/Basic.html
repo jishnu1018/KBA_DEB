@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map</title>
+    <script>
+        function mapmethods()
+        {
+            // const mymap=new Map();
+            // mymap.set("name","Messi");
+            // mymap.set("age",30);
+            // mymap.set("car","BMW")
+            // mymap.set("Goat",true);
+            // mymap.set("Roles",["admin","user"])
+            // console.log(mymap);
+
+            const mymap= new Map([
+                ['name','Messi'],
+                ['age',30],
+                ['car','BMW'],
+                ['Goat',true],
+                ['Roles',['admin','user']]
+            ])
+
+            document.getElementById("size").innerHTML="Size is: " + mymap.size
+            document.getElementById("get").innerHTML="Name is " + mymap.get("name")
+            document.getElementById("has").innerHTML="Has a age key: " + mymap.has('age')
+            
+
+            let roles=mymap.get('Roles');
+            document.getElementById("role").innerHTML="Roles are " + roles.join(' , ');
+
+            
+            let output='';
+            mymap.forEach((value,key)=>{
+
+                if(Array.isArray(value)){
+                    output += key + ' = ' + value.join(' and ') + "<br>"
+                }else
+                output += key + ' = ' + value + "<br>"
+            });
+            document.getElementById("iteration").innerHTML='<br>' + output + '<br>'
+
+
+            document.getElementById("delete").innerHTML="Car has been deleted " + mymap.delete('car')
+            console.log(mymap)
+            document.getElementById("clear").innerHTML="Data Cleared " + mymap.clear()
+            console.log(mymap);
+            document.getElementById("size1").innerHTML="Final size is: " + mymap.size
+        }
+    </script>
+</head>
+<!-- Has used to check whether the value is in it or not -->
+<!-- Delete used to delete a value-->
+<body>
+   <h1>Map</h1>
+   <h2>Map operations</h2>
+   <button onclick="mapmethods()">Map Methods</button>
+   <div id="size"></div>
+   <div id="get"></div>
+   <div id="has"></div>
+   <div id="role"></div>
+   <div id="iteration"></div>
+   <div id="delete"></div>
+   <div id="clear"></div>
+   <div id="size1"></div>
+</body>
+</html>
