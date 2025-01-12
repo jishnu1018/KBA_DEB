@@ -1,0 +1,84 @@
+.div{
+    background-color: aqua;
+    width: 500px;
+    height: 300px;
+    margin: auto;
+    margin-top: 80px;
+    text-align: center;
+    font-size: larger;
+    padding-top: 10px;
+    font-weight: bold;
+}
+
+.mname{
+    height: 35px;
+    width: 250px;
+    font-size: medium;
+}   
+
+
+.pname{
+    margin-left: 36px;
+    height: 35px;
+    width: 250px;
+}
+
+.button{
+    height: 35px;
+    width: 100px;
+    margin-left: 260px;
+}
+
+.ul{
+    list-style: none;
+}
+
+.ul p{
+    font-size: 20px;
+
+ }
+
+ .ul li{
+    font-size: 20px;
+
+    
+ }
+
+
+.ul button{
+    font-size: larger;
+    margin-left: 10px;
+    
+}
+/* .threebuttons{
+
+} */
+
+/* .output{
+    display: none;
+    border: solid;
+    border: solid 3px black;
+    width: 200px;
+    height: 200px;
+} */
+
+.low{
+    color: green;
+    font-size: 20px;
+    font-weight: bold;
+}
+.medium{
+    color: yellow;
+    font-size: 20px;
+    font-weight: bold;
+}
+.high{
+    color: red;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.strike{
+    color: gray;
+    text-decoration: line-through gray;
+}

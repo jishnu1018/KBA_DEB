@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Playlist</title>
+    <link rel="stylesheet" href="page.css">
+</head>
+<body>
+    <div class="div">
+        <h2>Movie Playlist</h2>
+        <label for="mname">Movie Name: </label>
+        <input type="text" class="mname" id="mname"> 
+        <br><br>
+        <label for="pname">Priority: </label>
+        <select id="pname" class="pname">
+            <option value="" selected>Select an option</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+        <br><br>
+        <button class="button" onclick="displayMovies()">Add Movies</button>
+    </div>
+   
+        <ul id="movielist" class="ul"></ul>
+
+
+    
+    <script>
+         movies = [];
+        priorities = [];
+        function displayMovies() {
+            name=document.getElementById("mname").value
+            prio=document.getElementById("pname").value
+
+            movies.push(name)
+            priorities.push(prio)
+
+
+            console.log("Movie: " ,movies, "Priority: ", priorities)
+            
+
+            movielist=document.getElementById("movielist");
+            const item=document.createElement("li");
+            item.textContent = name
+            movielist.appendChild(item);
+
+            if (prio === "1") {
+                item.classList.add("low");
+            }
+            else if (prio === "2") {
+                item.classList.add("medium");
+            } 
+            else if (prio === "3") {
+                item.classList.add("high");
+            }  
+
+
+            let button1=document.createElement("button")
+            button1.textContent="Watched"
+            item.appendChild(button1)
+
+          
+            let button2=document.createElement("button")
+            button2.textContent="Edit"
+            item.appendChild(button2)
+
+            let button3=document.createElement("button")
+            button3.textContent="Remove"
+            item.appendChild(button3)
+
+            document.getElementById("mname").value = "";
+            document.getElementById("pname").value = "";
+        
+        
+            button1.onclick = function(){
+                item.classList.add("strike")
+            }
+
+            button3.onclick = function() {
+                movielist.removeChild(item);
+            }
+
+        }
+
+
+    </script>
+</body>
+</html>
