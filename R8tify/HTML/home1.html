@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Home1</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
 
 </head>
-<body class="bg-white text-gray-800">
+<body class="text-gray-800">
 
     <!-- Navbar -->
     <div class="bg-black w-full h-24 flex items-center px-4">
-        <a href="home.html">
+        <a href="home1.html">
             <img src="/Image/logo.png" alt="logo" class="border border-black rounded-full w-24 h-16">
         </a>
         <h1 class="text-white text-2xl italic font-serif ml-4">R8TIFY.com</h1>
@@ -23,10 +23,12 @@
                     <img src="/Image/search.png" alt="Search" class="h-6 w-6">
                 </button>
             </div>
-            <button class="text-lg font-bold rounded px-4 ml-24 bg-white">Categories</button>
-            <button class="text-lg font-bold rounded px-4 ml-24  bg-white">Trending Insights</button>
+            <button class="text-lg font-bold rounded px-4 ml-24 bg-white"><a href="categories.html">Categories</a></button>
+            <button class="text-lg font-bold rounded px-4 ml-24  bg-white"><a href="#Trending Insightssss">Trending Insights</a></button>
             <h4 class="mt-3 ml-4 text-white">Brian O'Conner</h4>
-            <div class="bg-gray-400 w-12 h-12 rounded-full ml-2"> </div>
+            <div class="bg-gray-400 w-12 h-12 rounded-full ml-4">
+                <a href="profile.html"><img src="/Image/brian.jpeg" alt="" class="rounded-full"></a>
+            </div>
         </div>
     </div>
 
@@ -35,7 +37,7 @@
         <img src="/Image/review-6640064_1280.jpg" alt="image" class="mx-auto">
         <h1 class="text-5xl mt-4">Reviews that matter, choices that count.</h1>
         <button class="bg-black text-white text-xl font-bold w-80 h-14 mt-4 rounded-full ">
-            <a href="">Write a Review</a>
+            <a href="review.html">Write a Review</a>
         </button>
     </div>
 
@@ -44,25 +46,25 @@
         <p class="text-lg">Browse our most popular categories</p>
         <div class="grid grid-cols-4 gap-4 mt-8 pl-36">
             <div class="bg-black w-72 h-64 rounded-xl flex flex-col items-center">
-                <a href="">
+                <a href="phones.html">
                     <img src="/Image/phone.jpeg" alt="Smartphones" class="w-48 h-48 rounded-full mt-2">
                     <p class="text-white font-bold">Smartphones</p>
                 </a>
             </div>
             <div class="bg-black w-72 h-64 rounded-xl flex flex-col items-center">
-                <a href="">
+                <a href="console.html">
                     <img src="/Image/console.jpeg" alt="Gaming Consoles" class="w-48 h-48 rounded-full mt-2">
                     <p class="text-white font-bold">Gaming Consoles</p>
                 </a>
             </div>
             <div class="bg-black w-72 h-64 rounded-xl flex flex-col items-center">
-                <a href="">
+                <a href="laptops.html">
                     <img src="/Image/_.gif" alt="Laptops" class="w-48 h-48 rounded-full mt-2">
                     <p class="text-white font-bold">Laptops</p>
                 </a>
             </div>
             <div class="bg-black w-72 h-64 rounded-xl flex flex-col items-center">
-                <a href="">
+                <a href="camera.html">
                     <img src="/Image/camera.jpeg" alt="Cameras" class="w-48 h-48 rounded-full mt-2">
                     <p class="text-white font-bold">Cameras</p>
                 </a>
@@ -71,7 +73,7 @@
     </div>
 
     <!-- Trending Insightssss -->
-    <div class="text-center mt-16">
+    <div class="text-center mt-16 " id="Trending Insightssss">
         <h1 class="text-3xl">Trending Insights</h1>
         <p class="text-xl">Stay Updated with New Reviews</p>
         <!-- reviewsss -->
@@ -79,10 +81,12 @@
             <!-- 1 -->
             <div class=" w-[500px] h-72 rounded-3xl border-2 border-black  mx-auto text-center pt-2">
                 <div class=" h-12 mt-[-5px] flex">
-                    <div class="bg-gray-400 w-12 h-12 rounded-full ml-2"> </div>
-                    <h4 class="mt-3 ml-4">Brian O'Conner</h4>
+                    <div class="bg-gray-400 w-12 h-12 rounded-full ml-2">
+                        <img src="/Image/brian.jpeg" alt="" class="rounded-full">
+                    </div>
+                    <p class="mt-3 ml-4">Brian O'Conner</p>
                     <div class="flex items-center">
-                        <button class="thumbs-up ml-[250px] text-2xl cursor-pointer text-gray-300 hover:text-blue-500">
+                        <button class="thumbs-up ml-[250px] text-2xl">
                             <img src="/Image/Like silhouette.jpeg" alt="like" class="w-6 ">
                         </button>
                         <p class="ml-1">2k</p>
@@ -90,19 +94,20 @@
                 </div>
                 <img src="/Image/4starr.png" alt="Star Rating" class="w-40 mx-auto mt-[-5px]">
 
-                <p class="font-bold text-3xl text-red-400">Toyota Corolla</p >
-                <p class="font-bold">Best Commuter Car</p>
-                <p class="mt-1">Available Need a frugal Internal Combustion Engine that uses 6 litre’s per 100 km and costs 100 dollars to service?
-                   <br> Toyota Corolla</p>
+                <p class="font-bold text-3xl text-red-400">Apple Macbook Air 13"</p >
+                <p class="font-bold">Another amazing laptop</p>
+                <p class="mt-1">Apple support has been deteriorating continuously since Steve Jobs and it has become almost useless. They are unwilling to assist on anything and my computer only seems to have software issues and still in almost brand new condition. </p>
             </div>
             
             <!-- 2 -->
             <div class=" w-[500px] h-72 rounded-3xl border-2 border-black  mx-auto text-center pt-2">
                 <div class=" h-12 mt-[-5px] flex">
-                    <div class="bg-gray-400 w-12 h-12 rounded-full ml-2"> </div>
+                    <div class="bg-gray-400 w-12 h-12 rounded-full ml-2">
+                        <img src="/Image/Han Lue.jpeg" alt="" class="rounded-full">
+                    </div>
                     <h4 class="mt-3 ml-4">Han Lue</h4>
                     <div class="flex items-center">
-                        <button class="thumbs-up ml-[300px] text-2xl cursor-pointer text-gray-300 hover:text-blue-500">
+                        <button class="thumbs-up ml-[300px] text-2xl">
                             <img src="/Image/Like silhouette.jpeg" alt="like" class="w-6 ">
                         </button>
                         <p class="ml-1">4k</p>
@@ -110,18 +115,20 @@
                 </div>
                 <img src="/Image/1starr.png" alt="Star Rating" class="w-40 mx-auto mt-[-5px]">
 
-                <p class="font-bold text-3xl text-red-400">Kumho Ecsta</p >
-                <p class="font-bold">Very poor Quality</p>
-                <p class="mt-1">one day I was driven car on the road tyre blowout.I'm very lucky. Also I lose control.That day. Please… everyone check before buying tyres. Now I'm very scared</p>
+                <p class="font-bold text-3xl text-red-400">Samsung Galaxy S23 Ultra </p >
+                <p class="font-bold">Very poor UX choices </p>
+                <p class="mt-1">The camera quality is worse than my five year old Oppo Find X2 Pro. You cannot turn off most 'image enhancements' and third party camera apps aren't allowed to make use of the full sensor. </p>
             </div>
 
             <!-- 3 -->
             <div class=" w-[500px] h-72 rounded-3xl border-2 border-black  mx-auto text-center pt-2">
                 <div class=" h-12 mt-[-5px] flex">
-                    <div class="bg-gray-400 w-12 h-12 rounded-full ml-2"> </div>
+                    <div class="bg-gray-400 w-12 h-12 rounded-full ml-2">
+                        <img src="/Image/letty.jpeg" alt="" class="rounded-full">
+                    </div>
                     <h4 class="mt-3 ml-4">Letty Ortiz</h4>
                     <div class="flex items-center">
-                        <button class="thumbs-up ml-[270px] text-2xl cursor-pointer text-gray-300 hover:text-blue-500">
+                        <button class="thumbs-up ml-[270px] text-2xl">
                             <img src="/Image/Like silhouette.jpeg" alt="like" class="w-6 ">
                         </button>
                         <p class="ml-1">3.5k</p>
@@ -129,9 +136,9 @@
                 </div>
                 <img src="/Image/3starr.png" alt="Star Rating" class="w-40 mx-auto mt-[-5px]">
 
-                <p class="font-bold text-3xl text-red-400">Miele Complete C3 PowerLine</p >
-                <p class="font-bold">I have no complaint at all</p>
-                <p class="mt-1">I have no complaint at all, this is a beautiful machine. The Miele Complete C3 Power Line is a powerhouse of a vacuum cleaner, and I couldn't be happier with its performance.</p>
+                <p class="font-bold text-3xl text-red-400">Olitech EasyFlip 2</p >
+                <p class="font-bold">Well done Olitech!</p>
+                <p class="mt-1">Olitech have great customer service when you need it, and such prompt delivery of your purchase. Cannot remember when I bought my first Olitech phone, but a good while back. Nice to get your hassles sorted.</p>
             </div>
         </div>
     </div>

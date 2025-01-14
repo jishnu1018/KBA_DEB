@@ -18,3 +18,30 @@
       });
     });
   </script>
+  
+  
+  
+  
+  
+  like:
+  
+  <div class="flex items-center">
+  <button id="likeButton" class="text-2xl cursor-pointer text-gray-300 hover:text-blue-500">
+    👍
+  </button>
+</div>
+
+<script>
+  const likeButton = document.getElementById('likeButton');
+  
+  likeButton.addEventListener('click', () => {
+    if (likeButton.classList.contains('text-blue-500')) {
+      likeButton.classList.remove('text-blue-500');
+      likeButton.classList.add('text-gray-300');
+    } else {
+      likeButton.classList.remove('text-gray-300');
+      likeButton.classList.add('text-blue-500');
+    }
+  });
+</script>
+
