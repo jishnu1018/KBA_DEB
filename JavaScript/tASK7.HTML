@@ -62,6 +62,74 @@ Enter the number <input type="number" id="number">
 <h3>Html page to enter names of fruits and insert the entered name to array and there is a dropdown and on selecting the index from drop down, display the fruit on the index.</h3>
 
 
+    <h2 >Fruits selector</h2>
+    <br>
+    <p>Enter a fruit name:</p>
+    <input type="text" id="input">
+    <input type="button" value="Add Fruit" onclick="Addfruit()">
+
+    <br>
+    <br>
+
+    <p>Select a Fruit index:</p>
+    <select  id="dropdown" onchange="selectdropdown()">
+        <option>Select a fruit</option>
+    </select>
+
+    <p>Selected Fruit:</p>
+    <p id="selectedfruit"></p>
+    <script>
+
+        fruits=[]
+        function Addfruit(){
+
+            fruitinput=document.getElementById("input").value;
+            fruits.push(fruitinput)
+
+            let dropdown=document.getElementById("dropdown")
+            let option=document.createElement("option");
+
+            option.value=fruits.length-1;
+            option.textContent="fruits"+fruits.length;
+
+            dropdown.appendChild(option);
+
+            document.getElementById("input").value="";
+        }
+            
+
+        
+
+        function selectdropdown(){
+            
+            index=document.getElementById("dropdown").value
+
+            if(index!=""){
+                document.getElementById("selectedfruit").textContent=fruits[index];
+
+            }
+            else{
+                document.getElementById("selectedfruit").textContent=""
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+
 
 </body>
 </html>

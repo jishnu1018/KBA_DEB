@@ -1,3 +1,4 @@
 {
-    "livePreview.defaultPreviewPath": "/tASK7.HTML"
+    "livePreview.defaultPreviewPath": "/tASK7.HTML",
+    "liveServer.settings.port": 5501
 }

@@ -1,0 +1,20 @@
+    <div id="starRating" class="flex space-x-1 text-gray-300">
+  <button data-value="1" class="star text-2xl cursor-pointer">&#9733;</button>
+  <button data-value="2" class="star text-2xl cursor-pointer">&#9733;</button>
+  <button data-value="3" class="star text-2xl cursor-pointer">&#9733;</button>
+  <button data-value="4" class="star text-2xl cursor-pointer">&#9733;</button>
+  <button data-value="5" class="star text-2xl cursor-pointer">&#9733;</button>
+</div>
+<script>
+    const stars = document.querySelectorAll('#starRating .star');
+  
+    stars.forEach((star, index) => {
+      star.addEventListener('click', () => {
+        // Clear all stars
+        stars.forEach((s, i) => {
+          s.classList.toggle('text-yellow-500', i <= index); // Fill stars up to the clicked one
+          s.classList.toggle('text-gray-300', i > index);    // Unfill the rest
+        });
+      });
+    });
+  </script>
