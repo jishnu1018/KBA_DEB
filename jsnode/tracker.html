@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tracker</title>
+    <style> 
+    .div{
+        width: 500px;
+        height: 300px;
+        background-color: aqua;
+        margin: auto;
+        text-align: center;
+
+    }
+    </style>
+</head>
+<body>
+    <div class="div">
+        <h2>expence tracker</h2>
+        <label for="">Type: </label>
+        <select id="type" onchange="other()">
+            <option value="">Select an option</option>
+            <option value="Hospital">Hospital</option>
+            <option value="Home">Home</option>
+            <option value="Electronic">Electronic</option>
+            <option value="Vehicle">Vehicle</option>
+            <option value="other" >Other</option>
+            
+        </select>
+        <div id="otherinput">
+
+        </div>
+        <br><br>
+        <label for="">Amount</label>
+        <input type="number" id="amount">
+        <input type="date" id="date">
+        <select name="" id=""></select>
+        <br><br>
+        <button onclick="submit()">Submit</button>
+        <button onclick="show()">Show my expence</button>
+    </div>
+    <div id="output">
+
+    </div>
+
+    <script>
+   let array=[];
+   total=0;
+   function submit() {
+    let typ=document.getElementById("type").value;
+    amo=document.getElementById("amount").value;
+    let dat=document.getElementById("date").value;
+    if(typ==="other") {
+        let otherrtypeinput=document.getElementById("otherrtype");
+        if(otherrtypeinput){
+        typ = otherrtypeinput.value; 
+        }
+    }
+all=`type:${typ} amount:${amo} date:${dat}`;
+    if (!typ||!amo||!dat) {
+        alert("Enter all fields");}
+         else {
+        array.push(all);
+        total += parseInt(amo);
+        document.getElementById("otherinput").innerHTML = "";
+        document.getElementById("amount").value = "";
+        document.getElementById("date").value = "";
+    }
+
+console.log(array);
+
+}
+    function other() {
+        let type = document.getElementById("type").value;
+        let otherss = document.getElementById("otherinput");
+        otherss.innerHTML = ""; 
+         if (type==="other") {
+        let oth=document.createElement("input");
+        oth.type="text";
+        oth.id = "otherrtype";
+        otherss.appendChild(oth);
+        }
+            
+        }
+
+
+        function show() {
+            document.getElementById("output").innerHTML = `Total Expense: ${total} `;    
+  
+            }
+
+ </script>
+
+</body>
+</html>
