@@ -1,15 +1,18 @@
-import express from 'express';
+import express,{json} from 'express';
 import dotenv from 'dotenv';
 import {userauth} from './Routes/userauth.js';
-
 dotenv.config();
 
 const app=express();
+app.use(json())
 
 // 8000 is a port asigned to app
 // app.listen(8000, function(){
 //     console.log("sever is in port 8000")
 // })
+
+app.use('/',userauth)
+
 
 app.get('/',userauth)
 

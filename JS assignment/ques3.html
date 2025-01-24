@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 3</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body>
+
+    <div class="w-[700px] h-[500px] bg-cyan-400 m-auto mt-24 rounded-2xl pt-16 text-2xl">
+        <div class="flex items-center  pl-20">
+            <label class="w-48">First Number:</label>
+            <input type="number" id="first" class="w-80 h-12 rounded-2xl border border-2 border-black">
+        </div>
+
+        <div class="flex items-center mt-8 pl-20">
+            <label class="w-48">Second Number:</label>
+            <input type="number" id="second" class="w-80 h-12 rounded-2xl border border-2 border-black">
+        </div>
+        <button class="bg-gray-200 w-40 h-12 font-medium border border-2 border-black rounded-2xl mt-12 ml-[430px]" 
+        onclick="compare()">Compare</button>
+
+        <div class="text-2xl text-blue-500 text-4xl mt-8 ml-72 pl-10 pt-4" id="output">
+
+        </div>
+    </div>
+
+    <script>
+        function compare(){
+            let one=document.getElementById("first").value
+            let two=document.getElementById("second").value
+            let outputdiv=document.getElementById("output");
+            outputdiv.innerHTML="";
+
+            let out=document.createElement("p");
+            if(one===two){
+                out.innerHTML="same";
+                console.log("same");
+            }else{
+                out.innerHTML="not";
+                console.log("not");
+            }
+            outputdiv.appendChild(out);
+        }
+    </script>
+
+</body>
+</html>

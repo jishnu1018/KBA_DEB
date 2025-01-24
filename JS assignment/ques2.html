@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 2</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body>
+    <div class="w-[700px] h-[500px] bg-blue-500 m-auto mt-24 rounded-2xl pt-16 text-2xl">
+        <div class="flex items-center  pl-28">
+            <label class="w-28">Name:</label>
+            <input type="text" class="w-80 h-12 rounded-2xl">
+        </div>
+        <div class="flex mt-4 pl-28">
+            <label class="w-28">Address:</label>
+            <textarea class="w-80 h-40 rounded-2xl"></textarea>
+        </div>
+        <div class="flex mt-4 ml-12">
+            <label>Degree</label>
+            <input type="radio" name="Degree" class="ml-12 mr-2">Btech
+            <input type="radio" name="Degree" class="ml-12 mr-2">Mtech
+            <input type="radio" name="Degree" class="ml-12 mr-2">MCA
+            <input type="radio" name="Degree" onclick="others()" class="ml-12 mr-2">Others
+        </div>
+
+       
+        <div class="ml-[580px]" id="options" style="display: none;">
+        <select name="" id="" >
+            <option value="">BCA</option>
+            <option value="">PGDCA</option>
+            <option value="">BCom</option>
+            <option value="">MPhil</option>
+        </select>
+        </div>
+   
+   
+    </div>
+    <script>
+        function others() {
+            document.getElementById('options').style.display = 'block';
+        }
+    </script>
+
+    
+</body>
+</html>

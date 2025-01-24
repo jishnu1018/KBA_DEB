@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 5</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body class="flex">
+    
+    <!-- Area of Square -->
+    <div class="w-[450px] h-[250px] bg-yellow-400  mt-24 rounded-2xl pt-16 text-[20px] ml-6">
+        <div class="flex items-center  pl-4">
+            <label class="w-52">Enter side of square:</label>
+            <input type="number" id="square" class="w-40 h-12 rounded-2xl border border-2 border-black">
+        </div>
+        <button class="bg-gray-200 w-20 h-10 text-[15px] font-medium border border-2 border-black rounded-2xl mt-4 ml-[300px]" 
+        onclick="square()">Area</button>
+        <p id="one" class="ml-4"></p>
+    </div>
+    
+    <!-- Area of Rectangle -->
+    <div class="w-[450px] h-[250px] bg-yellow-400  mt-24 rounded-2xl pt-4 text-[20px] ml-6">
+        <div class="flex items-center  pl-4">
+            <label class="w-52">Enter the length:</label>
+            <input type="number" id="length" class="w-40 h-12 rounded-2xl border border-2 border-black">
+        </div>
+        <div class="flex items-center mt-4  pl-4">
+            <label class="w-52">Enter the breadth:</label>
+            <input type="number" id="breadth" class="w-40 h-12 rounded-2xl border border-2 border-black">
+        </div>
+        <button class="bg-gray-200 w-20 h-10 text-[15px] font-medium border border-2 border-black rounded-2xl mt-4 ml-[300px]" 
+        onclick="rectangle()">Area</button>
+        <p id="two" class="ml-4"></p>
+    </div>
+
+        <!-- Area of Square -->
+        <div class="w-[450px] h-[250px] bg-yellow-400  mt-24 rounded-2xl pt-16 text-[20px] ml-6">
+            <div class="flex items-center  pl-4">
+                <label class="w-52">Enter radius:</label>
+                <input type="number" id="radius" class="w-40 h-12 rounded-2xl border border-2 border-black">
+            </div>
+            <button class="bg-gray-200 w-20 h-10 text-[15px] font-medium border border-2 border-black rounded-2xl mt-4 ml-[300px]" 
+            onclick="circle()">Area</button>
+            <p id="three" class="ml-4"></p>
+        </div>
+    <script>
+        function square(){
+            let square=document.getElementById("square").value
+            square=square*square
+            document.getElementById("one").innerHTML="Area of square is : "+square
+        }
+        function rectangle(){
+            let length=document.getElementById("length").value
+            let breadth=document.getElementById("breadth").value
+            rectangle1=length*breadth
+            document.getElementById("two").innerHTML="Area of rectangle is : "+rectangle1
+        }
+        function circle(){
+            let radius=document.getElementById("radius").value
+            radius=Math.PI*(radius*radius)
+            document.getElementById("three").innerHTML="Area of circle is : "+radius
+        }
+    </script>
+
+</body>
+</html>

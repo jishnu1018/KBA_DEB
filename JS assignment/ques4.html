@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 4</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body>
+    
+    <div class="w-[700px] h-[500px] bg-green-500 m-auto mt-24 rounded-2xl pt-16 text-2xl">
+        <div class="flex items-center  pl-40">
+            <label class="w-20">Name:</label>
+            <input type="text" id="name" class="w-80 h-12 rounded-2xl border border-2 border-black">
+        </div>
+        <button class="bg-gray-200 w-40 h-12 font-medium border border-2 border-black rounded-2xl mt-10 ml-[400px]" 
+        onclick="submit()">Submit</button>
+        <div class=" h-40 w-72 m-auto mt-12 text-center">
+            <p> Enter Roll number:</p>
+                <select  id="dropdown" class=" w-28 bg-white border border-2 border-black rounded-xl" onchange="selectdropdown()">
+                    <option value="">select</option>
+                </select>
+            <p id="order"></p>
+        </div>
+
+    </div>
+
+        <script>
+            arrayy=[];
+            function submit(){
+                let name1=document.getElementById("name").value
+                arrayy.push(name1);
+                console.log(arrayy);
+
+                let drop=document.getElementById("dropdown")
+                let option=document.createElement("option");
+                option.value=arrayy.length-1;
+                option.textContent=arrayy.length;
+                drop.appendChild(option);
+
+                document.getElementById("input").innerHTML="";
+
+            }
+
+            function selectdropdown(){
+            
+            index=document.getElementById("dropdown").value
+
+            if(index!=""){
+                document.getElementById("order").textContent=arrayy[index];
+
+            }
+            else{
+                document.getElementById("order").textContent=""
+            }
+        }
+
+        </script>
+</body>
+</html>
