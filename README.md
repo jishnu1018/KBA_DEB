@@ -1,4 +1,6 @@
 # KBA_DEB
-Hi, Do you know why i choose web development? Beacuse i'm Batman
+Welcome to the KBA DEB repository! This repository contains all of my projects. Feel free to explore the various projects and contribute or learn from them. 
 
-### JUSTICE
+Here, you'll find everything , each focusing on different aspects of development and technology.
+
+Happy coding!
