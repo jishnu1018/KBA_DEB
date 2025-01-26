@@ -1,7 +1,6 @@
 import express,{json} from 'express';
 import dotenv from 'dotenv';
-import {userauth} from './Routes/userauth.js';
-import {addcourse} from './Routes/addcourse.js'
+import {library} from './route/signup.js';
 dotenv.config();
 
 const app=express();
@@ -12,10 +11,8 @@ app.use(json())
 //     console.log("sever is in port 8000")
 // })
 
-app.use('/',userauth)
-app.use('/',addcourse)
+app.use('/',library)
 
-// app.get('/',userauth)
 
 app.get('/',function(req,res){
     res.send("hi")

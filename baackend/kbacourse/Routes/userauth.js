@@ -2,13 +2,17 @@ import { Router } from "express";
 import bcrypt from "bcrypt";
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
-import {auth} from '../Middleware/auth.js';
+
+
+//import {auth} from '../Middleware/auth.js';
+
 
 dotenv.config();
 
 
 const userauth=Router();
-let user= new Map()
+let user= new Map();
+//let course=new Map()
 //get
 userauth.get('/',(req,res)=>{
     console.log("hi")
@@ -49,7 +53,7 @@ catch{
 
 // }
 
-})
+});
 
 userauth.post('/login',async(req,res)=>{
     try{
@@ -65,7 +69,7 @@ userauth.post('/login',async(req,res)=>{
             const valid =await bcrypt.compare(Password,result.newpassword);
             console.log(valid);
             if(valid){
-                const token = jwt.sign({UserName:UserName,UserRole:result.Role},process.env.SECRET_KEY,{expiresIn:'1h'});
+                const token = jwt.sign({UserName:UserName,UserRole:result.Role},process.env.SECRET_KEY);
                 console.log(token);
                 res.cookie('cookietoken',token,{
                     httpOnly:true
@@ -91,9 +95,29 @@ userauth.post('/login',async(req,res)=>{
     }
 })
 
-userauth.post('/addcourse',auth,(req,res)=>{
-    const {coursename,coursetype,courseid,description,price}=req.body;
-console.log(req.username);
+// userauth.post('/addcourse',auth,(req,res)=>{
+//     //console.log(req.username);
+//     try{
+//         if(req.userrole=='CentreMid'){
+//             const {coursename,coursetype,courseid,description,price}=req.body;
+//             if(course.get(coursename)){
+//             res.status(400).send("coursename already there bro")
+//             console.log("already there bro")
+//             }
+//             else{
+//                 course.set(coursename,{coursename,coursetype,courseid,description,price});
+//                 res.status(200).send(course.get(coursename));
+//                 console.log(course.get(coursename));
+//             }
+//         }
+//         else{
+//             res.status(400).send("not authorized")
+//             console.log("not authorized")
+//         }
+//     }
+//     catch{
 
-})
-export {userauth};
+//     }
+
+// })
+export  {userauth,user};

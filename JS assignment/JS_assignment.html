@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 2</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body>
+
+<!-- Question2  -->
+    <div class="w-[700px] h-[500px] bg-blue-500 m-auto mt-24 rounded-2xl pt-16 text-2xl">
+        <div class="flex items-center  pl-28">
+            <label class="w-28">Name:</label>
+            <input type="text" class="w-80 h-12 rounded-2xl pl-4">
+        </div>
+        <div class="flex mt-4 pl-28">
+            <label class="w-28">Address:</label>
+            <textarea class="w-80 h-40 rounded-2xl pl-4"></textarea>
+        </div>
+        <div class="flex mt-4 ml-12">
+            <label>Degree</label>
+            <input type="radio" name="Degree" class="ml-12 mr-2">Btech
+            <input type="radio" name="Degree" class="ml-12 mr-2">Mtech
+            <input type="radio" name="Degree" class="ml-12 mr-2">MCA
+            <input type="radio" name="Degree" onclick="others()" class="ml-12 mr-2">Others
+        </div>
+
+       
+        <div class="ml-[580px]" id="options" style="display: none;">
+        <select name="" id="" >
+            <option value="">BCA</option>
+            <option value="">PGDCA</option>
+            <option value="">BCom</option>
+            <option value="">MPhil</option>
+        </select>
+        </div>
+   
+   
+    </div>
+    <script>
+        function others() {
+            document.getElementById('options').style.display = 'block';
+        }
+    </script>
+
+ <!-- Question3 -->
+    <div class="w-[700px] h-[500px] bg-cyan-400 m-auto mt-24 rounded-2xl pt-16 text-2xl">
+        <div class="flex items-center  pl-20">
+            <label class="w-48">First Number:</label>
+            <input type="number" id="first" class="w-80 h-12 rounded-2xl border border-2 border-black pl-4">
+        </div>
+
+        <div class="flex items-center mt-8 pl-20">
+            <label class="w-48">Second Number:</label>
+            <input type="number" id="second" class="w-80 h-12 rounded-2xl border border-2 border-black pl-4">
+        </div>
+        <button class="bg-gray-200 w-40 h-12 font-medium border border-2 border-black rounded-2xl mt-12 ml-[430px]" 
+        onclick="compare()">Compare</button>
+
+        <div class="text-2xl text-blue-500 text-4xl mt-8 ml-72 pl-10 pt-4" id="output">
+
+        </div>
+    </div>
+
+    <script>
+        function compare(){
+            let one=document.getElementById("first").value
+            let two=document.getElementById("second").value
+            let ou=document.getElementById("output");
+            ou.innerHTML="";
+
+            let out=document.createElement("p");
+            if(one===two){
+                out.innerHTML="same";
+                console.log("same");
+            }else if(one>two){
+                out.innerHTML=`${one} is greater than ${two}`;
+            }
+            else if(one<two){
+                out.innerHTML=`${two} is greater than ${one}`;
+            }
+            ou.appendChild(out);
+        }
+    </script>
+
+<!-- Question 5 -->
+        <div class="flex">
+        <!-- Area of Square -->
+        <div class="w-[450px] h-[250px] bg-yellow-400  mt-24 rounded-2xl pt-16 text-[20px] ml-60">
+            <div class="flex items-center  pl-4">
+                <label class="w-52">Enter side of square:</label>
+                <input type="number" id="square" class="w-40 h-12 rounded-2xl border border-2 border-black pl-4">
+            </div>
+            <button class="bg-gray-200 w-20 h-10 text-[15px] font-medium border border-2 border-black rounded-2xl mt-4 ml-[300px]" 
+            onclick="square()">Area</button>
+            <p id="one" class="ml-4"></p>
+        </div>
+
+        <!-- Area of Rectangle -->
+        <div class="w-[450px] h-[250px] bg-yellow-400  mt-24 rounded-2xl pt-4 text-[20px] ml-6">
+            <div class="flex items-center  pl-4">
+                <label class="w-52">Enter the length:</label>
+                <input type="number" id="length" class="w-40 h-12 rounded-2xl border border-2 border-black pl-4">
+            </div>
+            <div class="flex items-center mt-4  pl-4">
+                <label class="w-52">Enter the breadth:</label>
+                <input type="number" id="breadth" class="w-40 h-12 rounded-2xl border border-2 border-black pl-4">
+            </div>
+            <button class="bg-gray-200 w-20 h-10 text-[15px] font-medium border border-2 border-black rounded-2xl mt-4 ml-[300px]" 
+            onclick="rectangle()">Area</button>
+            <p id="two" class="ml-4"></p>
+        </div>
+
+            <!-- Area of Square -->
+            <div class="w-[450px] h-[250px] bg-yellow-400  mt-24 rounded-2xl pt-16 text-[20px] ml-6">
+                <div class="flex items-center  pl-4">
+                    <label class="w-52">Enter radius:</label>
+                    <input type="number" id="radius" class="w-40 h-12 rounded-2xl border border-2 border-black pl-4">
+                </div>
+                <button class="bg-gray-200 w-20 h-10 text-[15px] font-medium border border-2 border-black rounded-2xl mt-4 ml-[300px]" 
+                onclick="circle()">Area</button>
+                <p id="three" class="ml-4"></p>
+            </div>
+        <script>
+            function square(){
+                let square=document.getElementById("square").value
+                square=square*square
+                document.getElementById("one").innerHTML="Area of square is : "+square
+            }
+            function rectangle(){
+                let length=document.getElementById("length").value
+                let breadth=document.getElementById("breadth").value
+                rectangle1=length*breadth
+                document.getElementById("two").innerHTML="Area of rectangle is : "+rectangle1
+            }
+            function circle(){
+                let radius=document.getElementById("radius").value
+                radius=Math.PI*(radius*radius)
+                document.getElementById("three").innerHTML="Area of circle is : "+radius
+            }
+        </script>
+        </div>
+
+
+<!-- Question 6 -->
+<div class="w-[700px] h-[500px] bg-lime-700 m-auto mt-24 rounded-2xl pt-16 text-2xl">
+    <div class="flex items-center pl-28">
+        <label class="w-48">Enter element:</label>
+        <input type="text" id="element1" class="w-80 h-12 rounded-2xl border border-2 border-black pl-4">
+    </div>
+    <button class="bg-gray-200 w-40 h-12 font-medium border border-2 border-black rounded-2xl mt-10 ml-[400px]" 
+    onclick="adds()">Add</button>
+    <button class="bg-gray-200 w-40 h-12 font-medium border border-2 border-black rounded-2xl mt-10 ml-[400px]" 
+    onclick="prints()">Print Array</button>
+
+    <div class="text-center items-center text-white m-auto mt-16 p-4 rounded-xl" id="res">
+    </div>
+</div>
+
+<script>
+    const arr = [];
+    function adds() {
+        const ele = document.getElementById("element1").value;
+        arr.push(ele);
+        document.getElementById("element1").value = "";
+    }
+    function prints() {
+        const re = document.getElementById("res");
+        if (arr.length === 0) {
+                re.textContent = "The array is empty.";
+            } else {
+            re.textContent = `Array: ${arr}`;}
+    }
+</script>
+
+<!-- Question 7 -->
+<div class="w-[750px] h-[700px] bg-lime-700 m-auto mt-24 rounded-2xl pt-16 text-2xl">
+            
+        <div>
+            <label class="text-2xl ml-12">Enter element : </label>
+
+            <input type="text" id="element" class="border-2 border-black rounded-xl">
+
+            <input type="button" value="submit" class="bg-gray-200 border-2 border-black rounded-xl w-28" onclick="submit()">
+
+            <br>
+            <br>
+
+            <div id="display" class="text-white"></div>
+
+            <br>
+
+            <div class="flex justify-between w-[300px] ml-60">
+
+                <label class="text-lg  w-[150px]">Index  </label>
+
+                <select  id="select" class="flex-1 border-2 border-black" onchange="selec()">
+                    <option disabled selected >select index</option>
+                </select>
+
+            </div>
+            <br>
+            <div id="displayelement" class="text-white"></div>
+            <br>
+
+            <input type="button" value="Sort" class="bg-gray-200 border-2 border-black rounded-xl w-28  ml-32" onclick="sortarray()">
+            <input type="button" value="Reverse" class="bg-gray-200 border-2 border-black rounded-xl w-28" onclick="reversearray()">
+
+            <br>
+
+            <div class="ml-12 mt-10">
+                <label class="text-2xl">Search: </label>
+                <input type="text" id="search" class="border-2 border-black rounded-xl">
+                <input type="button" value="search" class="bg-gray-200 border-2 border-black rounded-xl w-28 " onclick="searchelement()">
+            </div>
+
+            <br>
+
+            <div id="display33" class="text-white"></div>
+
+        </div>
+</div>
+
+<script>
+
+    let array=[];
+
+    function submit(){
+
+        values=document.getElementById("element").value;
+        display1=document.getElementById("display")
+
+        if(!values){
+
+            display1.innerHTML="Enter a value to add to array"
+            return;
+        }
+
+        else{
+
+            array.push(values);
+            display1.innerHTML = "Array: " + array.join(", ");
+
+            let selected=document.getElementById("select")
+
+            let option=document.createElement("option");
+            option.value=array.length-1
+            option.textContent="Element"+array.length;
+
+            selected.appendChild(option);
+
+
+        }
+
+        
+    }
+
+    function selec(){
+
+        display1=document.getElementById("displayelement");
+        selected1=document.getElementById("select").value
+
+        if (!selected1){
+            display1.innerHTML="Please select an element"
+        }
+
+        else{
+            display1.innerHTML="Selected Element is "+array[selected1]
+        }
+
+
+    }
+
+    function sortarray(){
+
+        array.sort();
+        document.getElementById("display33").innerHTML="Sorted Array: " + array.join(", ");
+
+
+    }
+
+
+    function reversearray(){
+
+        array.reverse();
+        document.getElementById("display33").innerHTML="Reversed Array: " + array.join(", ");
+
+    }
+
+    function searchelement(){
+
+        let searchvalue=document.getElementById("search").value
+        
+        if(!searchvalue){
+            document.getElementById("display33").innerHTML="Enter a value to search in the array.";
+            return;
+        }
+
+        let index=array.indexOf(searchvalue);
+
+        if(index!=-1){
+            document.getElementById("display33").innerHTML=`Value "${searchvalue}" found at index ${index}.`;
+        }
+        else {
+            resultDisplay.innerHTML = `Value "${searchvalue}" not found in the array.`;
+        }
+
+
+    }
+
+</script>
+
+
+<!-- Question 8 -->
+<div class="w-[700px] h-[500px] bg-orange-500 m-auto mt-24 rounded-2xl pt-16 text-2xl">
+    <div class="flex items-center  pl-20">
+        <label class="w-64">Name of subject:</label>
+        <input type="text" id="name" class="w-80 h-12 rounded-2xl border border-2 border-black pl-4">
+    </div>
+    <div class="flex items-center  pl-20 mt-4">
+        <label class="w-64">Mark</label>
+        <input type="number" max="100" min="1" id="mark" class="w-80 h-12 rounded-2xl border border-2  border-black pl-4">
+    </div>
+    <button class="bg-gray-200 w-40 h-12 font-medium border border-2 border-black rounded-2xl mt-10 ml-[400px]" 
+    onclick="submit1()">Submit</button>
+    <div class=" bg-green-500 w-28  text-center items-center text-white m-auto mt-16" id="grade">
+    </div>
+</div>
+
+<script>
+    function submit1(){
+        let value1=document.getElementById("mark").value
+        let grade1=document.getElementById("grade")
+        
+        grade1.innerHTML = "";  
+        if(value1>=90 && value1<=100){
+           let grad= document.createElement("p");
+           grad.textContent="A+";
+            grade1.appendChild(grad)
+        }
+        else if(value1>=80 && value1<=89){
+            let grad= document.createElement("p");
+           grad.textContent="A";
+            grade1.appendChild(grad)
+        }
+        else if(value1>=70 && value1<=79){
+            let grad= document.createElement("p");
+           grad.textContent="B+";
+            grade1.appendChild(grad)
+        }
+        else if(value1>=60 && value1<=69){
+            let grad= document.createElement("p");
+           grad.textContent="C+";
+            grade1.appendChild(grad)
+        }
+        else if(value1>=50 && value1<=59){
+            let grad= document.createElement("p");
+           grad.textContent="C";
+            grade1.appendChild(grad)
+        }
+        else{
+            let grad= document.createElement("p");
+           grad.textContent="fail";
+            grade1.appendChild(grad) 
+        }
+
+        }
+
+</script>
+
+
+
+<!-- Question 9 -->
+
+<div class="w-[700px] h-[600px] bg-blue-500 m-auto mt-24 rounded-2xl pt-16 text-2xl">
+
+    <div class="text-white text-center mt-10">
+        <h2 class="text-2xl font-bold">Add a New Student</h2>
+            
+        <div class="flex pl-12">
+            <div>
+                <label for="stuname" class="text-xl">Enter Name:</label>
+                <input type="text" id="stuname" class="rounded-xl w-60 h-10 text-lg text-black pl-4">
+            </div>
+            <div class="pl-10">
+                <label for="stumark" class="text-xl">Enter Marks:</label>
+                <input type="number" id="stumark" class="rounded-xl h-10 w-60 text-black pl-4">
+            </div>
+        </div>
+
+        <div class="mt-6 text-center">
+            <button onclick="addstu()" class="bg-gray-200 text-black w-40 rounded-xl">
+                Add Student
+            </button>
+            <button onclick="avera()" class="bg-gray-200 text-black w-40 rounded-xl ml-12">
+                Class Average
+            </button>
+        </div>
+
+    </div>
+    
+    <div class="mt-12">
+        <table id="table" class="w-[400px] ml-28 text-black text-xl bg-gray-100">
+            <tr>
+                <th>Student Name</th>
+                <th>Marks</th>
+            </tr>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <p id="averaaa" class="text-center text-xl font-bold mt-4"></p>
+    <div class="mt-6 ml-28">
+        <label for="searchName" class="text-xl">Search Student by Name:</label>
+        <input type="text" id="searchName" class="rounded-xl w-60 h-10 text-lg text-black pl-4" oninput="searchgrade()">
+        <p id="gradeDisplay" class="mt-2 text-xl font-bold"></p>
+    </div>
+
+
+</div>
+
+       
+    
+<script>
+
+    function addstu() {
+        let name = document.getElementById("stuname").value;
+        let marks = document.getElementById("stumark").value;
+
+        let table = document.getElementById("table").getElementsByTagName('tbody')[0];
+        let neww = table.insertRow();
+        let namm = neww.insertCell(0);
+        let marrrrrk = neww.insertCell(1);
+        namm.textContent = name;
+        marrrrrk.textContent = marks;
+
+        document.getElementById("stuname").value = "";
+        document.getElementById("stumark").value = "";
+    }
+
+    
+    function avera() {
+        let rows = document.getElementById("table").querySelectorAll("tbody tr");
+        let total = 0;
+        let count = 0;
+        rows.forEach(row => {
+            let mark = parseFloat(row.cells[1].textContent);
+            if (!isNaN(mark)) {
+                total += mark;
+                count++;
+            }
+        });
+        let average = count > 0 ? total / count : 0;
+        let ave = document.getElementById("averaaa");
+        ave.innerHTML = "";
+        let av = document.createElement("p");
+        av.textContent = `Class Average: ${average.toFixed(2)}`;
+        ave.appendChild(av);
+    }
+
+
+    function searchgrade() {
+        let nameSearch = document.getElementById("searchName").value.toLowerCase();
+        let rows = document.getElementById("table").querySelectorAll("tbody tr");
+        let gradeDisplay = document.getElementById("gradeDisplay");
+        gradeDisplay.innerHTML = ""; 
+
+        let found = false;
+        rows.forEach(row => {
+            let studentName = row.cells[0].textContent.toLowerCase();
+            let marks = parseFloat(row.cells[1].textContent);
+
+            if (studentName.includes(nameSearch)) {
+                found = true;
+                let grade = calgrade(marks);
+                gradeDisplay.textContent = `Grade for ${studentName}: ${grade}`;
+            }
+        });
+
+    }
+
+    function calgrade(marks) {
+        if (marks >= 90) {
+            return "A+";
+        } else if (marks >= 80) {
+            return "A";
+        } else if (marks >= 70) {
+            return "B";
+        } else if (marks >= 60) {
+            return "C";
+        } else if (marks >= 50) {
+            return "D";
+        } else {
+            return "F";
+        }
+    }
+</script>
+
+<!-- Question 10 -->
+<div class="w-[700px] h-[500px] bg-red-700 m-auto mt-24 rounded-2xl pt-16 text-2xl">
+    <div class="flex items-center  pl-28">
+        <label class="w-48">Enter a number:</label>
+        <input type="text" id="input" class="w-80 h-12 rounded-2xl border border-2 border-black pl-4">
+    </div>
+    <button class="bg-gray-200 w-40 h-12 font-medium border border-2 border-black rounded-2xl mt-10 ml-[400px]" 
+    onclick="storeInArray()">store</button>
+    <button class="bg-gray-200 w-40 h-12 font-medium border border-2 border-black rounded-2xl mt-10 ml-[400px]" 
+    onclick="findLargest()">largest</button>
+    <div class=" bg-green-500 w-28  text-center items-center text-white m-auto mt-16" id="results">
+    </div>
+</div>
+<script>
+    const numbers = []; 
+    function storeInArray() {
+        let input = document.getElementById("input").value;
+        numbers.push(Number(input));
+        console.log(numbers);
+        document.getElementById("input").value = "";
+    }
+
+    function findLargest() {
+        let largest=numbers[0];
+        for (let i = 1;i< numbers.length;i++) {
+            if (numbers[i]>largest) {
+                largest=numbers[i];
+            }
+        }
+        document.getElementById("results").textContent =`Largest number= ${largest}`;
+    }
+</script>
+
+
+
+<!-- Question 11 -->
+<div class="w-[700px] h-[500px] bg-gray-500 m-auto mt-24 rounded-2xl pt-16 text-2xl">
+    <div class="flex items-center  pl-40">
+        <label class="w-28">number:</label>
+        <input type="text" id="num" class="w-80 h-12 rounded-2xl border border-2 border-black pl-4">
+    </div>
+    <button class="bg-gray-200 w-40 h-12 font-medium border border-2 border-black rounded-2xl mt-10 ml-[400px]" 
+    onclick="submit2()">Submit</button>
+
+    <div class=" bg-green-500 w-28  text-center items-center text-white m-auto mt-16" id="revv">
+    </div>
+    <script>
+        function submit2(){
+            numm=document.getElementById("num").value
+            revv.innerHTML = "";  
+            let rev=0;
+            let reversed=0
+                while(numm>0){
+
+                    rev=numm%10;
+                    reversed=reversed*10+rev;
+                    numm=Math.floor(numm/10);
+
+                    
+                }
+              let  re=document.createElement("p")
+                   re.textContent=reversed
+                   revv.appendChild(re)
+                   document.getElementById("num").value = "";
+
+        }
+    </script>
+</body>
+</html>

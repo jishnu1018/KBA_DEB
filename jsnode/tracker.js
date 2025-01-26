@@ -43,7 +43,7 @@ function selectchoice(choice){
                    array1.push(amount);
                    total += parseInt(amount);
                    displaymenu();
-                   
+                   3
                      
             })
             break;

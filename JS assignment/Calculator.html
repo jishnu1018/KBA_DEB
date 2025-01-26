@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>    
+</head>
+<body>
+    <div style="background-color: black; height: 280px; width: 420px; margin: auto; margin-top: 100px;">
+
+
+    <input type="text" id="screen" style="height: 35px; width: 400px; margin-left: 5px; margin-top: 2px;">
+    <div>
+        <button onclick="clearr()" style="width: 90px; height: 35px; margin-top: 10px; background-color: aliceblue; margin-left: 10px;">C</button>
+    </div>
+    <!-- Second line -->
+    <div>
+        <button style="width: 90px; height: 35px; margin-top: 10px; background-color: aliceblue; margin-left: 10px;" onclick="digits(7)">7</button>
+        <button style="width: 90px; height: 35px; margin-top: 10px; background-color: aliceblue; margin-left: 10px;" onclick="digits(8)">8</button>
+        <button style="width: 90px; height: 35px; margin-top: 10px; background-color: aliceblue; margin-left: 10px;" onclick="digits(9)">9</button>
+        <button style="width: 90px; height: 35px; margin-top: 10px; background-color: aliceblue; margin-left: 10px;" onclick="digits('/')">/</button>
+    </div>
+
+    <!-- 3rd line -->
+    <div>
+        <button style="width: 90px; height: 35px; margin-top: 10px; background-color: aliceblue; margin-left: 10px;" onclick="digits(4)">4</button>
+        <button style="width: 90px; height: 35px; margin-top: 10px; background-color: aliceblue; margin-left: 10px;" onclick="digits(5)">5</button>
+        <button style="width: 90px; height: 35px; margin-top: 10px; background-color: aliceblue; margin-left: 10px;" onclick="digits(6)">6</button>
+        <button style="width: 90px; height: 35px; margin-top: 10px; background-color: aliceblue; margin-left: 10px;" onclick="digits('*')">×</button>
+    </div>
+    <!-- 4th line -->
+    <div>
+        <button style="width: 90px; height: 35px; margin-top: 10px; background-color: aliceblue; margin-left: 10px;" onclick="digits(1)">1</button>
+        <button style="width: 90px; height: 35px; margin-top: 10px; background-color: aliceblue; margin-left: 10px;" onclick="digits(2)">2</button>
+        <button style="width: 90px; height: 35px; margin-top: 10px; background-color: aliceblue; margin-left: 10px;" onclick="digits(3)">3</button>
+        <button style="width: 90px; height: 35px; margin-top: 10px; background-color: aliceblue; margin-left: 10px;" onclick="digits('-')">-</button>
+    </div>
+    <!-- 5 th line -->
+    <div>
+        <button style="width: 90px; height: 35px; margin-top: 10px; background-color: aliceblue; margin-left: 10px;" onclick="digits('.')">.</button>
+        <button style="width: 90px; height: 35px; margin-top: 10px; background-color: aliceblue; margin-left: 10px;" onclick="digits(0)">0</button>
+        <button style="width: 90px; height: 35px; margin-top: 10px; background-color: aliceblue; margin-left: 10px;" onclick="digits('+')">+</button>
+        <button style="width: 90px; height: 35px; margin-top: 10px; background-color: aliceblue; margin-left: 10px;" onclick="equalto()">=</button>
+    </div>
+
+</div>
+
+<script>
+function digits(digit){
+    document.getElementById("screen").value+=digit;
+    
+}
+function clearr(){
+    document.getElementById("screen").value="";
+}
+function equalto(){
+    
+    const result=document.getElementById("screen").value;
+    const result1=eval(result)
+    document.getElementById("screen").value=result1
+
+}
+</script>    
+</body>
+</html>
