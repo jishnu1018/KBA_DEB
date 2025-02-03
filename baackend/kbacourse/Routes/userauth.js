@@ -18,7 +18,7 @@ userauth.get('/',(req,res)=>{
     console.log("hi")
     res.send("hellloooo")
 })
-
+    
 
 //post
 userauth.post('/signin',async(req,res)=>{
@@ -26,8 +26,8 @@ userauth.post('/signin',async(req,res)=>{
     {//console.log(req.body);
     //const data=req.body;
     //console.log(data.id);
-    //user.set(data.Id,{Username:data.Username,Password:data.Password,Role:data.Role,Condition:data.Condition})
-    const {UserName,Password,Role,Condition}=req.body;
+    //user.set(data.Id,{Username:data.Username,Password:data.Password,Role:data.Role,Email:data.Email})
+    const {UserName,Password,Role,Email}=req.body;
     //console.log(Id);
 //    const newpassword =await bcrypt.hash(Password,10);
 
@@ -38,11 +38,13 @@ userauth.post('/signin',async(req,res)=>{
     }
     else{
         const newpassword =await bcrypt.hash(Password,10);
-        user.set(UserName,{UserName,newpassword,Role,Condition});
+        user.set(UserName,{UserName,newpassword,Role,Email});
         res.status(200).send(user.get(UserName));
         console.log(user.get(UserName));
+        console.log("signed in");
+        
     }
-   //user.set(Id,{Username,newpassword,Role,Condition});
+   //user.set(Id,{Username,newpassword,Role,Email});
    //console.log(user.get(Id));
 
 }
@@ -62,6 +64,8 @@ userauth.post('/login',async(req,res)=>{
         console.log(result);
         
         if(!result){
+            console.log("Enter a valid username");
+            
             res.status(400).send("Enter a valid username");
         }
         else{
@@ -74,6 +78,7 @@ userauth.post('/login',async(req,res)=>{
                 res.cookie('cookietoken',token,{
                     httpOnly:true
                 })
+                console.log("Logged in successfully");
                 
                 res.status(200).json({message:"Logged in successfully"});
             }

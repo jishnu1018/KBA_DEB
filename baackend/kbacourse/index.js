@@ -2,9 +2,15 @@ import express,{json} from 'express';
 import dotenv from 'dotenv';
 import {userauth} from './Routes/userauth.js';
 import {addcourse} from './Routes/addcourse.js'
+import { adminsign } from './Routes/adminsign.js';
+import cors from "cors";
 dotenv.config();
 
 const app=express();
+app.use(cors({
+    origin:"http://127.0.0.1:5500",
+    credentials:true
+}))
 app.use(json())
 
 // 8000 is a port asigned to app
@@ -14,6 +20,7 @@ app.use(json())
 
 app.use('/',userauth)
 app.use('/',addcourse)
+app.use('/admin',adminsign)
 
 // app.get('/',userauth)
 

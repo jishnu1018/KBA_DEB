@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+   
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body class="flex justify-center">
+
+        <div class="h-[450px] w-[400px] bg-gray-400 ml-4 mt-40 rounded-xl shadow-xl shadow-sky-300">
+            <p class="font-bold text-4xl flex justify-center pt-5">Login</p>
+            <form onsubmit="handlelogin(event)">
+                <p class="text-xl ml-10 mt-8">UserName:</p>
+                <input type="text" id="name" required class="ml-10 w-[320px] h-10 border-2 border-sky-600 rounded">            
+                <p class="text-xl ml-10 mt-5">Password:</p>
+                <input type="password" id="password" required class="ml-10 w-[320px] h-10 border-2 border-sky-600 rounded">
+                <input type="submit" value="Login" class="inline font-light text-xl h-9 w-[100px] mt-8 ml-[40px] bg-gray-500 rounded-xl border-[1px] border-black text-white">
+                <a href="forgot.html"><p class="inline ml-[70px] text-lg text-blue-700">Forgot Password?</p></a>
+                <p class="ml-20 mt-8 text-lg">Don't have an account?<a href="signup.html" class="text-blue-700  ml-2">Sign Up</a></p>
+            </form>   
+                </div>
+            <script>
+                async function handlelogin(event){
+                    event.preventDefault();
+
+                    const name=document.getElementById("name").value
+                    const password=document.getElementById("password").value
+                    console.log("Name:", name);
+                    console.log("Password:", password);
+
+
+                    const response= await fetch ("http://127.0.0.1:8000/login",{
+                method:'POST',
+                credentials:'include',
+                headers:{ 
+                    'Content-Type':'application/json'
+                },
+                body:JSON.stringify({
+                    UserName:name,
+                    Password:password
+                })
+            });
+            console.log(response.status);
+
+            const data =await response.text();
+            console.log(data);
+            
+            
+            if(response.status==200){
+                window.location.href="addcourse.html";
+            }
+            else if(response.status==400){
+                alert("enter a valid username or password")
+            }
+            else{
+                alert("unauthorized access")
+            }
+
+                }
+            </script>
+</body>
+
+</html>

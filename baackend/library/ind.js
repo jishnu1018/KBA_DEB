@@ -1,6 +1,7 @@
 import express,{json} from 'express';
 import dotenv from 'dotenv';
 import {library} from './route/signup.js';
+import { addbook } from './route/addbook.js';
 dotenv.config();
 
 const app=express();
@@ -12,7 +13,7 @@ app.use(json())
 // })
 
 app.use('/',library)
-
+app.use('/',addbook)
 
 app.get('/',function(req,res){
     res.send("hi")

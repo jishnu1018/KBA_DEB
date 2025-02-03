@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex justify-center mt-40">
+    <div class="h-[600px] w-[450px] bg-gray-400 rounded-xl shadow-xl shadow-sky-300">
+        <p class="text-4xl font-bold flex justify-center pt-5">Sign Up</p>
+        
+        <form onsubmit="handlesign(event)">
+            <p class="text-lg mt-8 ml-10">Name:</p>
+            <input type="text" id="name" required class="w-[320px] h-10 ml-10 border border-gray-500 rounded shadow-md shadow-black">
+            
+            <p class="text-lg mt-4 ml-10">Email:</p>
+            <input type="email" id="email" required class="w-[320px] h-10 ml-10 border border-gray-500 rounded shadow-md shadow-black">
+            
+            <p class="mt-4 ml-10 text-lg">Password:</p>
+            <input type="password" id="password" required class="w-[320px] h-10 ml-10 border border-gray-500 rounded shadow-md shadow-black">
+            
+            <p class="text-lg mt-4 ml-10">Role:</p>
+            <select id="role" class="h-10 w-[320px] ml-10 pl-2 border-2 border-black bg-gray-200 rounded shadow-md shadow-black">
+                <option value="Admin">Admin</option>
+                <option value="User">User</option>
+            </select>  
+            
+            <input type="submit" value="Signup" class="font-light text-lg h-9 w-[100px] mt-5 ml-[40px] bg-gray-500 rounded-lg border border-black text-white cursor-pointer hover:bg-gray-600">
+            
+            <p class="flex justify-center mt-5 text-lg">
+                Already have an account? <a href="login.html" class="text-blue-700 ml-2">Login</a>
+            </p>
+        </form>
+    </div>
+    
+    <script>
+       async function handlesign(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById("name").value
+            const email = document.getElementById("email").value
+            const password = document.getElementById("password").value
+            const role = document.getElementById("role").value;
+
+            console.log("Name:", name);
+            console.log("Email:", email);
+            console.log("Password:", password);
+            console.log("Role:", role);
+
+            const response= await fetch ("http://127.0.0.1:8000/signin",{
+                method:'POST',
+                headers:{ 
+                    'Content-Type':'application/json'
+                },
+                body:JSON.stringify({
+                    UserName:name,
+                    Email:email,
+                    Password:password,
+                    Role:role
+                })
+            });
+            console.log(response.status);
+            const data =await response.text();
+            console.log(data);
+            
+            
+            if(response.status==200){
+                window.location.href="addcourse.html";
+            }
+            else if(response.status==400){
+                alert("already there")
+            }
+            else{
+                alert("try after some time")
+            }
+        }
+    </script>
+</body>
+</html>
