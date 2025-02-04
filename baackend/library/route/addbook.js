@@ -24,4 +24,25 @@ const addbook=Router();
     }
  })
 
+ addbook.get('/getbook',(req,res)=>{
+    const name=req.query.Bookname
+    console.log(name);
+    const bname=book.get(name)
+    if(bname){
+        res.status(200).send(bname)
+        console.log(bname);
+    }
+    else{
+        res.status(404).send("error")
+        console.log("error");
+    }
+    
+ })
+
+ addbook.get('/logout',(req,res)=>{
+    res.clearCookie('tokencookie');
+    res.status(200).send("logout")
+    console.log("logout");
+    
+})
  export{addbook}
