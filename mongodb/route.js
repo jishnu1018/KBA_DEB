@@ -15,6 +15,17 @@ user.post('/create',async(req,res)=>{
         console.log("error");
         res.status(500).json()
     }
+});
+user.get('/read',async (req,res)=>{
+    try{
+        const resultt=await sample.findById('67a32089174f9207d21b073c');
+        console.log(resultt);
+        res.status(200).send(resultt)
+    }
+    catch{
+        console.log("error");
+        res.status(500).json()
+    }
 })
 
 export {user}

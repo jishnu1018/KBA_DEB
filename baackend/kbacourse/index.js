@@ -4,6 +4,7 @@ import {userauth} from './Routes/userauth.js';
 import {addcourse} from './Routes/addcourse.js'
 import { adminsign } from './Routes/adminsign.js';
 import cors from "cors";
+import mongoose from 'mongoose';
 dotenv.config();
 
 const app=express();
@@ -28,8 +29,13 @@ app.get('/',function(req,res){
     res.send("hi")
 })
 
+mongoose.connect('mongodb://localhost:27017/kbacourse').then(()=>{
+    console.log("Mongodb connected succesfully");})
+    .catch((error)=>{
+        console.error("Mongodb connection failed",error);})
 
 //using env
 app.listen(process.env.PORT,function(){
     console.log(`sever is listening at ${process.env.PORT}`)
 })
+

@@ -1,7 +1,6 @@
 import { Router } from "express";
 import { authen } from "../Middleware/authen.js";
 import { checkadmin } from "../Middleware/checkadmin.js";
-import { auth } from "../../kbacourse/Middleware/auth.js";
 
 const issuecer=Router();
 const issue=new Map();

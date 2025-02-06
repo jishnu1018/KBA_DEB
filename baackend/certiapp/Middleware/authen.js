@@ -6,6 +6,7 @@ const authen=(req,res,next)=>{
     if(!cookie){
         res.status(400).send("error")
         console.log("error");
+
     }
     else{
         const [name,token]=cookie.trim().split("=");

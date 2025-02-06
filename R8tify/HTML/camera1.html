@@ -3,257 +3,211 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>camera</title>
+    <title>camera1</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="text-gray-800">
 
-    <!-- Navbar -->
-    <div class="bg-black w-full h-24 flex items-center px-4">
+  <!-- Navbar -->
+  <div class="bg-black w-full h-auto md:h-24 flex flex-col md:flex-row items-center px-4 py-2">
+    <div class="flex justify-between w-full md:w-auto">
         <a href="home1.html">
             <img src="/Image/logo.png" alt="logo" class="border border-black rounded-full w-24 h-16">
         </a>
-        <h1 class="text-white text-2xl italic font-serif ml-4">R8TIFY.com</h1>
-        <div class="flex">
-            <div class="flex ml-96">
-                <input type="text" placeholder="Search" class="h-10 w-[400px] rounded-l-full pl-4 text-lg">
+        <h1 class="text-white text-2xl italic font-serif ml-4 mt-4 md:ml-2">R8TIFY.com</h1>
+        <!-- Hamburger Menu -->
+        <button id="menu-toggle" class="text-white text-3xl md:hidden ml-auto">
+            ☰
+        </button>
+    </div>
+    
+    <div id="menu" class="hidden md:flex flex-col md:flex-row w-full md:w-auto items-center mt-4 md:mt-0">
+        <div class="flex flex-col md:flex-row md:ml-96 w-full md:w-auto items-center">
+            <div class="flex w-full md:w-auto">
+                <input type="text" placeholder="Search" class="h-10 w-full md:w-[400px] rounded-l-full pl-4 text-lg">
                 <button class="h-10 w-12 bg-white border-2 border-gray-300 rounded-r-full flex items-center justify-center">
                     <img src="/Image/search.png" alt="Search" class="h-6 w-6">
                 </button>
             </div>
-            <a href="categories1.html"><div class="text-lg font-bold rounded px-4 ml-24 h-10 py-1 bg-white">Categories</div></a>
-            <a href="#Trending Insightssss"><div class="text-lg font-bold rounded px-4 h-10 py-1 ml-24  bg-white">Trending Insights</div></a>
-            <a href="signup.html"><div class="text-lg font-bold rounded px-4 ml-24  h-10 py-1 bg-white">Sign up</div></a>
+            <a href="categories1.html" class="text-lg font-bold rounded px-4 h-10 py-1 bg-white mt-2 md:mt-0 md:ml-24">Categories</a>
+            <a href="#Trending Insightssss" class="text-lg font-bold rounded px-4 h-10 py-1 bg-white mt-2 md:mt-0 md:ml-24">Trending Insights</a>
+            <a href="signup.html"><div class="text-lg font-bold rounded px-4 ml-2  h-10 py-1 bg-white  mt-2 md:mt-0 md:ml-24">Sign up</div></a>
+
         </div>
     </div>
-    <div class=" flex text-center h-20 ">
-        <p class="text-4xl mt-3 ml-16">Products</p>
-        <a href="phones1.html"><div class="bg-black w-44 h-12 text-2xl pt-2 rounded-full ml-24 mt-3 text-white " >
-            Smartphones
-        </div></a>
-        <a href="laptops1.html"><div class="bg-black w-44 h-12 text-2xl pt-2 rounded-full ml-24 mt-3 text-white ">
-            Laptops
-        </div></a>
-        <a href="console1.html"><div class="bg-black w-52 h-12 text-2xl pt-2 rounded-full ml-24 mt-3 text-white ">
-            Gaming Consoles
-        </div></a>
-        <a href="camera1.html"><div class="bg-black w-44 h-12 text-2xl pt-2 rounded-full ml-24 mt-3 text-white ">
-            Camera
-        </div></a>
-        <a href="speakers1.html"><div class="bg-black w-44 h-12 text-2xl pt-2 rounded-full ml-24 mt-3 text-white ">
-            Speakers
-        </div></a>
-        <!-- <div class="border-2 border-black w-52 ml-24 mt-3 w-[250px] h-44 pl-4">
-            <label class="text-2xl"><a href="phones1.html"> Smartphones</a></label><br>
-            <label class="text-2xl"><a href="laptops1.html"> Laptops</a></label><br>
-            <label class="text-2xl"><a href="console1.html"> Gaming Consoles</a></label><br>
-            <label class="text-2xl"><a href="camera1.html"> Camera</a></label><br>
-            <label class="text-2xl"><a href="speakers1.html"> Speakers</a></label>
-        </div> -->
-    </div>
+</div>
+
+        <!-- JavaScript for Navbar Toggle -->
+        <script>
+            document.getElementById("menu-toggle").addEventListener("click", function() {
+                document.getElementById("menu").classList.toggle("hidden");
+            });
+        </script>
 
     <!-- contentt -->
-     <!-- Hp -->
-    <div class="w-[1400px] h-auto mx-auto  border-black border-2 rounded-3xl">
-        <div class="flex">
-            <div class=" h-24 ml-6 mt-2 w-[900px] flex">
-                <img src="/Image/Canon EOS 1500D (18-55mm) DSLR Camera.jpeg" alt="" class="rounded-full w-14 h-16">
-                <p class=" ml-4 text-md">
-                    <span class="text-xl font-bold">Canon 1500D</span>  <br>
-                    <span>4.0 ⭐</span><br>
-                    <span>Sensor: 24.1 MP APS-C CMOS Sensor</span><br>
-                   <span>Processor: DIGIC 4+ for enhanced performance</span><br>
-                   <span>Continuous shooting speed: 3 fps</span><br>
-                   <span>Optical viewfinder with 95% coverage</span><br>
-                </p>
-            </div>
+    <!-- Products section -->
+<div class="flex flex-col md:flex-row justify-between items-center text-center h-auto p-6">
+    <p class="text-4xl mt-3">Products</p>
+    <a href="phones1.html"><div class="bg-black w-44 h-12 text-2xl pt-2 rounded-full mt-3 text-white">Smartphones</div></a>
+    <a href="laptops1.html"><div class="bg-black w-44 h-12 text-2xl pt-2 rounded-full mt-3 text-white">Laptops</div></a>
+    <a href="console1.html"><div class="bg-black w-52 h-12 text-2xl pt-2 rounded-full mt-3 text-white">Gaming Consoles</div></a>
+    <a href="camera1.html"><div class="bg-black w-44 h-12 text-2xl pt-2 rounded-full mt-3 text-white">Camera</div></a>
+    <a href="speakers1.html"><div class="bg-black w-44 h-12 text-2xl pt-2 rounded-full mt-3 text-white">Speakers</div></a>
+</div>
 
-          <div class="flex mt-3 h-36">
-            <img src="/Image/Canon EOS 1500D (18-55mm) DSLR Camera.jpeg" alt="" class="ml-10 w-32 h-32">
-            <img src="/Image/Canon EOS 1500D 18-55 and 55-250 DSLR Combo.jpeg" alt="" class="ml-10 w-32 h-32">
-            <p class="mt-10 ml-10 text-3xl facebook bg-yellow-500 h-10">$321</p>
-          </div>
-        </div>
-            <!-- <div class="flex ml-[1200px]">
-                    <button class="thumbs-up text-2xl ml-24 ">
-                        <img src="/Image/Like silhouette.jpeg" alt="like" class="w-6 ">
-                    </button>
-                    <p class="ml-1">3.5k</p>
-                </div> -->
+<!-- Camera Section -->
+<div class="w-full max-w-7xl mx-auto border-black border-2 rounded-3xl p-6 mb-6">
+    <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:justify-between">
 
-<!-- r1 -->
-        <div class="w-[1400px] h-auto mt-4  rounded-3xl">
-            <div class="flex">
-                <div class=" h-24 ml-6 mt-2 w-[1370px] flex">
-                    <img src="/Image/letty.jpeg" alt="" class="rounded-full w-14 h-16">
-                    <p class="mt-3 ml-4 text-2xl">
-                        Letty Ortiz
-                    <span><img class="w-60 ml-[-15px]" src="/Image/4starr.png" alt=""></span>
-                    </p>
-                    <button class="bg-black text-white text-xl font-bold w-80 h-14 mt-4 ml-[750px] rounded-full ">
-                        <a href="review.html">Write a Review</a>
-                    </button>
-                </div>
-    
-              <!-- <div class="flex mt-3 h-36">
-                <img src="/Image/samsung1.jpeg" alt="" class="ml-10 w-40 h-32">
-    
-              </div> -->
-            </div>
-            
-            <div class="flex">
-                <div class="h-24 ml-6 w-[1050px]">
-                    <span class="font-bold text-black text-lg">Love it. Great full frame camera</span>
-                <p class="text-xl">Great camera for video. I use it as my main camera. Maybe not the best for photography?
-                    Only con is doesn't have 4K. But i'm not using 4K anyway. </p>
-                </div>
-                <div class="flex items-center">
-                    <button class="thumbs-up text-2xl ml-24 ">
-                        <img src="/Image/Like silhouette.jpeg" alt="like" class="w-6 ">
-                    </button>
-                    <p class="ml-1">3.5k</p>
-                    <button class="bg-black text-white w-24 ml-4 h-8 rounded-full">View more</button>
-                </div>
-            </div>
+        <!-- Product Info -->
+        <div class="h-24 flex items-center space-x-4">
+            <img src="/Image/Canon EOS 1500D (18-55mm) DSLR Camera.jpeg" alt="" class="rounded-full w-16 h-16 md:w-24 md:h-24">
+            <p class="text-md">
+                <span class="text-xl font-bold">Canon 1500D</span>  <br>
+                <span>4.0 ⭐</span><br>
+                <span>Sensor: 24.1 MP APS-C CMOS Sensor</span><br>
+                <span>Processor: DIGIC 4+ for enhanced performance</span><br>
+                <span>Continuous shooting speed: 3 fps</span><br>
+            </p>
         </div>
-            
+
+        <!-- Product Images & Price -->
+        <div class="flex flex-wrap md:flex-nowrap mt-3 h-36 space-x-4 justify-center">
+            <img src="/Image/Canon EOS 1500D (18-55mm) DSLR Camera.jpeg" alt="" class="w-32 h-32">
+            <img src="/Image/Canon EOS 1500D 18-55 and 55-250 DSLR Combo.jpeg" alt="" class="w-32 h-32">
+            <p class="mt-10 text-3xl bg-yellow-500 h-10 px-4 flex items-center">$321</p>
+        </div>
     </div>
-<br>
+
+    <!-- Review Section -->
+    <div class="mt-4 w-full">
+        <div class="flex flex-wrap md:flex-nowrap items-center justify-between">
+            <!-- Reviewer Info -->
+            <div class="h-24 flex items-center">
+                <img src="/Image/letty.jpeg" alt="" class="rounded-full w-14 h-16">
+                <p class="text-2xl ml-4">Letty Ortiz</p>
+                <img class="w-36 ml-2" src="/Image/4starr.png" alt="Rating">
+            </div>
+
+            <!-- Write Review Button (Fixed alignment) -->
+            <button class="bg-black text-white text-xl font-bold w-full md:w-80 h-14 rounded-full mt-4 md:mt-0">
+                <a href="review.html">Write a Review</a>
+            </button>
+        </div>
+
+        <!-- Review Content -->
+        <div class="mt-4">
+            <span class="font-bold text-black text-lg">Love it. Great full frame camera</span>
+            <p class="text-xl">Great camera for video. I use it as my main camera. Maybe not the best for photography? Only con is it doesn't have 4K. But I'm not using 4K anyway.</p>
+        </div>
+
+        <!-- Like & View More Section -->
+        <div class="flex items-center mt-4">
+            <button class="thumbs-up text-2xl ml-4">
+                <img src="/Image/Like silhouette.jpeg" alt="like" class="w-6 ">
+            </button>
+            <p class="ml-1">3.5k</p>
+            <button class="bg-black text-white w-24 ml-4 h-8 rounded-full">View more</button>
+        </div>
+    </div>
+</div>
 
 <!-- realme -->
-<div class="w-[1400px] h-auto mx-auto border-black border-2 rounded-3xl">
-    <div class="flex">
-        <div class=" h-24 ml-6 mt-2 w-[900px] flex">
-            <img src="/Image/How to Take Great Photos with the Nikon D7500.jpeg" alt="" class="rounded-full w-14 h-16">
-            <p class=" ml-4 text-md">
-                <span class="text-xl font-bold">Nikon D7500</span>  <br>
+<div class="w-full max-w-7xl mx-auto border-black border-2 rounded-3xl p-6 mb-6">
+    <div class="flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-6">
+        <div class="flex items-center space-x-4">
+            <img src="/Image/How to Take Great Photos with the Nikon D7500.jpeg" alt="" class="rounded-full w-16 h-16 md:w-24 md:h-24">
+            <p class="text-md">
+                <span class="text-xl font-bold">Nikon D7500</span><br>
                 <span>4.5 ⭐</span><br>
                 <span>Supports 4K UHD video recording (2160p at 30fps)</span><br>
-               <span>3.2-inch tilting touchscreen LCD (922k dots)</span><br>
-               <span>Lightweight and weather-sealed body</span><br>
-               <span>Approximately 950 shots per charge</span><br>
+                <span>3.2-inch tilting touchscreen LCD (922k dots)</span><br>
+                <span>Lightweight and weather-sealed body</span><br>
+                <span>Approximately 950 shots per charge</span><br>
             </p>
         </div>
 
-      <div class="flex mt-3 h-36">
-        <img src="/Image/Nikon D7500 DSLR Camera with Nikon AF-S DX NIKKOR 18-140mm f_3_5-5.6G ED VR Lens + Deluxe Cas" alt="" class="ml-10 w-32 h-32">
-        <img src="/Image/How to Take Great Photos with the Nikon D7500.jpeg" alt="" class="ml-10 w-32 h-32">
-        <p class="mt-10 ml-10 text-3xl facebook bg-yellow-500 h-10">$500</p>
-      </div>
+        <div class="flex flex-wrap justify-center md:justify-start gap-4 md:gap-6">
+            <img src="/Image/Nikon D7500 DSLR Camera with Nikon AF-S DX NIKKOR 18-140mm f_3_5-5.6G ED VR Lens + Deluxe Cas" alt="" class="w-32 h-32">
+            <img src="/Image/How to Take Great Photos with the Nikon D7500.jpeg" alt="" class="w-32 h-32">
+            <p class="text-3xl bg-yellow-500 h-10 px-4 flex items-center justify-center">$500</p>
+        </div>
     </div>
-        <!-- <div class="flex ml-[1200px]">
-                <button class="thumbs-up text-2xl ml-24 ">
-                    <img src="/Image/Like silhouette.jpeg" alt="like" class="w-6 ">
-                </button>
-                <p class="ml-1">3.5k</p>
-            </div> -->
 
-<!-- r1 -->
-    <div class="w-[1400px] h-auto mt-4  rounded-3xl">
-        <div class="flex">
-            <div class=" h-24 ml-6 mt-2 w-[1370px] flex">
+    <!-- Review -->
+    <div class="mt-4 w-full">
+        <div class="flex flex-col md:flex-row md:items-center justify-between space-y-4 md:space-y-0">
+            <div class="flex items-center space-x-4">
                 <img src="/Image/brian.jpeg" alt="" class="rounded-full w-14 h-16">
-                <p class="mt-3 ml-4 text-2xl">
-                    Brian O'Conner
-                <span><img class="w-60 ml-[-15px]" src="/Image/4starr.png" alt=""></span>
-                </p>
-                <button class="bg-black text-white text-xl font-bold w-80 h-14 mt-4 ml-[750px] rounded-full ">
-                    <a href="review.html">Write a Review</a>
-                </button>
+                <p class="text-2xl">Brian O'Conner</p>
+                <img class="w-36 md:w-60" src="/Image/4starr.png" alt="">
             </div>
-
-          <!-- <div class="flex mt-3 h-36">
-            <img src="/Image/samsung1.jpeg" alt="" class="ml-10 w-40 h-32">
-
-          </div> -->
+            <button class="bg-black text-white text-xl font-bold w-full md:w-80 h-14 rounded-full">
+                <a href="review.html">Write a Review</a>
+            </button>
         </div>
-        
-        <div class="flex">
-            <div class="h-24 ml-6 w-[1050px]">
-                <span class="font-bold text-black text-lg">Brilliant</span>
-            <p class="text-xl">I went from a Nikon D90 to a Nikon D5700 a year ago. While that camera has great image quality, 
-                is light and has a great LCD, I was never really happy with the controls.</p>
-            </div>
-            <div class="flex items-center">
-                <button class="thumbs-up text-2xl ml-24 ">
-                    <img src="/Image/Like silhouette.jpeg" alt="like" class="w-6 ">
-                </button>
-                <p class="ml-1">3.5k</p>
-                <button class="bg-black text-white w-24 ml-4 h-8 rounded-full">View more</button>
-            </div>
+        <div class="mt-4">
+            <span class="font-bold text-black text-lg">Brilliant</span>
+            <p class="text-xl">I went from a Nikon D90 to a Nikon D7500 a year ago. While that camera has great image quality, is light and has a great LCD, I was never really happy with the controls.</p>
+        </div>
+        <div class="flex items-center mt-4 space-x-4">
+            <button class="thumbs-up text-2xl">
+                <img src="/Image/Like silhouette.jpeg" alt="like" class="w-6">
+            </button>
+            <p>1.5k</p>
+            <button class="bg-black text-white w-24 h-8 rounded-full">View more</button>
         </div>
     </div>
-        
 </div>
 
-<br>
-<!-- apple -->
-<div class="w-[1400px] h-auto mx-auto  border-black border-2 rounded-3xl">
-    <div class="flex">
-        <div class=" h-24 ml-6 mt-2 w-[900px] flex">
-            <img src="/Image/Pfannenwender Lumix DMC-TZ18 14,1Mp LEICA Digitalkamera Schwarz - Perfekter Zustand.jpeg" alt="" class="rounded-full w-14 h-16">
-            <p class=" ml-4 text-md">
-                <span class="text-xl font-bold">Panasonic Lumix DMC-FZ2500</span>  <br>
-                <span>4.0 ⭐</span><br>
-                <span>Sensor: 20.1 MP 1-inch High-Sensitivity MOS Sensor</span><br>
-               <span>Built-in ND filter for exposure control</span><br>
-               <span>Built-in Wi-Fi for easy sharing and remote shooting</span><br>
-               <span>Approximately 350 shots per charge</span><br>
+<!-- Panasonic Lumix DMC-FZ2500 -->
+<div class="w-full max-w-7xl mx-auto border-black border-2 rounded-3xl p-6">
+    <div class="flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-6">
+        <div class="flex items-center space-x-4">
+            <img src="/Image/Panasonic Lumix DMC-FX8.jpeg" alt="Panasonic Lumix DMC-FZ2500" class="rounded-full w-14 h-16">
+            <p class="text-md">
+                <span class="text-xl font-bold">Panasonic Lumix DMC-FZ2500</span><br>
+                <span>4.6 ⭐</span><br>
+                <span>Sensor: 1-inch, 20.1 MP</span><br>
+                <span>Lens: Leica DC Vario-Elmarit 24-480mm F2.8-4.5</span><br>
+                <span>4K Video Recording</span><br>
+                <span>High-Speed Autofocus</span><br>
+                <span>Post Focus and Focus Stacking</span><br>
             </p>
         </div>
 
-      <div class="flex mt-3 h-36">
-        <img src="/Image/Panasonic Lumix DMC-FX8.jpeg" alt="" class="ml-10 w-32 h-32">
-        <img src="/Image/Pfannenwender Lumix DMC-TZ18 14,1Mp LEICA Digitalkamera Schwarz - Perfekter Zustand.jpeg" alt="" class="ml-10 w-32 h-32">
-        <p class="mt-10 ml-10 text-3xl facebook bg-yellow-500 h-10">$250</p>
-      </div>
-    </div>
-        <!-- <div class="flex ml-[1200px]">
-                <button class="thumbs-up text-2xl ml-24 ">
-                    <img src="/Image/Like silhouette.jpeg" alt="like" class="w-6 ">
-                </button>
-                <p class="ml-1">3.5k</p>
-            </div> -->
-
-<!-- r1 -->
-    <div class="w-[1400px] h-auto mt-4  rounded-3xl">
-        <div class="flex">
-            <div class=" h-24 ml-6 mt-2 w-[1370px] flex">
-                <img src="/Image/Han Lue.jpeg" alt="" class="rounded-full w-14 h-16">
-                <p class="mt-3 ml-4 text-2xl">
-                    Han Lue
-                <span><img class="w-60 ml-[-15px]" src="/Image/4starr.png" alt=""></span>
-                </p>
-                <button class="bg-black text-white text-xl font-bold w-80 h-14 mt-4 ml-[750px] rounded-full ">
-                    <a href="review.html">Write a Review</a>
-                </button>
-            </div>
-
-          <!-- <div class="flex mt-3 h-36">
-            <img src="/Image/samsung1.jpeg" alt="" class="ml-10 w-40 h-32">
-
-          </div> -->
-        </div>
-        
-        <div class="flex">
-            <div class="h-24 ml-6 w-[1050px]">
-                <span class="font-bold text-black text-lg">Best camera ever</span>
-            <p class="text-xl">Unable to carry heavy cameras anymore, 
-                I bought my first Lumix, loved it and upgraded. Mostly take seascapes and seabirds, 
-                that need minimal editing and are used for publication. </p>
-            </div>
-            <div class="flex items-center">
-                <button class="thumbs-up text-2xl ml-24 ">
-                    <img src="/Image/Like silhouette.jpeg" alt="like" class="w-6 ">
-                </button>
-                <p class="ml-1">3.5k</p>
-                <button class="bg-black text-white w-24 ml-4 h-8 rounded-full">View more</button>
-            </div>
+        <div class="flex flex-wrap justify-center md:justify-start gap-4 md:gap-6">
+            <img src="/Image/Z-PANASONIC-FZ2500-FRONT-600.webp" alt="Z-PANASONIC-FZ2500-FRONT-600" class="w-32 h-32">
+            <img src="/Image/Panasonic Lumix DMC-FX8.jpeg" alt="Panasonic Lumix DMC-FZ2500 side" class="w-32 h-32">
+            <p class="text-3xl bg-yellow-500 h-10 px-4 flex items-center justify-center">$799</p>
         </div>
     </div>
-        
+
+    <!-- Review -->
+    <div class="mt-4 w-full">
+        <div class="flex flex-col md:flex-row md:items-center justify-between space-y-4 md:space-y-0">
+            <div class="flex items-center space-x-4">
+                <img src="/Image/Han Lue.jpeg" alt="Han Lue" class="rounded-full w-14 h-16">
+                <p class="text-2xl">Han Lue</p>
+                <img class="w-36 md:w-60" src="/Image/4starr.png" alt="5 Star Rating">
+            </div>
+            <button class="bg-black text-white text-xl font-bold w-full md:w-80 h-14 rounded-full">
+                <a href="review.html">Write a Review</a>
+            </button>
+        </div>
+        <div class="mt-4">
+            <span class="font-bold text-black text-lg">Amazing Zoom and 4K Features</span>
+            <p class="text-xl">The Panasonic Lumix DMC-FZ2500 is an excellent bridge camera with amazing zoom, sharp images, and fantastic video quality. The 4K feature is superb for casual filming and vlogging.</p>
+        </div>
+        <div class="flex items-center mt-4 space-x-4">
+            <button class="thumbs-up text-2xl">
+                <img src="/Image/Like silhouette.jpeg" alt="like" class="w-6">
+            </button>
+            <p>2.2k</p>
+            <button class="bg-black text-white w-24 h-8 rounded-full">View more</button>
+        </div>
+    </div>
 </div>
-
 
 
 

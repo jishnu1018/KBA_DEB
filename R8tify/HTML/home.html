@@ -10,178 +10,128 @@
 <body class="text-gray-800">
 
     <!-- Navbar -->
-    <div class="bg-black w-full h-24 flex items-center px-4">
-        <a href="home1.html">
-            <img src="/Image/logo.png" alt="logo" class="border border-black rounded-full w-16 h-12 md:w-24 md:h-16">
-        </a>
-        <h1 class="text-white text-xl md:text-2xl italic font-serif ml-4">R8TIFY.com</h1>
-        <div class="flex flex-wrap items-center">
-            <div class="flex ml-4 md:ml-96">
-                <input type="text" placeholder="Search" class="h-8 md:h-10 w-48 md:w-[400px] rounded-l-full pl-4 text-sm md:text-lg">
-                <button class="h-8 md:h-10 w-10 md:w-12 bg-white border-2 border-gray-300 rounded-r-full flex items-center justify-center">
-                    <img src="/Image/search.png" alt="Search" class="h-4 md:h-6 w-4 md:w-6">
-                </button>
+    <div class="bg-black w-full h-auto md:h-24 flex flex-col md:flex-row items-center px-4 py-2">
+        <div class="flex justify-between w-full md:w-auto">
+            <a href="home1.html">
+                <img src="/Image/logo.png" alt="logo" class="border border-black rounded-full w-24 h-16">
+            </a>
+            <h1 class="text-white text-2xl italic font-serif ml-4 mt-4 md:ml-2">R8TIFY.com</h1>
+            <!-- Hamburger Menu -->
+            <button id="menu-toggle" class="text-white text-3xl md:hidden ml-auto">
+                ☰
+            </button>
+        </div>
+        
+        <div id="menu" class="hidden md:flex flex-col md:flex-row w-full md:w-auto items-center mt-4 md:mt-0">
+            <div class="flex flex-col md:flex-row md:ml-96 w-full md:w-auto items-center">
+                <div class="flex w-full md:w-auto">
+                    <input type="text" placeholder="Search" class="h-10 w-full md:w-[400px] rounded-l-full pl-4 text-lg">
+                    <button class="h-10 w-12 bg-white border-2 border-gray-300 rounded-r-full flex items-center justify-center">
+                        <img src="/Image/search.png" alt="Search" class="h-6 w-6">
+                    </button>
+                </div>
+                <a href="categories1.html" class="text-lg font-bold rounded px-4 h-10 py-1 bg-white mt-2 md:mt-0 md:ml-24">Categories</a>
+                <a href="#Trending Insightssss" class="text-lg font-bold rounded px-4 h-10 py-1 bg-white mt-2 md:mt-0 md:ml-24">Trending Insights</a>
             </div>
-            <a href="categories1.html"><div class="text-sm md:text-lg font-bold rounded px-2 md:px-4 ml-2 md:ml-24 h-8 md:h-10 py-1 bg-white">Categories</div></a>
-            <a href="#Trending Insightssss"><div class="text-sm md:text-lg font-bold rounded px-2 md:px-4 h-8 md:h-10 py-1 ml-2 md:ml-24 bg-white">Trending Insights</div></a>
-            <h4 class="mt-2 md:mt-3 ml-2 md:ml-4 text-white">Brian O'Conner</h4>
-            <div class="bg-gray-400 w-8 h-8 md:w-12 md:h-12 rounded-full ml-2 md:ml-4">
-                <a href="profile.html"><img src="/Image/brian.jpeg" alt="" class="rounded-full"></a>
+            <div class="flex flex-col md:flex-row items-center mt-4 ml-4 md:mt-0">
+                <h4 class="text-white">Brian O'Conner</h4>
+                <div class="bg-gray-400 w-12 h-12 rounded-full ml-4">
+                    <a href="profile.html"><img src="/Image/brian.jpeg" alt="" class="rounded-full"></a>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Content -->
+    <!-- Hero Section -->
     <div class="text-center mt-8">
-        <img src="/Image/review-6640064_1280.jpg" alt="image" class="mx-auto w-full md:w-auto">
-        <h1 class="text-3xl md:text-5xl mt-4">Reviews that matter, choices that count.</h1>
-        <button class="bg-black text-white text-lg md:text-xl font-bold w-48 md:w-80 h-10 md:h-14 mt-4 rounded-full">
+        <img src="/Image/review-6640064_1280.jpg" alt="image" class="mx-auto">
+        <h1 class="text-5xl mt-4">Reviews that matter, choices that count.</h1>
+        <button class="bg-black text-white text-xl font-bold w-80 h-14 mt-4 rounded-full">
             <a href="review.html">Write a Review</a>
         </button>
     </div>
 
+    <!-- Popular Categories -->
     <div class="text-center mt-12">
-        <p class="text-xl md:text-2xl">Popular Categories</p>
-        <p class="text-base md:text-lg">Browse our most popular categories</p>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-8 px-4 md:pl-36">
-            <div class="bg-black w-full md:w-72 h-48 md:h-64 rounded-xl flex flex-col items-center">
+        <p class="text-2xl">Popular Categories</p>
+        <p class="text-lg">Browse our most popular categories</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-8 px-8">
+            <div class="bg-black w-full h-64 rounded-xl flex flex-col items-center">
                 <a href="phones.html">
-                    <img src="/Image/phone.jpeg" alt="Smartphones" class="w-32 md:w-48 h-32 md:h-48 rounded-full mt-2">
+                    <img src="/Image/phone.jpeg" alt="Smartphones" class="w-48 h-48 rounded-full mt-2">
                     <p class="text-white font-bold">Smartphones</p>
                 </a>
             </div>
-            <div class="bg-black w-full md:w-72 h-48 md:h-64 rounded-xl flex flex-col items-center">
+            <div class="bg-black w-full h-64 rounded-xl flex flex-col items-center">
                 <a href="console.html">
-                    <img src="/Image/console.jpeg" alt="Gaming Consoles" class="w-32 md:w-48 h-32 md:h-48 rounded-full mt-2">
+                    <img src="/Image/console.jpeg" alt="Gaming Consoles" class="w-48 h-48 rounded-full mt-2">
                     <p class="text-white font-bold">Gaming Consoles</p>
                 </a>
             </div>
-            <div class="bg-black w-full md:w-72 h-48 md:h-64 rounded-xl flex flex-col items-center">
+            <div class="bg-black w-full h-64 rounded-xl flex flex-col items-center">
                 <a href="laptops.html">
-                    <img src="/Image/_.gif" alt="Laptops" class="w-32 md:w-48 h-32 md:h-48 rounded-full mt-2">
+                    <img src="/Image/_.gif" alt="Laptops" class="w-48 h-48 rounded-full mt-2">
                     <p class="text-white font-bold">Laptops</p>
                 </a>
             </div>
-            <div class="bg-black w-full md:w-72 h-48 md:h-64 rounded-xl flex flex-col items-center">
+            <div class="bg-black w-full h-64 rounded-xl flex flex-col items-center">
                 <a href="camera.html">
-                    <img src="/Image/camera.jpeg" alt="Cameras" class="w-32 md:w-48 h-32 md:h-48 rounded-full mt-2">
+                    <img src="/Image/camera.jpeg" alt="Cameras" class="w-48 h-48 rounded-full mt-2">
                     <p class="text-white font-bold">Cameras</p>
                 </a>
             </div>
         </div>
     </div>
 
-    <!-- Trending Insightssss -->
-    <div class="text-center mt-16" id="Trending Insightssss">
-        <h1 class="text-2xl md:text-3xl">Trending Insights</h1>
-        <p class="text-lg md:text-xl">Stay Updated with New Reviews</p>
-        <!-- reviewsss -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 h-auto md:h-[500px] mt-8 px-4">
-            <!-- 1 -->
-            <div class="w-full md:w-[500px] h-72 rounded-3xl border-2 border-black mx-auto text-center pt-2">
-                <div class="h-12 mt-[-5px] flex">
-                    <div class="bg-gray-400 w-8 h-8 md:w-12 md:h-12 rounded-full ml-2">
-                        <img src="/Image/brian.jpeg" alt="" class="rounded-full">
-                    </div>
-                    <p class="mt-2 md:mt-3 ml-2 md:ml-4">Brian O'Conner</p>
-                    <div class="flex items-center">
-                        <button class="thumbs-up ml-[150px] md:ml-[250px] text-2xl">
-                            <img src="/Image/Like silhouette.jpeg" alt="like" class="w-4 md:w-6">
-                        </button>
-                        <p class="ml-1">2k</p>
-                    </div>
+
+    <!-- Footer -->
+    <footer class="bg-black w-full h-auto text-white px-4 py-8 mt-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center md:text-left text-sm md:text-base">
+
+            <!-- Logo & Contact -->
+            <div class="flex flex-col items-center md:items-start">
+                <img src="/Image/logo.png" alt="logo" class="border border-black rounded-full w-20 h-12">
+                <p class="mt-2">
+                    R8tify Inc.<br>
+                    Techno city, Trivandrum, 1018<br><br>
+                    Email: <a href="mailto:r8tifyinc@gmail.com" class="text-blue-500">r8tifyinc@gmail.com</a>
+                </p>
+            </div>
+
+            <!-- About Us -->
+            <div>
+                <p class="text-2xl md:text-2xl">About us</p>
+                <p class="mt-2">
+                    At R8TIFY, we empower confident decisions through trusted reviews. Our platform connects you with real user insights,<br>
+                    helping products shine and guiding you to the right choice.<br>
+                    Discover better. Choose smarter.
+                </p>
+                <hr class="my-4 border-gray-600">
+            </div>
+
+            <!-- Social Media -->
+            <div class="ml-20">
+                <p>Follow us on:</p>
+                <div class="flex justify-center md:justify-start space-x-4 mt-2">
+                    <a href="#" class="pt-2"><img src="/Image/instagram.webp" alt="Instagram" class="w-16"></a>
+                    <a href="#"><img src="/Image/black linkedin app icon.jpeg" alt="LinkedIn" class="w-16"></a>
+                    <a href="#"><img src="/Image/Twitter.jpeg" alt="Twitter" class="w-16"></a>
+                    <a href="#"><img src="/Image/facebook ☆ black.jpeg" alt="Facebook" class="w-16"></a>
                 </div>
-                <img src="/Image/4starr.png" alt="Star Rating" class="w-32 md:w-40 mx-auto mt-[-5px]">
-
-                <p class="font-bold text-2xl md:text-3xl text-red-400">Apple Macbook Air 13"</p>
-                <p class="font-bold">Another amazing laptop</p>
-                <p class="mt-1 text-sm md:text-base">Apple support has been deteriorating continuously since Steve Jobs and it has become almost useless. They are unwilling to assist on anything and my computer only seems to have software issues and still in almost brand new condition.</p>
-            </div>
-            
-            <!-- 2 -->
-            <div class="w-full md:w-[500px] h-72 rounded-3xl border-2 border-black mx-auto text-center pt-2">
-                <div class="h-12 mt-[-5px] flex">
-                    <div class="bg-gray-400 w-8 h-8 md:w-12 md:h-12 rounded-full ml-2">
-                        <img src="/Image/Han Lue.jpeg" alt="" class="rounded-full">
-                    </div>
-                    <h4 class="mt-2 md:mt-3 ml-2 md:ml-4">Han Lue</h4>
-                    <div class="flex items-center">
-                        <button class="thumbs-up ml-[150px] md:ml-[300px] text-2xl">
-                            <img src="/Image/Like silhouette.jpeg" alt="like" class="w-4 md:w-6">
-                        </button>
-                        <p class="ml-1">4k</p>
-                    </div>
-                </div>
-                <img src="/Image/1starr.png" alt="Star Rating" class="w-32 md:w-40 mx-auto mt-[-5px]">
-
-                <p class="font-bold text-2xl md:text-3xl text-red-400">Samsung Galaxy S23 Ultra</p>
-                <p class="font-bold">Very poor UX choices</p>
-                <p class="mt-1 text-sm md:text-base">The camera quality is worse than my five year old Oppo Find X2 Pro. You cannot turn off most 'image enhancements' and third party camera apps aren't allowed to make use of the full sensor.</p>
             </div>
 
-            <!-- 3 -->
-            <div class="w-full md:w-[500px] h-72 rounded-3xl border-2 border-black mx-auto text-center pt-2">
-                <div class="h-12 mt-[-5px] flex">
-                    <div class="bg-gray-400 w-8 h-8 md:w-12 md:h-12 rounded-full ml-2">
-                        <img src="/Image/letty.jpeg" alt="" class="rounded-full">
-                    </div>
-                    <h4 class="mt-2 md:mt-3 ml-2 md:ml-4">Letty Ortiz</h4>
-                    <div class="flex items-center">
-                        <button class="thumbs-up ml-[150px] md:ml-[270px] text-2xl">
-                            <img src="/Image/Like silhouette.jpeg" alt="like" class="w-4 md:w-6">
-                        </button>
-                        <p class="ml-1">3.5k</p>
-                    </div>
-                </div>
-                <img src="/Image/3starr.png" alt="Star Rating" class="w-32 md:w-40 mx-auto mt-[-5px]">
-
-                <p class="font-bold text-2xl md:text-3xl text-red-400">Olitech EasyFlip 2</p>
-                <p class="font-bold">Well done Olitech!</p>
-                <p class="mt-1 text-sm md:text-base">Olitech have great customer service when you need it, and such prompt delivery of your purchase. Cannot remember when I bought my first Olitech phone, but a good while back. Nice to get your hassles sorted.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- footer -->
-    <footer class="bg-black w-full h-auto md:h-[220px] text-white grid grid-cols-1 md:grid-cols-3 px-4 py-8">
-        <div class="ml-4 md:ml-12 text-sm md:text-lg">
-            <img src="/Image/logo.png" alt="logo" class="border border-black rounded-full w-12 h-8 md:w-20 md:h-12 mt-1">
-            <p>R8tify Inc.<br>
-                Techno city,<br>
-                Trivandrum, 1018<br><br>
-                Email: <a href="mailto:r8tifyinc@gmail.com" class="text-blue-500">r8tifyinc@gmail.com</a>
-            </p>
         </div>
 
-        <div class="text-center mt-4 md:mt-0">
-            <p class="text-xl md:text-2xl">About us</p>
-            <p class="text-xs md:text-sm mt-2">
-                At R8TIFY, we empower confident decisions through trusted reviews. Our platform connects you with real user insights,<br>
-                helping products shine and guiding you to the right choice.<br>
-                Discover better. Choose smarter.
-            </p>
-            <hr class="my-4 border-gray-600">
-        </div>
-
-        <div class="text-center mt-4 md:mt-0">
-            <p>Follow us on:</p>
-            <div class="flex justify-center space-x-2 mt-2">
-                <a href="#">
-                    <img src="/Image/instagram.webp" alt="Instagram logo" class="w-16 md:w-24">
-                </a>
-                <a href="#">
-                    <img src="/Image/black linkedin app icon.jpeg" alt="LinkedIn logo" class="w-12 md:w-[70px] h-12 md:h-18">
-                </a>
-                <a href="#">
-                    <img src="/Image/Twitter.jpeg" alt="Twitter logo" class="w-10 md:w-[60px] h-8 md:h-12 mt-2 md:mt-3">
-                </a>
-                <a href="#">
-                    <img src="/Image/facebook ☆ black.jpeg" alt="Facebook logo" class="w-12 md:w-[70px] h-12 md:h-16">
-                </a>
-            </div>
-        </div>
-
-        <p class="text-center md:text-left col-span-1 md:col-span-3 mt-4 md:mt-0 md:ml-[800px] w-full">&copy; 2025 R8TIFY, Inc. All rights reserved.</p>
+        <p class="text-center mt-6 text-sm md:text-base">&copy; 2025 R8TIFY, Inc. All rights reserved.</p>
     </footer>
+
+
+    <!-- JavaScript for Navbar Toggle -->
+    <script>
+        document.getElementById("menu-toggle").addEventListener("click", function() {
+            document.getElementById("menu").classList.toggle("hidden");
+        });
+    </script>
+
 </body>
 </html>
