@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { authenticate } from "../Middleware/authenticate.js";
 import { Review } from "../Model/sample1.js";
+import { user } from "./userauth.js";
 
 const review=Router();
 
@@ -35,20 +36,20 @@ review.post('/review',authenticate,async(req,res)=>{
     }
 })
 
-// user.get('/product',async(req,res)=>{
-//     const product=req.query.name
-//     const prod= await Review.findOne({name:product})
-//     if(prod){
-//         res.status(200).send(prod)
-//         console.log(prod);
-//     }
-//     else{
-//         res.status(404).send("error")
-//         console.log("error");
-//     }
+user.get('/product',async(req,res)=>{
+    const product=req.query.name
+    const prod= await Review.findOne({name:product})
+    if(prod){
+        res.status(200).send(prod)
+        console.log(prod);
+    }
+    else{
+        res.status(404).send("error")
+        console.log("error");
+    }
 
 
-// })
+})
 
 
 export {review}

@@ -73,7 +73,7 @@ addcourse.put('/update',auth,admincheck,async(req,res)=>{
                     console.log(name);
 
                     await name.save()
-                    res.status(400).send("updated coursename")
+                    res.status(400).send(" coursename")
 
 
             }
