@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken'
 
-const authenticate=(req,res,next)=>{
+const adminauthen=(req,res,next)=>{
     const cookie=req.headers.cookie
     console.log(cookie);
     if(!cookie){
@@ -11,11 +11,11 @@ const authenticate=(req,res,next)=>{
         const [name,token]=cookie.trim().split("=");
         console.log(name);
         console.log(token);
-        if(name=='cookietoken'){
-            const verified=jwt.verify(token,process.env.SECRET_KEY)
+        if(name=='TokenCookiee'){
+            const verified=jwt.verify(token,process.env.SECRET_KEY1)
             console.log(verified);
-            req.email=verified.EMAIL
-            req.password=verified.PASSWORD;
+            req.email=verified.Email
+            req.password=verified.Password;
             next();
         }
         
@@ -23,4 +23,4 @@ const authenticate=(req,res,next)=>{
     }
 }
 
-export {authenticate}
+export {adminauthen}

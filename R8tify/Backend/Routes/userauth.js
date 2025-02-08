@@ -1,23 +1,90 @@
 import { Router } from "express";
-import { sample } from "../Model/sample.js";
+import { SIGNUP } from "../Model/sample.js";
+import bcrypt from 'bcrypt';
+import jwt from "jsonwebtoken";
 
-const user=Router()
 
-user.post('/signup',async(req,res)=>{
-    try{
-    const data=req.body
-    const result=await sample.create(data)
-    res.status(200).json(result)
-    console.log(result);
+const user = Router();
+
+user.post('/signup', async (req, res) => {
+    try {
+        const { EMAIL, PASSWORD, CONFIRM } = req.body;
     
+
+        const existingUser = await SIGNUP.findOne({ email:EMAIL });    
+        if (existingUser) {
+             res.status(400).json({ message: "Email already exists" });
+             console.log("Email already exists");
+             
+        }
+        else{
+
+            if (PASSWORD !== CONFIRM) {
+                console.log("Passwords do not match");
+                res.status(400).json({ message: "Passwords do not match" });
+            }
+            else{
+    
+            const newpassword =await bcrypt.hash(PASSWORD,10);
+                console.log(newpassword);
+                const newuser=new SIGNUP({
+                    email:EMAIL,
+                    password:newpassword
+                })
+                await newuser.save()
+                console.log(newuser);
+                console.log("Signup successfull");
+    
+            res.status(201).json({ message: "Signup successfull", user: newuser });
+            }
+        }
+    } catch (error) {
+        console.error("Error:", error);
+        res.status(500).json({ message: "Internal server error" });
+    }
+});
+
+
+
+user.post('/login',async (req,res)=>{
+    try{
+        const {EMAIL,PASSWORD} = req.body;
+        
+        const result = await SIGNUP.findOne({email:EMAIL})
+        console.log(result);
+        
+        if(!result){
+            console.log("Enter a valid username");
+            res.status(400).send("Enter a valid username");
+        }
+        else{
+            console.log(result.password);
+            const valid=await bcrypt.compare(PASSWORD,result.password)
+            console.log(valid);
+            if(valid){
+                const token= jwt.sign({email:EMAIL},process.env.SECRET_KEY)
+                console.log(token);
+                res.cookie('cookietoken',token,{
+                    httpOnly:true
+                })
+                console.log("Logged in successfully");
+                
+                res.status(200).json({message:"Logged in successfully"});
+            }
+            else{
+                
+                res.status(401).send("Unauthorized access");
+
+            }
+            
+        }
     }
     catch{
-        console.log("error");
-        res.status(500).json()
+        res.status(500).send("Internal Server Error")
     }
 })
 
-export {user}
+export { user };
 
 
 

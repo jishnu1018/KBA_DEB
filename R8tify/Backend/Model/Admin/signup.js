@@ -4,11 +4,10 @@ import { model } from "mongoose";
 
 
 
-const signup = new Schema({
+const adminsignup = new Schema({
     email:{type:String,required:true},
     password:{type:String,required:true},
-    confirm:{type:String,}
 })
-const SIGNUP=model('Signup',signup)
+const Adminsign=model('AdminSignup',adminsignup)
 
-export {SIGNUP}
+export {Adminsign}
