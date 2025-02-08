@@ -9,259 +9,220 @@
 <body class="text-gray-800">
 
     <!-- Navbar -->
-    <div class="bg-black w-full h-24 flex items-center px-4">
-        <a href="home1.html">
-            <img src="/Image/logo.png" alt="logo" class="border border-black rounded-full w-24 h-16">
-        </a>
-        <h1 class="text-white text-2xl italic font-serif ml-4">R8TIFY.com</h1>
-        <div class="flex">
-            <div class="flex ml-96">
-                <input type="text" placeholder="Search" class="h-10 w-[400px] rounded-l-full pl-4 text-lg">
-                <button class="h-10 w-12 bg-white border-2 border-gray-300 rounded-r-full flex items-center justify-center">
-                    <img src="/Image/search.png" alt="Search" class="h-6 w-6">
-                </button>
+    <div class="bg-black w-full h-auto md:h-24 flex flex-col md:flex-row items-center px-4 py-2">
+        <div class="flex justify-between w-full md:w-auto">
+            <a href="home.html">
+                <img src="/Image/logo.png" alt="logo" class="border border-black rounded-full w-24 h-16">
+            </a>
+            <h1 class="text-white text-2xl italic font-serif ml-4 mt-4 md:ml-2">R8TIFY.com</h1>
+            <!-- Hamburger Menu -->
+            <button id="menu-toggle" class="text-white text-3xl md:hidden ml-auto">
+                ☰
+            </button>
+        </div>
+        
+        <div id="menu" class="hidden md:flex flex-col md:flex-row w-full md:w-auto items-center mt-4 md:mt-0">
+            <div class="flex flex-col md:flex-row md:ml-96 w-full md:w-auto items-center">
+                <div class="flex w-full md:w-auto">
+                    <input type="text" placeholder="Search" class="h-10 w-full md:w-[400px] rounded-l-full pl-4 text-lg">
+                    <button class="h-10 w-12 bg-white border-2 border-gray-300 rounded-r-full flex items-center justify-center">
+                        <img src="/Image/search.png" alt="Search" class="h-6 w-6">
+                    </button>
+                </div>
+                <a href="categories.html" class="text-lg font-bold rounded px-4 h-10 py-1 bg-white mt-2 md:mt-0 md:ml-24">Categories</a>
+                <a href="#Trending Insightssss" class="text-lg font-bold rounded px-4 h-10 py-1 bg-white mt-2 md:mt-0 md:ml-24">Trending Insights</a>
             </div>
-            <button class="text-lg font-bold rounded px-4 ml-24 bg-white"><a href="categories.html">Categories</a></button>
-            <button class="text-lg font-bold rounded px-4 ml-24  bg-white"><a href="#Trending Insightssss">Trending Insights</a></button>
-            <h4 class="mt-3 ml-4 text-white">Brian O'Conner</h4>
-            <div class="bg-gray-400 w-12 h-12 rounded-full ml-4">
-                <a href="profile.html"><img src="/Image/brian.jpeg" alt="" class="rounded-full"></a>
+            <div class="flex flex-col md:flex-row items-center mt-4 ml-4 md:mt-0">
+                <h4 class="text-white">Brian O'Conner</h4>
+                <div class="bg-gray-400 w-12 h-12 rounded-full ml-4">
+                    <a href="profile.html"><img src="/Image/brian.jpeg" alt="Profile" class="rounded-full"></a>
+                </div>
             </div>
         </div>
     </div>
-    <div class=" flex text-center h-20 ">
-        <p class="text-4xl mt-3 ml-16">Products</p>
-        <a href="phones1.html"><div class="bg-black w-44 h-12 text-2xl pt-2 rounded-full ml-24 mt-3 text-white " >
-            Smartphones
-        </div></a>
-        <a href="laptops1.html"><div class="bg-black w-44 h-12 text-2xl pt-2 rounded-full ml-24 mt-3 text-white ">
-            Laptops
-        </div></a>
-        <a href="console1.html"><div class="bg-black w-52 h-12 text-2xl pt-2 rounded-full ml-24 mt-3 text-white ">
-            Gaming Consoles
-        </div></a>
-        <a href="camera1.html"><div class="bg-black w-44 h-12 text-2xl pt-2 rounded-full ml-24 mt-3 text-white ">
-            Camera
-        </div></a>
-        <a href="speakers1.html"><div class="bg-black w-44 h-12 text-2xl pt-2 rounded-full ml-24 mt-3 text-white ">
-            Speakers
-        </div></a>
-        <!-- <div class="border-2 border-black w-52 ml-24 mt-3 w-[250px] h-44 pl-4">
-            <label class="text-2xl"><a href="phones1.html"> Smartphones</a></label><br>
-            <label class="text-2xl"><a href="laptops1.html"> Laptops</a></label><br>
-            <label class="text-2xl"><a href="console1.html"> Gaming Consoles</a></label><br>
-            <label class="text-2xl"><a href="camera1.html"> Camera</a></label><br>
-            <label class="text-2xl"><a href="speakers1.html"> Speakers</a></label>
-        </div> -->
+
+    <!-- JavaScript for Navbar Toggle -->
+    <script>
+        document.getElementById("menu-toggle").addEventListener("click", function() {
+            document.getElementById("menu").classList.toggle("hidden");
+        });
+    </script>
+    <!-- Products Section -->
+    <div class="flex flex-col md:flex-row justify-between items-center text-center h-auto p-6">
+        <p class="text-4xl mt-3">Products</p>
+        <a href="phones.html"><div class="bg-black w-44 h-12 text-2xl pt-2 rounded-full mt-3 text-white">Smartphones</div></a>
+        <a href="laptops.html"><div class="bg-black w-44 h-12 text-2xl pt-2 rounded-full mt-3 text-white">Laptops</div></a>
+        <a href="console.html"><div class="bg-black w-52 h-12 text-2xl pt-2 rounded-full mt-3 text-white">Gaming Consoles</div></a>
+        <a href="camera.html"><div class="bg-black w-44 h-12 text-2xl pt-2 rounded-full mt-3 text-white">Camera</div></a>
+        <a href="speakers.html"><div class="bg-black w-44 h-12 text-2xl pt-2 rounded-full mt-3 text-white">Speakers</div></a>
     </div>
 
-    <!-- contentt -->
-     <!-- samsung -->
-    <div class="w-[1400px] h-auto mx-auto border-black border-2 rounded-3xl">
-        <div class="flex">
-            <div class=" h-24 ml-6 mt-2 w-[900px] flex">
-                <img src="/Image/Acoustic Energy 300 Series Speakers.jpeg" alt="" class="rounded-full w-14 h-16">
-                <p class=" ml-4 text-md">
-                    <span class="text-xl font-bold">Acoustic Energy 300 Series</span>  <br>
+    <!-- Content Section -->
+    <!-- Samsung -->
+    <div class="w-full max-w-7xl mx-auto border-black border-2 rounded-3xl p-6 mb-6">
+        <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6 md:justify-between">
+            <div class="flex items-center space-x-4">
+                <img src="/Image/Acoustic Energy 300 Series Speakers.jpeg" alt="Acoustic Speakers" class="rounded-full w-16 h-16 md:w-24 md:h-24">
+                <p class="text-md">
+                    <span class="text-xl font-bold">Acoustic Energy 300 Series</span><br>
                     <span>4.0 ⭐</span><br>
                     <span>Designed for music enthusiasts and audiophiles</span><br>
-                   <span>Type: 2.5-way, bass-reflex design</span><br>
-                   <span>25mm (1-inch) aluminum dome tweeter</span><br>
-                   <span>Sensitivity: 87-89dB depending on model</span><br>
+                    <span>Type: 2.5-way, bass-reflex design</span><br>
+                    <span>25mm (1-inch) aluminum dome tweeter</span><br>
+                    <span>Sensitivity: 87-89dB depending on model</span>
                 </p>
             </div>
 
-          <div class="flex mt-3 h-36">
-            <img src="/Image/Acoustic Energy 300 Series Speakers.jpeg" alt="" class="ml-10 w-32 h-32">
-            <img src="/Image/The Best Home Sound Systems, According To 4 Industry Experts.jpeg" alt="" class="ml-10 w-32 h-32">
-            <p class="mt-10 ml-10 text-3xl facebook bg-yellow-500 h-10">$108</p>
-          </div>
-        </div>
-            <!-- <div class="flex ml-[1200px]">
-                    <button class="thumbs-up text-2xl ml-24 ">
-                        <img src="/Image/Like silhouette.jpeg" alt="like" class="w-6 ">
-                    </button>
-                    <p class="ml-1">3.5k</p>
-                </div> -->
-
-<!-- r1 -->
-        <div class="w-[1400px] h-auto mt-4  rounded-3xl">
-            <div class="flex">
-                <div class=" h-24 ml-6 mt-2 w-[1370px] flex">
-                    <img src="/Image/Han Lue.jpeg" alt="" class="rounded-full w-14 h-16">
-                    <p class="mt-3 ml-4 text-2xl">
-                        Han Lue
-                    <span><img class="w-60 ml-[-15px]" src="/Image/1starr.png" alt=""></span>
-                    </p>
-                    <button class="bg-black text-white text-xl font-bold w-80 h-14 mt-4 ml-[750px] rounded-full ">
-                        <a href="review.html">Write a Review</a>
-                    </button>
-                </div>
-    
-              <!-- <div class="flex mt-3 h-36">
-                <img src="/Image/samsung1.jpeg" alt="" class="ml-10 w-40 h-32">
-    
-              </div> -->
+            <div class="flex flex-wrap md:flex-nowrap mt-3 h-36 space-x-4 justify-center">
+                <img src="/Image/Acoustic Energy 300 Series Speakers.jpeg" alt="Speaker 1" class="w-32 h-32 object-cover">
+                <img src="/Image/The Best Home Sound Systems, According To 4 Industry Experts.jpeg" alt="Speaker System" class="w-32 h-32 object-cover">
+                <p class="mt-10 text-3xl bg-yellow-500 h-10 px-4 flex items-center">$108</p>
             </div>
-            
-            <div class="flex">
-                <div class="h-24 ml-6 w-[1050px]">
-                    <span class="font-bold text-black text-lg">Average item</span>
-                <p class="text-xl">The sound quality is average..</p>
-                <button class="bg-black text-white text-xl font-bold w-80 h-14 mt-4 ml- rounded-full absolute left-[1450px] top-[520px]">
-                    <a href="">Write a Review</a>
+        </div>
+
+        <!-- Review Section -->
+        <div class="mt-4 w-full">
+            <div class="flex flex-wrap md:flex-nowrap items-center justify-between">
+                <div class="h-24 flex items-center">
+                    <img src="/Image/Han Lue.jpeg" alt="Han Lue" class="rounded-full w-14 h-16">
+                    <p class="text-2xl ml-4">Han Lue</p>
+                    <img class="w-36 ml-2" src="/Image/1starr.png" alt="1-star rating">
+                </div>
+                <button class="bg-black text-white text-xl font-bold w-full md:w-80 h-14 rounded-full mt-4 md:mt-0">
+                    <a href="review.html">Write a Review</a>
                 </button>
-                </div>
-                <div class="flex items-center">
-                    <button class="thumbs-up text-2xl ml-24 ">
-                        <img src="/Image/Like silhouette.jpeg" alt="like" class="w-6 ">
-                    </button>
-                    <p class="ml-1">3.5k</p>
-                    <button class="bg-black text-white w-24 ml-4 h-8 rounded-full">View more</button>
-                </div>
+            </div>
+
+            <div class="mt-4">
+                <span class="font-bold text-black text-lg">Average item</span>
+                <p class="text-xl">The sound quality is average..</p>
+            </div>
+
+            <div class="flex items-center mt-4">
+                <button class="thumbs-up text-2xl ml-4">
+                    <img src="/Image/Like silhouette.jpeg" alt="Like" class="w-6">
+                </button>
+                <p class="ml-1">3.5k</p>
+                <button class="bg-black text-white w-24 ml-4 h-8 rounded-full">View more</button>
             </div>
         </div>
-            
     </div>
-<br>
 
-<!-- realme -->
-<div class="w-[1400px] h-auto mx-auto border-black border-2 rounded-3xl">
-    <div class="flex">
-        <div class=" h-24 ml-6 mt-2 w-[900px] flex">
-            <img src="/Image/Redragon GS510 RGB Desktop Speakers, 2_0 Channel PC Computer Stereo Speaker with 4 Colorful LED Backlight Modes, Enhanced Bass and Easy-Access Volume Control, USB Powered w_ 3.5mm Cable" alt="" class="rounded-full w-14 h-16">
-            <p class=" ml-4 text-md">
-                <span class="text-xl font-bold">Redragon GS510 RGB Desktop Speakers</span>  <br>
+
+
+
+
+<!-- Realme -->
+<div class="w-full max-w-7xl mx-auto border-black border-2 rounded-3xl p-6 mb-6">
+    <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6 md:justify-between">
+        <div class="flex items-center space-x-4">
+            <img src="/Image/Redragon GS510 RGB Desktop Speakers, 2_0 Channel PC Computer Stereo Speaker with 4 Colorful LED Backlight Modes, Enhanced Bass and Easy-Access Volume Control, USB Powered w_ 3.5mm Cable"  alt="Redragon GS510 RGB Speakers" class="rounded-full w-16 h-16 md:w-24 md:h-24">
+            <p class="text-md">
+                <span class="text-xl font-bold">Redragon GS510 RGB Desktop Speakers</span><br>
                 <span>4.0 ⭐</span><br>
                 <span>Speaker Type: 2.0 channel desktop speakers</span><br>
-               <span>Dynamic RGB lighting effects</span><br>
-               <span>USB-powered (no separate power adapter required)</span><br>
-               <span>Works with Windows, macOS, and Linux systems</span><br>
+                <span>Dynamic RGB lighting effects</span><br>
+                <span>USB-powered (no separate power adapter required)</span><br>
+                <span>Works with Windows, macOS, and Linux systems</span>
             </p>
         </div>
 
-      <div class="flex mt-3 h-36">
-        <img src="/Image/Redragon GS510 RGB Desktop Speakers, 2_0 Channel PC Computer Stereo Speaker with 4 Colorful LED Backlight Modes, Enhanced Bass and Easy-Access Volume Control, USB Powered w_ 3.5mm Cable" alt="" class="ml-10 w-32 h-32">
-        <img src="/Image/Top 25 Budget Gaming Speakers Under $25, $50, $100, $150, $200 _ Gaming Shift.jpeg" alt="" class="ml-10 w-32 h-32">
-        <p class="mt-10 ml-10 text-3xl facebook bg-yellow-500 h-10">$107</p>
-      </div>
-    </div>
-        <!-- <div class="flex ml-[1200px]">
-                <button class="thumbs-up text-2xl ml-24 ">
-                    <img src="/Image/Like silhouette.jpeg" alt="like" class="w-6 ">
-                </button>
-                <p class="ml-1">3.5k</p>
-            </div> -->
-
-<!-- r1 -->
-    <div class="w-[1400px] h-auto mt-4  rounded-3xl">
-        <div class="flex">
-            <div class=" h-24 ml-6 mt-2 w-[1370px] flex">
-                <img src="/Image/brian.jpeg" alt="" class="rounded-full w-14 h-16">
-                <p class="mt-3 ml-4 text-2xl">
-                    Brian O'Conner
-                <span><img class="w-60 ml-[-15px]" src="/Image/4starr.png" alt=""></span>
-                </p>
-                <button class="bg-black text-white text-xl font-bold w-80 h-14 mt-4 ml-[750px] rounded-full ">
-                    <a href="review.html">Write a Review</a>
-                </button>
-            </div>
-
-          <!-- <div class="flex mt-3 h-36">
-            <img src="/Image/samsung1.jpeg" alt="" class="ml-10 w-40 h-32">
-
-          </div> -->
+        <div class="flex flex-wrap md:flex-nowrap mt-3 h-36 space-x-4 justify-center">
+            <img src="/Image/Redragon GS510 RGB Desktop Speakers, 2_0 Channel PC Computer Stereo Speaker with 4 Colorful LED Backlight Modes, Enhanced Bass and Easy-Access Volume Control, USB Powered w_ 3.5mm Cable" class="w-32 h-32 object-cover">
+            <img  src="/Image/Top 25 Budget Gaming Speakers Under $25, $50, $100, $150, $200 _ Gaming Shift.jpeg" alt="" class="w-32 h-32 object-cover">
+            <p class="mt-10 text-3xl bg-yellow-500 h-10 px-4 flex items-center">$107</p>
         </div>
-        
-        <div class="flex">
-            <div class="h-24 ml-6 w-[1050px]">
-                <span class="font-bold text-black text-lg">Love the speakers.</span>
+    </div>
+
+    <!-- Review Section -->
+    <div class="mt-4 w-full">
+        <div class="flex flex-wrap md:flex-nowrap items-center justify-between">
+            <div class="h-24 flex items-center">
+                <img src="/Image/brian.jpeg" alt="Brian O'Conner" class="rounded-full w-14 h-16">
+                <p class="text-2xl ml-4">Brian O'Conner</p>
+                <img class="w-36 ml-2" src="/Image/4starr.png" alt="4-star rating">
+            </div>
+            <button class="bg-black text-white text-xl font-bold w-full md:w-80 h-14 rounded-full mt-4 md:mt-0">
+                <a href="review.html">Write a Review</a>
+            </button>
+        </div>
+
+        <div class="mt-4">
+            <span class="font-bold text-black text-lg">Love the speakers.</span>
             <p class="text-xl">Great for budget-conscious users seeking stylish, functional speakers for casual gaming and media.</p>
-  
         </div>
-            <div class="flex items-center">
-                <button class="thumbs-up text-2xl ml-24 ">
-                    <img src="/Image/Like silhouette.jpeg" alt="like" class="w-6 ">
-                </button>
-                <p class="ml-1">3.5k</p>
-                <button class="bg-black text-white w-24 ml-4 h-8 rounded-full">View more</button>
-            </div>
+
+        <div class="flex items-center mt-4">
+            <button class="thumbs-up text-2xl ml-4">
+                <img src="/Image/Like silhouette.jpeg" alt="Like" class="w-6">
+            </button>
+            <p class="ml-1">3.5k</p>
+            <button class="bg-black text-white w-24 ml-4 h-8 rounded-full">View more</button>
         </div>
     </div>
-        
 </div>
 
-<br>
-<!-- apple -->
-<div class="w-[1400px] h-auto mx-auto  border-black border-2 rounded-3xl">
-    <div class="flex">
-        <div class=" h-24 ml-6 mt-2 w-[900px] flex">
-            <img src="/Image/JBL BOOMBOX3 Portable Speaker - Black, Bluetooth Speakers _ P_C. Richard & Son" alt="" class="rounded-full w-14 h-16">
-            <p class=" ml-4 text-md">
-                <span class="text-xl font-bold">JBL BOOMBOX3 Portable Speaker</span>  <br>
+<!-- Apple -->
+<div class="w-full max-w-7xl mx-auto border-black border-2 rounded-3xl p-6 mb-6">
+    <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6 md:justify-between">
+        <div class="flex items-center space-x-4">
+            <img src="/Image/JBL BOOMBOX3 Portable Speaker - Black, Bluetooth Speakers _ P_C. Richard & Son" alt="JBL BOOMBOX3 Portable Speaker" class="rounded-full w-16 h-16 md:w-24 md:h-24">
+            <p class="text-md">
+                <span class="text-xl font-bold">JBL BOOMBOX3 Portable Speaker</span><br>
                 <span>4.5 ⭐</span><br>
                 <span>Massive sound with deep bass and crisp highs</span><br>
-               <span>Up to 24 hours of playtime on a single charge</span><br>
-               <span>Bluetooth 5.3 for seamless wireless pairing</span><br>
-               <span>Frequency response: 40Hz - 20kHz</span><br>
+                <span>Up to 24 hours of playtime on a single charge</span><br>
+                <span>Bluetooth 5.3 for seamless wireless pairing</span><br>
+                <span>Frequency response: 40Hz - 20kHz</span>
             </p>
         </div>
 
-      <div class="flex mt-3 h-36">
-        <img src="/Image/JBL BOOMBOX3 Portable Speaker - Black, Bluetooth Speakers _ P_C. Richard & Son" alt="" class="ml-10 w-32 h-32">
-        <img src="/Image/130fc7cb-937d-486f-9a32-1b8df751498e.jpeg" alt="" class="ml-10 w-32 h-32">
-        <p class="mt-10 ml-10 text-3xl facebook bg-yellow-500 h-10">$208</p>
-      </div>
-    </div>
-        <!-- <div class="flex ml-[1200px]">
-                <button class="thumbs-up text-2xl ml-24 ">
-                    <img src="/Image/Like silhouette.jpeg" alt="like" class="w-6 ">
-                </button>
-                <p class="ml-1">3.5k</p>
-            </div> -->
-
-<!-- r1 -->
-    <div class="w-[1400px] h-auto mt-4  rounded-3xl">
-        <div class="flex">
-            <div class=" h-24 ml-6 mt-2 w-[1370px] flex ">
-                <img src="/Image/brian.jpeg" alt="" class="rounded-full w-14 h-16">
-                <p class="mt-3 ml-4 text-2xl">
-                    Brian O'Conner
-                <span><img class="w-60 ml-[-15px]" src="/Image/3starr.png" alt=""></span>
-                
-                </p>
-                <button class="bg-black text-white text-xl font-bold w-80 h-14 mt-4 ml-[750px] rounded-full ">
-                    <a href="review.html">Write a Review</a>
-                </button>
-            </div>
-
-          <!-- <div class="flex mt-3 h-36">
-            <img src="/Image/samsung1.jpeg" alt="" class="ml-10 w-40 h-32">
-
-          </div> -->
-        </div>
-        
-        <div class="flex">
-            <div class="h-24 ml-6 w-[1050px]">
-                <span class="font-bold text-black text-lg">Blue tooth speaker</span>
-            <p class="text-xl">This speaker is excellent. Has a good sound with enhanced bass. 
-                It has a long battery life and it is very easy to use. It is far better than other 
-                speakers I have</p>
-            </div>
-            <div class="flex items-center">
-                <button class="thumbs-up text-2xl ml-24 ">
-                    <img src="/Image/Like silhouette.jpeg" alt="like" class="w-6 ">
-                </button>
-                <p class="ml-1">3.5k</p>
-                <button class="bg-black text-white w-24 ml-4 h-8 rounded-full">View more</button>
-            </div>
+        <div class="flex flex-wrap md:flex-nowrap mt-3 h-36 space-x-4 justify-center">
+            <img src="/Image/JBL BOOMBOX3 Portable Speaker - Black, Bluetooth Speakers _ P_C. Richard & Son" alt="Speaker 1" class="w-32 h-32 object-cover">
+            <img src="/Image/130fc7cb-937d-486f-9a32-1b8df751498e.jpeg" alt="Speaker System" class="w-32 h-32 object-cover">
+            <p class="mt-10 text-3xl bg-yellow-500 h-10 px-4 flex items-center">$208</p>
         </div>
     </div>
-        
+
+    <!-- Review Section -->
+    <div class="mt-4 w-full">
+        <div class="flex flex-wrap md:flex-nowrap items-center justify-between">
+            <div class="h-24 flex items-center">
+                <img src="/Image/brian.jpeg" alt="Brian O'Conner" class="rounded-full w-14 h-16">
+                <p class="text-2xl ml-4">Brian O'Conner</p>
+                <img class="w-36 ml-2" src="/Image/3starr.png" alt="3-star rating">
+            </div>
+            <button class="bg-black text-white text-xl font-bold w-full md:w-80 h-14 rounded-full mt-4 md:mt-0">
+                <a href="review.html">Write a Review</a>
+            </button>
+        </div>
+
+        <div class="mt-4">
+            <span class="font-bold text-black text-lg">Bluetooth Speaker</span>
+            <p class="text-xl">This speaker is excellent. It has good sound with enhanced bass, a long battery life, and is very easy to use. It is far better than other speakers I have.</p>
+        </div>
+
+        <div class="flex items-center mt-4">
+            <button class="thumbs-up text-2xl ml-4">
+                <img src="/Image/Like silhouette.jpeg" alt="Like" class="w-6">
+            </button>
+            <p class="ml-1">3.5k</p>
+            <button class="bg-black text-white w-24 ml-4 h-8 rounded-full">View more</button>
+        </div>
+    </div>
 </div>
+
+
+
+
+
 
 
 
 
 </body>
 </html>
+
+
+
+
