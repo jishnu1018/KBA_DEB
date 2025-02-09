@@ -9,7 +9,8 @@ const review = new Schema({
     star:{type:String,required:true},
     title:{type:String,required:true},
     about:{type:String,required:true},
-    image:{type:String}
+    image:{type:String},
+    image2:{type:String}
 })
 const Review=model('Review',review)
 

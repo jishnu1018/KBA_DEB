@@ -4,11 +4,14 @@ import bcrypt from 'bcrypt';
 import jwt from "jsonwebtoken";
 
 
+
+
+
 const user = Router();
 
 user.post('/signup', async (req, res) => {
     try {
-        const { EMAIL, PASSWORD, CONFIRM } = req.body;
+        const { EMAIL, PASSWORD, CONFIRM,ROLE } = req.body;
     
 
         const existingUser = await SIGNUP.findOne({ email:EMAIL });    
@@ -29,7 +32,8 @@ user.post('/signup', async (req, res) => {
                 console.log(newpassword);
                 const newuser=new SIGNUP({
                     email:EMAIL,
-                    password:newpassword
+                    password:newpassword,
+                    role:ROLE
                 })
                 await newuser.save()
                 console.log(newuser);
@@ -62,7 +66,7 @@ user.post('/login',async (req,res)=>{
             const valid=await bcrypt.compare(PASSWORD,result.password)
             console.log(valid);
             if(valid){
-                const token= jwt.sign({email:EMAIL},process.env.SECRET_KEY)
+                const token= jwt.sign({email:EMAIL,role:result.role},process.env.SECRET_KEY)
                 console.log(token);
                 res.cookie('cookietoken',token,{
                     httpOnly:true

@@ -3,11 +3,13 @@ import { adminauthen } from "../Middleware/adminauthen.js";
 import { PROduct } from "../Model/Admin/add.js";
 import { SIGNUP } from "../Model/sample.js";
 import { Review } from "../Model/sample1.js";
+import { adminCheck } from "../Middleware/admincheck.js";
+import { authenticate } from "../Middleware/authenticate.js";
 
 const adminadd=Router();
 
 
-adminadd.post('/productadd',adminauthen,async(req,res)=>{
+adminadd.post('/productadd',adminauthen,adminCheck,async(req,res)=>{
     try{
         const {Product,Description,Price}=req.body
         console.log(Product);
@@ -36,7 +38,7 @@ adminadd.post('/productadd',adminauthen,async(req,res)=>{
     }
 })
 
-adminadd.put('/productupdate',adminauthen,async(req,res)=>{
+adminadd.put('/productupdate',adminauthen,adminCheck,async(req,res)=>{
     try{
         const {Product,Description,Price}=req.body
         const oneproduct= await PROduct.findOne({ Product_name:Product}) 
@@ -60,7 +62,7 @@ adminadd.put('/productupdate',adminauthen,async(req,res)=>{
     }
 })
 
-adminadd.get('/getproduct',async(req,res)=>{
+adminadd.get('/getproduct',adminauthen,adminCheck,async(req,res)=>{
     const product=req.query.name
     const prod= await PROduct.findOne({name:product})
     if(prod){
@@ -74,7 +76,7 @@ adminadd.get('/getproduct',async(req,res)=>{
 })
 
 
-adminadd.delete('/productdelete',adminauthen,async(req,res)=>{
+adminadd.delete('/productdelete',adminauthen,adminCheck,async(req,res)=>{
     try{
         const productname=req.query.pname
         console.log(productname);
@@ -94,7 +96,20 @@ adminadd.delete('/productdelete',adminauthen,async(req,res)=>{
     }
 })
 
-adminadd.delete('/userdelete',adminauthen,async(req,res)=>{
+adminadd.get('/userget',adminauthen,adminCheck,async(req,res)=>{
+    const Name=req.query.email
+    const userr= await SIGNUP.findOne({email:Name})
+    if(userr){
+        res.status(200).send(userr)
+        console.log(userr);
+    }
+    else{
+        res.status(404).send("error")
+        console.log("error");
+    }
+})
+
+adminadd.delete('/userdelete',adminauthen,adminCheck,async(req,res)=>{
     try{
         console.log("buni");
         
@@ -118,7 +133,7 @@ adminadd.delete('/userdelete',adminauthen,async(req,res)=>{
     }
 })
 
-adminadd.delete('/reviewdelete',adminauthen,async(req,res)=>{
+adminadd.delete('/reviewdelete',adminauthen,adminCheck,async(req,res)=>{
     try{
         console.log("buni");
         
@@ -143,7 +158,7 @@ adminadd.delete('/reviewdelete',adminauthen,async(req,res)=>{
 })
 
 adminadd.get('/adminlogout',(req,res)=>{
-    res.clearCookie('TokenCookiee');
+    res.clearCookie('cookietoken');
     res.status(200).send("logout")
     console.log("logout");
     

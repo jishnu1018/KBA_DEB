@@ -6,29 +6,31 @@ import jwt from "jsonwebtoken"
 
 const admin=Router();
 
-// admin.post('/adminsignup',async(req,res)=>{
-//     try{
+admin.post('/adminsignup',async(req,res)=>{
+    try{
         
-//         const {Email,Password}=req.body;
-//         const newpassword=await bcrypt.hash(Password,10)
-//         console.log( newpassword);
-//         const aadmin=new Adminsign({
-//             email:Email,
-//             password:newpassword
-//         })
-//         await aadmin.save();
-//         console.log(aadmin);
-//         console.log("Signup successfull");
+        const {Email,Password,Role}=req.body;
+        const newpassword=await bcrypt.hash(Password,10)
+        console.log( newpassword);
+        const aadmin=new Adminsign({
+            email:Email,
+            password:newpassword,
+            role:Role
+            
+        })
+        await aadmin.save();
+        console.log(aadmin);
+        console.log("Signup successfull");
         
-//         res.status(201).json({ message: "Signup successfull" });
+        res.status(201).json({ message: "Signup successfull" });
 
         
-//     }   
-//     catch (error) {
-//         console.error("Error:", error);
-//         res.status(500).json({ message: "Internal server error" });
-//     }
-// })
+    }   
+    catch (error) {
+        console.error("Error:", error);
+        res.status(500).json({ message: "Internal server error" });
+    }
+})
 
 admin.post('/adminlogin',async(req,res)=>{
     try{
@@ -45,9 +47,9 @@ admin.post('/adminlogin',async(req,res)=>{
             const valid=await bcrypt.compare(Password,result.password)
             console.log(valid);
             if(valid){
-                const token= jwt.sign({email:Email},process.env.SECRET_KEY1)
+                const token= jwt.sign({email:Email,role:result.role},process.env.SECRET_KEY)
                 console.log(token);
-                res.cookie('TokenCookiee',token,{
+                res.cookie('cookietoken',token,{
                     httpOnly:true
                 })
                 console.log("Logged in successfully");
