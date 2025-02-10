@@ -10,6 +10,9 @@ const productt = new Schema({
     price:{type:String,required:true},
     image:{type:String},
     image2:{type:String}
+},
+{
+    timestamps:true
 })
 const PROduct=model('Product',productt)
 

@@ -11,6 +11,9 @@ const review = new Schema({
     about:{type:String,required:true},
     image:{type:String},
     image2:{type:String}
+},
+{
+    timestamps:true
 })
 const Review=model('Review',review)
 

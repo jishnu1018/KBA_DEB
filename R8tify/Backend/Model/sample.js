@@ -9,6 +9,9 @@ const signup = new Schema({
     password:{type:String,required:true},
     confirm:{type:String,},
     role:{type:String,required:true}
+},
+{
+    timestamps:true
 })
 const SIGNUP=model('Signup',signup)
 

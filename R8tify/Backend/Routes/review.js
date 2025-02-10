@@ -29,6 +29,8 @@ review.post('/review',authenticate,usercheck,upload.fields
         console.log("already there bro")
         }
         else{
+            const sameproduct= await PROduct.findOne({ Product_name:Name}) 
+            if(sameproduct){
             let imagebase64_1=null;
             let imagebase64_2=null;
         
@@ -50,7 +52,11 @@ review.post('/review',authenticate,usercheck,upload.fields
             console.log(REVIEW);
             res.status(200).send("Review added");
             console.log("Review added");
+        }
+        else{
+            console.log("Product not here");
             
+        }
         }
     }
     catch{
