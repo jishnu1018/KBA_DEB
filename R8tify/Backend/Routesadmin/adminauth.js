@@ -6,6 +6,7 @@ import jwt from "jsonwebtoken"
 
 const admin=Router();
 
+//signup
 admin.post('/adminsignup',async(req,res)=>{
     try{
         
@@ -32,6 +33,8 @@ admin.post('/adminsignup',async(req,res)=>{
     }
 })
 
+
+//login
 admin.post('/adminlogin',async(req,res)=>{
     try{
 

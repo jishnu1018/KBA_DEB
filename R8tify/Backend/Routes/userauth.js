@@ -9,6 +9,7 @@ import jwt from "jsonwebtoken";
 
 const user = Router();
 
+//signup
 user.post('/signup', async (req, res) => {
     try {
         const { EMAIL, PASSWORD, CONFIRM,ROLE } = req.body;
@@ -49,7 +50,7 @@ user.post('/signup', async (req, res) => {
 });
 
 
-
+//login
 user.post('/login',async (req,res)=>{
     try{
         const {EMAIL,PASSWORD} = req.body;

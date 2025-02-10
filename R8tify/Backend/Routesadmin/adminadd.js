@@ -4,12 +4,20 @@ import { PROduct } from "../Model/Admin/add.js";
 import { SIGNUP } from "../Model/sample.js";
 import { Review } from "../Model/sample1.js";
 import { adminCheck } from "../Middleware/admincheck.js";
-import { authenticate } from "../Middleware/authenticate.js";
+//import { authenticate } from "../Middleware/authenticate.js";
+import { upload } from "../Middleware/Multer.js";
+
 
 const adminadd=Router();
+const ConvertToBase64=(buffer)=>{
+    return buffer.toString("base64");
+}
 
-
-adminadd.post('/productadd',adminauthen,adminCheck,async(req,res)=>{
+//Add a product
+adminadd.post('/productadd',adminauthen,adminCheck,upload.fields
+    ([{name:"productimage1",maxCount:1},
+        {name:"productimage2",maxCount:1}]),
+    async(req,res)=>{
     try{
         const {Product,Description,Price}=req.body
         console.log(Product);
@@ -21,10 +29,20 @@ adminadd.post('/productadd',adminauthen,adminCheck,async(req,res)=>{
         console.log("already there bro")
         }
         else{
+            let proimage1=null;
+            let proimage2=null;
+            if(req.files && req.files["productimage1"]){
+                proimage1=ConvertToBase64(req.files["productimage1"][0].buffer)
+            }
+            if(req.files && req.files["productimage2"]){
+                proimage2=ConvertToBase64(req.files["productimage2"][0].buffer)
+            }
             const pro=new PROduct({
             Product_name:Product,
             Product_description:Description,
-            price:Price
+            price:Price,
+            image:proimage1,
+            image2:proimage2
         })  
         await pro.save();
         console.log(pro);
@@ -38,6 +56,7 @@ adminadd.post('/productadd',adminauthen,adminCheck,async(req,res)=>{
     }
 })
 
+//Update the Product
 adminadd.put('/productupdate',adminauthen,adminCheck,async(req,res)=>{
     try{
         const {Product,Description,Price}=req.body
@@ -62,6 +81,7 @@ adminadd.put('/productupdate',adminauthen,adminCheck,async(req,res)=>{
     }
 })
 
+//Get the product
 adminadd.get('/getproduct',adminauthen,adminCheck,async(req,res)=>{
     const product=req.query.name
     const prod= await PROduct.findOne({name:product})
@@ -76,6 +96,7 @@ adminadd.get('/getproduct',adminauthen,adminCheck,async(req,res)=>{
 })
 
 
+//Delete the Product
 adminadd.delete('/productdelete',adminauthen,adminCheck,async(req,res)=>{
     try{
         const productname=req.query.pname
@@ -96,6 +117,7 @@ adminadd.delete('/productdelete',adminauthen,adminCheck,async(req,res)=>{
     }
 })
 
+//Get the User
 adminadd.get('/userget',adminauthen,adminCheck,async(req,res)=>{
     const Name=req.query.email
     const userr= await SIGNUP.findOne({email:Name})
@@ -109,6 +131,8 @@ adminadd.get('/userget',adminauthen,adminCheck,async(req,res)=>{
     }
 })
 
+
+//Delete the User
 adminadd.delete('/userdelete',adminauthen,adminCheck,async(req,res)=>{
     try{
         console.log("buni");
@@ -133,6 +157,7 @@ adminadd.delete('/userdelete',adminauthen,adminCheck,async(req,res)=>{
     }
 })
 
+//Delete the Review
 adminadd.delete('/reviewdelete',adminauthen,adminCheck,async(req,res)=>{
     try{
         console.log("buni");
@@ -157,21 +182,12 @@ adminadd.delete('/reviewdelete',adminauthen,adminCheck,async(req,res)=>{
     }
 })
 
+//logout
 adminadd.get('/adminlogout',(req,res)=>{
     res.clearCookie('cookietoken');
     res.status(200).send("logout")
     console.log("logout");
     
 })
-
-
-
-
-
-
-
-
-
-
 
 export {adminadd}

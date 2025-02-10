@@ -13,6 +13,7 @@ const ConvertToBase64=(buffer)=>{
     return buffer.toString("base64");
 }
 
+//Adding a review
 review.post('/review',authenticate,usercheck,upload.fields
     ([{name:"reviewimage1",maxCount:1},
         {name:"reviewimage2",maxCount:1}
@@ -59,6 +60,7 @@ review.post('/review',authenticate,usercheck,upload.fields
 })
 
 
+//Update the review
 review.put('/reviewupdate',authenticate,usercheck,async(req,res)=>{
     try{
         const {Name,Star,Title,About}=req.body
@@ -84,6 +86,7 @@ review.put('/reviewupdate',authenticate,usercheck,async(req,res)=>{
     }
 })
 
+//Get the Product
 review.get('/product',usercheck,authenticate,async(req,res)=>{
     const product=req.query.name
     const prod= await PROduct.findOne({Product_name:product})
@@ -100,6 +103,7 @@ review.get('/product',usercheck,authenticate,async(req,res)=>{
 })
 
 
+//Add the Profile
 review.post('/profile',authenticate,usercheck,upload.single("profilephoto"),async(req,res)=>{
     try{
         const {NAME,PHN,DESC}=req.body
@@ -133,7 +137,8 @@ review.post('/profile',authenticate,usercheck,upload.single("profilephoto"),asyn
     }
 })
 
-review.put('/profileupdate',usercheck,authenticate,async(req,res)=>{
+//Upadte profile
+review.put('/profileupdate',authenticate,usercheck,async(req,res)=>{
     try{
         const {NAME,PHN,DESC}=req.body
         console.log(NAME);
@@ -161,7 +166,7 @@ review.put('/profileupdate',usercheck,authenticate,async(req,res)=>{
 })
 
 
-
+//logout
 review.get('/logout',(req,res)=>{
     res.clearCookie('cookietoken');
     res.status(200).send("logout")

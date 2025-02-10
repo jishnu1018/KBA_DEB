@@ -8,7 +8,8 @@ const productt = new Schema({
     Product_name:{type:String,required:true},
     Product_description:{type:String,required:true},
     price:{type:String,required:true},
-    image:{type:String}
+    image:{type:String},
+    image2:{type:String}
 })
 const PROduct=model('Product',productt)
 
