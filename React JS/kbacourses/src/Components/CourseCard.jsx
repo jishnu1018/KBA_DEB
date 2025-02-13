@@ -5,7 +5,7 @@ import courseImage from '../assets/Images/blockchain.avif'
 
 const CourseCard = ({course}) => {
   return (
-    <div class="w-[400px] h- bg-stone-400 pt-6 rounded ml-12 place-items-center ">
+    <div class="w-[500px] h- bg-cyan-200 pt-6 mb-4 rounded place-items-center ">
     <div class="place-items-center ">
         <p class="font-bold text-2xl mb-6"> {course.title} </p>
         <img class="rounded" src= {courseImage} alt="img" />
