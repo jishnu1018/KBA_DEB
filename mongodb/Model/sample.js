@@ -10,6 +10,6 @@ const demo = new Schema({
     dob:{type:String,required:true}
 
 }) 
-const sample=model('sample1',demo)
+const sample=model('login',demo)
 
 export {sample}

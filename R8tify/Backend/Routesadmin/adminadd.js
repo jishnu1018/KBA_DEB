@@ -21,7 +21,7 @@ adminadd.post('/productadd',adminauthen,adminCheck,upload.fields
     try{
         const {Product,Description,Price}=req.body
         console.log(Product);
-        console.log("li");
+        
         
         const sameproduct= await PROduct.findOne({ Product_name:Product}) 
         if(sameproduct){
@@ -67,7 +67,7 @@ adminadd.put('/productupdate',adminauthen,adminCheck,async(req,res)=>{
             oneproduct.price=Price
             console.log(oneproduct);
             await oneproduct.save()
-            res.status(400).send("updated ")
+            res.status(200).send("updated ")
     
     }
     else{
@@ -84,7 +84,7 @@ adminadd.put('/productupdate',adminauthen,adminCheck,async(req,res)=>{
 //Get the product
 adminadd.get('/getproduct',adminauthen,adminCheck,async(req,res)=>{
     const product=req.query.name
-    const prod= await PROduct.findOne({name:product})
+    const prod= await PROduct.findOne({Product_name:product})
     if(prod){
         res.status(200).send(prod)
         console.log(prod);
@@ -112,7 +112,7 @@ adminadd.delete('/productdelete',adminauthen,adminCheck,async(req,res)=>{
         }
     }
     catch{
-        res.status(200).send("Error")
+        res.status(500).send("Error")
 
     }
 })
@@ -135,11 +135,11 @@ adminadd.get('/userget',adminauthen,adminCheck,async(req,res)=>{
 //Delete the User
 adminadd.delete('/userdelete',adminauthen,adminCheck,async(req,res)=>{
     try{
-        console.log("buni");
+        
         
         const uusername=req.query.uname
         console.log(uusername);
-        console.log("ppp");
+        
         
         const uName=await SIGNUP.findOneAndDelete({email:uusername})
         if (uName){
@@ -152,7 +152,7 @@ adminadd.delete('/userdelete',adminauthen,adminCheck,async(req,res)=>{
         }
     }
     catch{
-        res.status(200).send("Error")
+        res.status(400).send("Error")
 
     }
 })
@@ -164,7 +164,6 @@ adminadd.delete('/reviewdelete',adminauthen,adminCheck,async(req,res)=>{
         
         const review=req.query.rname
         console.log(review);
-        console.log("ppp");
         
         const RName=await Review.findOneAndDelete({name:review})
         if (RName){
@@ -177,7 +176,7 @@ adminadd.delete('/reviewdelete',adminauthen,adminCheck,async(req,res)=>{
         }
     }
     catch{
-        res.status(200).send("Error")
+        res.status(500).send("Error")
 
     }
 })

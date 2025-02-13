@@ -4,8 +4,8 @@ const adminauthen=(req,res,next)=>{
     const cookie=req.headers.cookie
     console.log(cookie);
     if(!cookie){
-        res.status(400).send("Login to add a review")
-        console.log("Login to add a review");
+        res.status(400).send("Login to access")
+        console.log("Login to access");
     }
     else{
         const [name,token]=cookie.trim().split("=");
@@ -25,6 +25,28 @@ const adminauthen=(req,res,next)=>{
 }
 
 export {adminauthen}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
