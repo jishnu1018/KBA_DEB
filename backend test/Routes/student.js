@@ -25,7 +25,7 @@ student.post('/addetails',async(req,res)=>{
             })
             await details.save()
             console.log(details);
-            res.status(200).send("enrolled Successfully")
+            res.status(200).send(details)
         }
     }
     catch(error){
@@ -69,7 +69,7 @@ student.put('/update',async(req,res)=>{
            DATA.date=DAte
      await DATA.save()
         console.log(DATA);
-        res.status(200).send("details updated")
+        res.status(200).send(DATA)
     }
     
     else{
@@ -91,10 +91,10 @@ student.delete('/delete',async(req,res)=>{
     console.log(enr);
     const res=await enroll.findOneAndDelete({enrollment_no:enr})
     if(res){
+        res.status(200).send("deleted")
         console.log(res);
         console.log("deleted");
-
-        res.status(200).send("deleted")
+        
         
     }
     else{
