@@ -9,5 +9,5 @@ const demo = new Schema({
 
 }) 
 const sample=model('userdetails',demo)
-
+    
 export {sample}
