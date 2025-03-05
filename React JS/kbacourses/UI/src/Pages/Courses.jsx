@@ -7,7 +7,7 @@ const Courses = () => {
   return (
     <>
     <Nav/>
-    <CourseGrid courses={courses}/>
+    <CourseGrid/>
 </> 
  )
 }

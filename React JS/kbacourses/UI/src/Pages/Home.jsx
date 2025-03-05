@@ -12,7 +12,7 @@ const Home = () => {
     <Nav/>
     <Hero/>
     <Topcourse/>
-    <CourseGrid courses={courses}/>
+    <CourseGrid/>
     <Footer/>
     </>
     
