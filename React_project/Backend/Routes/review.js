@@ -116,73 +116,113 @@ review.put('/reviewupdate', authenticate,async (req, res) => {
 
 
 //Get the Product
-review.get('/product',  authenticate, async (req, res) => {
-    try {
-        const productName = req.query.name;
+review.get("/product", authenticate, async (req, res) => {
+  try {
+    const productName = req.query.name?.trim(); // Trim whitespace
 
-        // Find the product by name
-        const prod = await PROduct.findOne({ Product_name: productName });
-
-        if (!prod) {
-            res.status(404).send("Product not found");
-            console.log("Product not found");
-            return; // Exit function to prevent further execution
-        }
-
-        // Fetch reviews using the product's _id
-        const reviews = await Review.find({ productId: prod._id });
-
-        if (reviews.length > 0) {
-            
-            res.status(200).send(reviews);
-            console.log(reviews);
-        } else {
-            res.status(404).send({ message: "No reviews found for this product" });
-            console.log("No reviews found");
-        }
-    } catch (error) {
-        res.status(500).send({ message: "Server error", error });
-        console.error("Error fetching reviews:", error);
+    if (!productName) {
+      return res.status(400).json({ message: "Product name is required" });
     }
+
+    // Find the product (case-insensitive)
+    const prod = await PROduct.findOne({ Product_name: { $regex: new RegExp(productName, "i") } });
+
+    if (!prod) {
+      console.log("Product not found");
+      return res.status(404).json({ message: "Product not found" });
+    }
+
+    // Fetch reviews using the product's _id
+    const reviews = await Review.find({ productId: prod._id });
+
+    console.log(`Found ${reviews.length} reviews for product: ${productName}`);
+
+    return res.status(200).json(reviews); // Always return 200, even if empty
+  } catch (error) {
+    console.error("Error fetching reviews:", error.message);
+    return res.status(500).json({ message: "Server error", error: error.message });
+  }
 });
 
 
 
 
 //Upadte profile
-review.put('/profileupdate', authenticate, upload.single('updatephoto'), async (req, res) => {
-    try {
-        const { NAME, PHN, DESC } = req.body;
-        console.log(NAME);
 
-        let user = await USER.findOne({ name: NAME });
-        
-        
-        // if (!user) {
-        //     console.log("User not found");
-        //     return res.status(400).send("User not found");
-        // }
+review.get("/getUserProfile", async (req, res) => {
+  try {
+    const userId = req.user.id; // Assuming authentication middleware sets req.user
+    const user = await USER.findById(userId).select("-password"); // Exclude password
 
-        // Update fields
-        user.phn_no = PHN;
-        user.description = DESC;
-        
-        // Update profile photo if a new one is uploaded
-        if (req.file) {
-            user.profilephoto = req.file.path;
-        } else if (!user.profilephoto) {
-            // Set default photo if none exists
-            user.profilephoto = "default_profile.jpg"; // Replace with your actual default image
-        }
+    if (!user) return res.status(404).json({ error: "User not found" });
 
-        await user.save();
-        console.log("Profile updated:", user);
-        res.status(200).send("Profile updated");
-    } catch (err) {
-        console.error("Error:", err);
-        res.status(500).send("Internal server error");
-    }
+    res.json({
+      name: user.name,
+      phn_no: user.phn_no,
+      description: user.description || "",
+      profilephoto: user.profilephoto || "",
+    });
+  } catch (error) {
+    console.error("Error fetching user profile:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
 });
+
+// Route to update user profile
+review.put("/profileupdate", upload.single("updatephoto"), async (req, res) => {
+  try {
+    const { email, NAME, PHN } = req.body;  // Accept email from frontend
+
+    if (!email || !NAME || !PHN) {
+      return res.status(400).json({ error: "All fields are required" });
+    }
+
+    const updatedUser = await USER.findOneAndUpdate({ email }, {
+      name: NAME,
+      phn_no: PHN,
+      profilephoto: req.file ? `/uploads/${req.file.filename}` : undefined,
+    }, { new: true });
+
+    res.json({ message: "Profile updated successfully", profilephoto: updatedUser.profilephoto });
+  } catch (error) {
+    console.error("Error updating profile:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+// review.put('/profileupdate', authenticate, upload.single('updatephoto'), async (req, res) => {
+//     try {
+//         const { NAME, PHN, DESC } = req.body;
+//         console.log(NAME);
+
+//         let user = await USER.findOne({ name: NAME });
+        
+        
+//         // if (!user) {
+//         //     console.log("User not found");
+//         //     return res.status(400).send("User not found");
+//         // }
+
+//         // Update fields
+//         user.phn_no = PHN;
+//         user.description = DESC;
+        
+//         // Update profile photo if a new one is uploaded
+//         if (req.file) {
+//             user.profilephoto = req.file.path;
+//         } else if (!user.profilephoto) {
+//             // Set default photo if none exists
+//             user.profilephoto = "default_profile.jpg"; // Replace with your actual default image
+//         }
+
+//         await user.save();
+//         console.log("Profile updated:", user);
+//         res.status(200).send("Profile updated");
+//     } catch (err) {
+//         console.error("Error:", err);
+//         res.status(500).send("Internal server error");
+//     }
+// });
 
 
 //logout

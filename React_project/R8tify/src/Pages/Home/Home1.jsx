@@ -1,11 +1,11 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
-import { homeimg } from '../assets/Images/Images'
-import Footerr from '../components/Footerr'
-import Four from '../components/Four'
+import Navbar from '../../components/Navbar'
+import { homeimg } from '../../assets/Images/Images'
+import Footerr from '../../components/Footerr'
+import Four from '../../components/Four'
 import { Link } from 'react-router-dom'
-import Addreview from './Addreview'
-const Home = () => {
+
+const Home1 = () => {
   return (
     <>
     <Navbar/>
@@ -27,4 +27,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Home1

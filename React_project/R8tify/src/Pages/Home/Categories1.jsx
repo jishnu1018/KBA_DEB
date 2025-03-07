@@ -1,12 +1,12 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
-import Products from '../components/Products'
-import Four from '../components/Four'
-import Review from '../components/Review'
+import Navbar from '../../components/Navbar'
+import Products from '../../components/Products'
+import Four from '../../components/Four'
+import Review from '../../components/Review'
 import { Link } from 'react-router-dom'
-import Addreview from './Addreview'
+import Addreview from '../LoginHome/Addreview'
 
-const Categories = () => {
+const Categories1 = () => {
   return (
     <>
     <Navbar/>
@@ -20,4 +20,4 @@ const Categories = () => {
   )
 }
 
-export default Categories
+export default Categories1

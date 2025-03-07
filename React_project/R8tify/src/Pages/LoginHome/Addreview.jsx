@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import Navbar from '../components/Navbar';
-import Footerr from '../components/Footerr';
+import Footerr from '../../components/Footerr';
 
 const Addreview = () => {
   const [rating, setRating] = useState(0);

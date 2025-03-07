@@ -3,6 +3,8 @@ import { Router } from "express";
 import bcrypt from 'bcrypt';
 import jwt from "jsonwebtoken";
 import { USER } from "../Model/profile.js";
+import { authenticate } from "../Middleware/authenticate.js";
+import { upload } from "../Middleware/Multer.js";
 
 
 
@@ -136,15 +138,83 @@ user.post('/login',async (req,res)=>{
     }
 })
 
+
+
+
+
+
+
+// Route to fetch user details by email
+user.get("/user/:email", async (req, res) => {
+    try {
+      const user = await USER.findOne({ email: req.params.email });
+
+      if (!user) {
+        return res.status(404).json({ message: "User not found" });
+      }
+
+      res.json({
+        name: user.name,
+        phn:user.phn_no, 
+        email: user.email,  // ✅ Include the email here
+        image: user.image || "/default-avatar.jpg"
+      }); 
+    } catch (error) {
+      console.error("Error fetching user:", error);
+      res.status(500).json({ message: "Server error" });
+    }
+});
+
+user.get("/user-profile", authenticate, async (req, res) => {
+    try {
+        const user = await USER.findById(req.user.id).select("-password");
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        res.json({
+            name: user.name,
+            email: user.email,
+            phone: user.phn_no,
+            image: user.image || "", // ✅ Ensure image is included
+        });
+    } catch (error) {
+        console.error("Error fetching user profile:", error);
+        res.status(500).json({ message: "Server error" });
+    }
+});
+
+  
+  
+
+user.put("/user-profile", authenticate, upload.single("image"), async (req, res) => {
+    try {
+        const { name, phone } = req.body;
+        let user = await USER.findById(req.user.id);
+        
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        user.name = name || user.name;
+        user.phn_no = phone || user.phn_no;
+
+        // ✅ Store image as Base64
+        if (req.file) {
+            user.image = `data:${req.file.mimetype};base64,${req.file.buffer.toString("base64")}`;
+        }
+
+        await user.save();
+        res.json({ message: "Profile updated successfully", user });
+    } catch (error) {
+        console.error("Error updating profile:", error);
+        res.status(500).json({ message: "Server error" });
+    }
+});
+
+
+
 export { user };
-
-
-
-
-
-
-
-
 
 
 //using map

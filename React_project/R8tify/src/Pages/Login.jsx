@@ -36,9 +36,12 @@ const Login = () => {
           const userData = await response.json();
           console.log("User Data:", userData); // Debugging: Log user data
   
+          // ✅ Save user email in localStorage
+          localStorage.setItem("userEmail", Email); 
+  
           // Redirect based on role
           if (Email === "ji2003jishnu@gmail.com") {
-              navigate('/adminhome');
+              navigate('/adminadd');
           } else {
               navigate('/home');
           }
@@ -46,6 +49,7 @@ const Login = () => {
           setError(err.message || 'Invalid credentials: Please try again!');
       }
   };
+  
   
 
 

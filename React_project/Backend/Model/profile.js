@@ -1,20 +1,16 @@
 import { Schema, model } from "mongoose";
 
 const UserSchema = new Schema({
-    name: { type: String,required: true },
+    name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    confirm: { type: String }, // Ideally, don't store this. Use it for validation only.
-
-    //namee: { type: String, default: "" }, // Added in Profile Edit
     phn_no: { type: String, default: "" },
-    description: { type: String, default: "" },
-    image: { type: String, default: "" },
-    
-    isProfileComplete: { type: Boolean, default: false } // Track profile completion
+    image: { type: String, default: "" },  // ✅ Now stores Base64 data
+    isProfileComplete: { type: Boolean, default: false }
 }, {
     timestamps: true
 });
+
 
 const USER = model("User", UserSchema);
 

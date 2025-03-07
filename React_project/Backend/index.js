@@ -9,11 +9,14 @@ import { adminadd } from "./Routesadmin/adminadd.js";
 
 dotenv.config();
 const app=express();
+// app.use(cors({
+//     origin:'*',
+//     credentials:true
+// }))
 app.use(cors({
-    origin:'*',
-    credentials:true
-}))
-
+    origin: "http://localhost:3000", // Allow only your frontend
+    credentials: true // Allow cookies/auth headers
+}));
 
 app.use(json())
 app.use('/',user)
