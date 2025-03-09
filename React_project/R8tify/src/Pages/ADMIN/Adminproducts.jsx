@@ -3,13 +3,12 @@ import { Link, useNavigate } from "react-router-dom";
 
 const AdminProducts = () => {
   const [products, setProducts] = useState([]);
-  const navigate = useNavigate(); // Hook to navigate to edit page
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchProducts();
   }, []);
 
-  // Function to fetch products
   const fetchProducts = async () => {
     try {
       const response = await fetch("http://localhost:9001/adminproducts");
@@ -23,7 +22,6 @@ const AdminProducts = () => {
     }
   };
 
-  // Function to delete a product
   const deleteProduct = async (productId) => {
     if (!window.confirm("Are you sure you want to delete this product?")) return;
 
@@ -50,33 +48,36 @@ const AdminProducts = () => {
         <h2 className="text-2xl font-bold text-center mb-6">Manage Products</h2>
 
         <div className="bg-white shadow-lg rounded-lg overflow-hidden">
-          <table className="min-w-full border-collapse">
-            <thead>
-              <tr className="bg-gray-200 text-gray-700">
-                <th className="px-6 py-3 text-left">Image</th>
-                <th className="px-6 py-3 text-left">Product ID</th>
-                <th className="px-6 py-3 text-left">Product Name</th>
-                <th className="px-6 py-3 text-left">Price</th>
-                <th className="px-6 py-3 text-left">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {products.length > 0 ? (
-                products.map((product) => (
+          {products.length > 0 ? (
+            <table className="min-w-full border-collapse">
+              <thead>
+                <tr className="bg-gray-200 text-gray-700">
+                  <th className="px-6 py-3 text-left">Image</th>
+                  <th className="px-6 py-3 text-left">Product ID</th>
+                  <th className="px-6 py-3 text-left">Product Name</th>
+                  <th className="px-6 py-3 text-left">Category</th>
+                  <th className="px-6 py-3 text-left">Price</th>
+                  <th className="px-6 py-3 text-left">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {products.map((product) => (
                   <tr key={product._id} className="border-b hover:bg-gray-100 transition">
                     <td className="px-6 py-2">
                       {product.image ? (
                         <img
-                          src={product.image.startsWith("data:image") ? product.image : `http://localhost:9001/${product.image}`}
-                          alt={product.Product_name}
-                          className="w-16 h-16 object-cover rounded"
-                        />
+                        src={product.image ? `data:image/png;base64,${product.image}` : "/placeholder.jpg"}
+                        alt={product.Product_name}
+                        className="w-16 h-16 object-cover rounded"
+                      />
+                      
                       ) : (
                         <span className="text-gray-500">No Image</span>
                       )}
                     </td>
                     <td className="px-6 py-2">{product._id}</td>
                     <td className="px-6 py-2">{product.Product_name}</td>
+                    <td className="px-6 py-2">{product.category || "N/A"}</td>
                     <td className="px-6 py-2">${product.price}</td>
                     <td className="px-6 py-2 flex space-x-2">
                       <button
@@ -93,16 +94,12 @@ const AdminProducts = () => {
                       </button>
                     </td>
                   </tr>
-                ))
-              ) : (
-                <tr>
-                  <td colSpan="5" className="text-center py-4 text-gray-500">
-                    No products found.
-                  </td>
-                </tr>
-              )}
-            </tbody>
-          </table>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            <p className="text-center py-4 text-gray-500">No products found.</p>
+          )}
         </div>
       </div>
 

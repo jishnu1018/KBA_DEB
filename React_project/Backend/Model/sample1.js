@@ -4,7 +4,7 @@ const reviewSchema = new Schema(
   {
 
     productId: { type: Types.ObjectId, ref: "Product", required: true }, // Referencing Product schema
-    userId:{type: Types.ObjectId, ref: "PROFILE", },
+    userId: { type: Types.ObjectId, ref: "User", required: true },
     star: { type: Number, required: true }, // Changed to Number
     title: { type: String, required: true },
     about: { type: String, required: true },

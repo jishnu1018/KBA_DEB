@@ -60,11 +60,9 @@ const Admin = () => {
                             <Link to="/adminproducts">Products</Link>
                         </li>
                         <li className="p-4 hover:bg-gray-700 w-60">
-                            <Link to="/admin/reviews">Reviews</Link>
+                            <Link to="/seereviews">Reviews</Link>
                         </li>
-                        <li className="p-4 hover:bg-gray-700">
-                            <Link to="#">Settings</Link>
-                        </li>
+                        
                     </ul>
                 </nav>
                 <div className="p-4 border-t border-gray-700 mt-auto">

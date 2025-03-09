@@ -14,108 +14,138 @@ const ConvertToBase64=(buffer)=>{
     return buffer.toString("base64");
 }
 
-//Adding a review   
+//Adding a review  
 review.post(
-    "/review",
-    authenticate,
-    upload.fields([
-      { name: "reviewimage1", maxCount: 1 },
-      { name: "reviewimage2", maxCount: 1 }
-    ]),
-    async (req, res) => {
-      try {
-        const { Name, Star, Title, About } = req.body;
-  
-        // if (!req.user || !req.user._id) {
-        //   return res.status(401).send("Unauthorized: User not found");
-        // }
-  
-        console.log("Review for:", Name);
-  
-        // Find the product in the database
-        const sameproduct = await PROduct.findOne({ Product_name: Name });
-  
-        if (!sameproduct) {
-          console.log("Product not found");
-          return res.status(404).send("Product not found");
-        }
-  
-        let imagebase64_1 = null;
-        let imagebase64_2 = null;
-  
-        if (req.files?.reviewimage1) {
-          imagebase64_1 = ConvertToBase64(req.files.reviewimage1[0].buffer);
-        }
-        if (req.files?.reviewimage2) {
-          imagebase64_2 = ConvertToBase64(req.files.reviewimage2[0].buffer);
-        }
-  
-        // Save the review with productId and authenticated userId
-        const newReview = new Review({
-          productId: sameproduct._id,
-          //userId: req.user._id, // Using authenticated userId
-          star: parseInt(Star, 10), // Convert string to number safely
-          title: Title,
-          about: About,
-          image: imagebase64_1,
-          image2: imagebase64_2
-        });
-  
-        await newReview.save();
-  
-        // Populate userId and productId before sending response
-        const populatedReview = await Review.findById(newReview._id)
-          .populate("userId", "name image") // Select user name and email
-          .populate("productId", "Product_name Product_description price image image2"); // Select product details
-  
-        console.log("Review added:", populatedReview);
-  
-        res.status(201).json({
-          message: "Review added successfully",
-          review: populatedReview
-        });
-      } catch (error) {
-        console.error("Error adding review:", error);
-        res.status(500).json({ message: "Internal Server Error", error: error.message });
-      }
+  "/review",
+  authenticate,
+  upload.fields([
+    { name: "reviewimage1", maxCount: 1 },
+    { name: "reviewimage2", maxCount: 1 },
+  ]),
+  async (req, res) => {
+    try {
+      const { Name, Star, Title, About } = req.body;
+      const sameproduct = await PROduct.findOne({ Product_name: Name });
+
+      if (!sameproduct) return res.status(404).send("Product not found");
+
+      let imagebase64_1 = req.files?.reviewimage1?.[0]?.buffer ? ConvertToBase64(req.files.reviewimage1[0].buffer) : null;
+      let imagebase64_2 = req.files?.reviewimage2?.[0]?.buffer ? ConvertToBase64(req.files.reviewimage2[0].buffer) : null;
+
+      const newReview = new Review({
+        productId: sameproduct._id,
+        userId: req.user.id,
+        star: parseInt(Star, 10),
+        title: Title,
+        about: About,
+        image: imagebase64_1,
+        image2: imagebase64_2,
+      });
+
+      await newReview.save();
+
+      res.status(201).json({ message: "Review added successfully", review: newReview });
+    } catch (error) {
+      res.status(500).json({ message: "Internal Server Error", error: error.message });
     }
-  );
-  
+  }
+);
+
+
+// ✅ Get product reviews - Fixed endpoint & response
+review.get("/api/review/product", async (req, res) => {
+  try {
+    const productName = req.query.name?.trim();
+    if (!productName) return res.status(400).json({ message: "Product name is required" });
+
+    const prod = await PROduct.findOne({ Product_name: { $regex: new RegExp(productName, "i") } });
+    if (!prod) return res.status(404).json({ message: "Product not found" });
+
+    const reviews = await Review.find({ productId: prod._id }).populate("userId", "name image").exec();
+
+    res.status(200).json({
+      product: {
+        id: prod._id,
+        name: prod.Product_name,
+        description: prod.Product_description,
+        price: prod.price,
+        images: [prod.image, prod.image2].filter(Boolean),
+      },
+      reviews: reviews.map((rev) => ({
+        username: rev.userId?.name || "Anonymous",
+        profilePic: rev.userId?.image || "/default-profile.png",
+        rating: rev.star,
+        comment: rev.about,
+        images: [rev.image, rev.image2].filter(Boolean),
+      })),
+    });
+  } catch (error) {
+    console.error("Error fetching product reviews:", error);
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+});
+
+
+
 
 
 
 
 
 //Update the review
-review.put('/reviewupdate', authenticate,async (req, res) => {
-    try {
-        const { productId, Star, Title, About } = req.body;
+review.put("/reviews/:id",authenticate, upload.fields([{ name: "image" }, { name: "image2" }]), async (req, res) => {
+  try {
+    const { title, about, description } = req.body;
 
-        // Find the review based on productId
-        const sreview = await Review.findOne({ productId });
+    const updatedReview = {
+      title,
+      about,
+      description,
+      ...(req.files.image && { image: req.files.image[0].buffer.toString("base64") }),
+      ...(req.files.image2 && { image2: req.files.image2[0].buffer.toString("base64") }),
+    };
 
-        if (!sreview) {
-            console.log("Review not found");
-            return res.status(404).send("Review not found");
-        }
+    const review = await Review.findByIdAndUpdate(req.params.id, updatedReview, { new: true });
+    if (!review) return res.status(404).json({ message: "Review not found" });
 
-        // Update the existing review
-        sreview.star = parseInt(Star); // Ensure it's stored as a number
-        sreview.title = Title;
-        sreview.about = About;
-
-        await sreview.save(); // Save changes to the database
-        console.log("Updated review:", sreview);
-
-        res.status(200).send("Review updated successfully");
-    } catch (error) {
-        console.error("Error updating review:", error);
-        res.status(500).send("Internal Server Error");
-    }
+    res.json(review);
+  } catch (error) {
+    console.error("Error updating review:", error);
+    res.status(500).json({ message: "Server error" });
+  }
 });
 
 
+review.get("/reviews/:id", authenticate, async (req, res) => {
+  try {
+    const review = await Review.findById(req.params.id);
+    if (!review) {
+      return res.status(404).json({ message: "Review not found" });
+    }
+
+    // Convert images to Base64 format
+    const formattedReview = {
+      ...review._doc,
+      image: review.image ? `data:image/jpeg;base64,${review.image}` : null,
+      image2: review.image2 ? `data:image/jpeg;base64,${review.image2}` : null,
+    };
+
+    res.json(formattedReview);
+  } catch (error) {
+    console.error("Error fetching review:", error);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+
+
+
+
+
 //Get the Product
+
+
+
 review.get("/product", authenticate, async (req, res) => {
   try {
     const productName = req.query.name?.trim(); // Trim whitespace
@@ -124,23 +154,108 @@ review.get("/product", authenticate, async (req, res) => {
       return res.status(400).json({ message: "Product name is required" });
     }
 
-    // Find the product (case-insensitive)
-    const prod = await PROduct.findOne({ Product_name: { $regex: new RegExp(productName, "i") } });
+    // Change from `findOne` to `find` to support multiple matching products
+    const products = await PROduct.find({
+      name: { $regex: new RegExp(productName, "i") }  // Use correct field name
+    });
+    
 
-    if (!prod) {
-      console.log("Product not found");
-      return res.status(404).json({ message: "Product not found" });
+    if (products.length === 0) {
+      return res.status(404).json({ message: `No products found for '${productName}'` });
     }
 
+    // Use the first matching product to fetch reviews
+    const prod = products[0];
+
     // Fetch reviews using the product's _id
-    const reviews = await Review.find({ productId: prod._id });
+    const reviews = await Review.find({ productId: prod._id }).populate("userId", "username profilePic");
 
     console.log(`Found ${reviews.length} reviews for product: ${productName}`);
 
-    return res.status(200).json(reviews); // Always return 200, even if empty
+    // Clean up images (remove null values)
+    const images = [prod.image, prod.image2].filter(Boolean);
+
+    // Format response
+    const response = {
+      product: {
+        Product_name: prod.Product_name,
+        Product_description: prod.Product_description,
+        price: prod.price,
+        category: prod.category,
+        images: images, // Avoid sending null values
+      },
+      reviews: reviews.map((rev) => ({
+        username: rev.userId.username,
+        profilePic: rev.userId.profilePic || "/default-profile.png",
+        rating: rev.rating,
+        comment: rev.comment,
+        likes: rev.likes || 0,
+      })),
+    };
+
+    return res.status(200).json(response);
   } catch (error) {
     console.error("Error fetching reviews:", error.message);
     return res.status(500).json({ message: "Server error", error: error.message });
+  }
+});
+
+// review.get("/product", authenticate, async (req, res) => {
+//   try {
+//     const productName = req.query.name?.trim(); // Trim whitespace
+
+//     if (!productName) {
+//       return res.status(400).json({ message: "Product name is required" });
+//     }
+
+//     // Ensure field name matches MongoDB document
+//     const prod = await PROduct.findOne({ Product_name: { $regex: new RegExp(`^${productName}$`, "i") } });
+
+//     if (!prod) {
+//       return res.status(404).json({ message: `Product '${productName}' not found` });
+//     }
+
+//     // Fetch reviews using the product's _id
+//     const reviews = await Review.find({ productId: prod._id }).populate("userId", "username profilePic");
+
+//     console.log(`Found ${reviews.length} reviews for product: ${productName}`);
+
+//     // Clean up images (remove null values)
+//     const images = [prod.image, prod.image2].filter(Boolean);
+
+//     // Format response
+//     const response = {
+//       product: {
+//         Product_name: prod.Product_name,
+//         Product_description: prod.Product_description,
+//         price: prod.price,
+//         category: prod.category,
+//         images: images, // Avoid sending null values
+//       },
+//       reviews: reviews.map((rev) => ({
+//         username: rev.userId.username,
+//         profilePic: rev.userId.profilePic || "/default-profile.png",
+//         rating: rev.rating,
+//         comment: rev.comment,
+//         likes: rev.likes || 0,
+//       })),
+//     };
+
+//     return res.status(200).json(response);
+//   } catch (error) {
+//     console.error("Error fetching reviews:", error.message);
+//     return res.status(500).json({ message: "Server error", error: error.message });
+//   }
+// });
+
+
+review.get("/categoryproduct", async (req, res) => {
+  try {
+    const products = await PROduct.find(); // Fetch all products
+    res.json(products);
+  } catch (error) {
+    console.error("Error fetching products:", error.message);
+    res.status(500).json({ message: "Server error", error: error.message });
   }
 });
 
@@ -190,191 +305,235 @@ review.put("/profileupdate", upload.single("updatephoto"), async (req, res) => {
   }
 });
 
-// review.put('/profileupdate', authenticate, upload.single('updatephoto'), async (req, res) => {
-//     try {
-//         const { NAME, PHN, DESC } = req.body;
-//         console.log(NAME);
+review.get("/userreviews", async (req, res) => {
+  try {
+    const reviews = await Review.find().populate("userId", "name image").lean();
+    const reviewsWithBase64 = reviews.map((review) => ({
+      ...review,
+      image: review.image ? `data:image/jpeg;base64,${Buffer.isBuffer(review.image) ? review.image.toString("base64") : review.image}` : null,
+      image2: review.image2 ? `data:image/jpeg;base64,${Buffer.isBuffer(review.image2) ? review.image2.toString("base64") : review.image2}` : null,
+      user: {
+        name: review.userId?.name || "Anonymous",
+        profilephoto: review.userId?.image || "/default-profile.png",
+      },
+    }));
 
-//         let user = await USER.findOne({ name: NAME });
-        
-        
-//         // if (!user) {
-//         //     console.log("User not found");
-//         //     return res.status(400).send("User not found");
-//         // }
-
-//         // Update fields
-//         user.phn_no = PHN;
-//         user.description = DESC;
-        
-//         // Update profile photo if a new one is uploaded
-//         if (req.file) {
-//             user.profilephoto = req.file.path;
-//         } else if (!user.profilephoto) {
-//             // Set default photo if none exists
-//             user.profilephoto = "default_profile.jpg"; // Replace with your actual default image
-//         }
-
-//         await user.save();
-//         console.log("Profile updated:", user);
-//         res.status(200).send("Profile updated");
-//     } catch (err) {
-//         console.error("Error:", err);
-//         res.status(500).send("Internal server error");
-//     }
-// });
+    res.json(reviewsWithBase64);
+  } catch (error) {
+    console.error("Error fetching reviews:", error);
+    res.status(500).json({ error: "Failed to fetch reviews" });
+  }
+});
 
 
-//logout
-review.get('/logout',(req,res)=>{
-    res.clearCookie('cookietoken');
-    res.status(200).send("logout")
-    console.log("logout");
+
+
+review.delete("/reviews/:id", async (req, res) => {
+  try {
+    const review = await Review.findByIdAndDelete(req.params.id);
+    if (!review) return res.status(404).json({ message: "Review not found" });
+    res.json({ message: "Review deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting review:", error);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+
+review.get("/api/review/random-products", async (req, res) => {
+  try {
+    const products = await PROduct.aggregate([{ $sample: { size: 3 } }]); // Fetch 3 random products
+    const reviews = await Review.find().populate("userId", "name image").lean(); // Fetch all reviews
+
+    const productReviews = products.map((product) => {
+      const relatedReviews = reviews.filter(
+        (review) => review.productId.toString() === product._id.toString()
+      );
+
+      return {
+        id: product._id,
+        name: product.Product_name,
+        description: product.Product_description,
+        price: product.price,
+        category: product.category,
+        images: [product.image, product.image2].filter(Boolean),
+        reviews: relatedReviews.map((rev) => ({
+          username: rev.userId?.name || "Anonymous",
+          profilePic: rev.userId?.image || "/default-profile.png",
+          rating: rev.star,
+          comment: rev.about,
+          images: [rev.image, rev.image2].filter(Boolean),
+        })),
+      };
+    });
+
+    res.status(200).json({ products: productReviews });
+  } catch (error) {
+    console.error("Error fetching random products and reviews:", error);
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+});
+
+
+// Logout
+review.get("/logout", (req, res) => {
+  res.clearCookie("cookietoken");
+  res.status(200).send("logout");
+  console.log("logout");
+});
+
+export { review };
+
+
+// review.delete('/reviews/:id', async (req, res) => {
+//   try {
+//     const review = await Review.findByIdAndDelete(req.params.id);
     
-})
-
-export {review}
-
-
-
-
-
-//Add the Profile
-// review.post('/profile', authenticate, upload.single("profilephoto"), async (req, res) => {
-//     try {
-//         const userId = req.user.id; // Get user ID from authentication middleware
-//         const {NAME, PHN, DESC } = req.body;
-
-//         console.log("Adding profile for:", NAME);
-//         console.log("User ID from authentication:", req.user.id);
-
-//         // Check if the user already has a profile
-//         const existingUser = await USER.findById(userId);
-//         if (!existingUser) {
-//             console.log("User not found");
-//             return res.status(404).json({ message: "User not found" });
-//         }
-
-//         // if (existingUser.name) {
-//         //     console.log("Profile already exists");
-//         //     console.log(existingUser.name);
-            
-//         //     return res.status(400).json({ message: "Profile already exists" });
-//         // }
-
-//         let photo = null;
-//         if (req.file) {
-//             photo = ConvertToBase64(req.file.buffer);
-//         }
-
-//         // Update user profile
-//         const updatedUser = await USER.findByIdAndUpdate(
-//             userId,
-//             {
-//                 name:NAME,
-//                 phn_no: PHN,  // Ensure field name matches schema
-//                 description: DESC,
-//                 image: photo,
-//                 isProfileComplete: true
-//             },
-//             { new: true } // Return the updated document
-//         );
-
-//         console.log("Profile added:", updatedUser);
-//         res.status(201).json({ message: "Profile added successfully", user: updatedUser });
-
-//     } catch (error) {
-//         console.error("Error:", error);
-//         res.status(500).json({ message: "Internal server error" });
+//     if (!review) {
+//       return res.status(404).json({ message: 'Review not found' });
 //     }
+
+//     res.json({ message: 'Review deleted successfully' });
+//   } catch (error) {
+//     console.error('Error deleting review:', error);
+//     res.status(500).json({ message: 'Server error' });
+//   }
 // });
 
 
 
 
-// review.post('/profile',authenticate,upload.single("profilephoto"),async(req,res)=>{
-//     try{
-//         const {NAME,PHN,DESC}=req.body
-//         console.log(NAME);
-//         const samename= await PROFILE.findOne({name:NAME}) 
-//         if(samename){
-//         res.status(400).send("coursename already there bro")
-//         console.log("already there bro")
-//         }
-//         else{
-//             let photo=null;
-//             if(req.file){
-//                 photo=ConvertToBase64(req.file.buffer)
-//             }
-//             const PROFile =new PROFILE({
-//                 name:NAME,
-//                 phn_no:PHN,
-//                 description:DESC,
-//                 image:photo
-//             })
-//             await PROFile.save();
-//             console.log(PROFile);
-//             res.status(200).send("Profile added");
-//             console.log("Profile added");
-            
-//         }
-//     }
-//     catch{
-//         res.status(404).send("error")
-//                 console.log("error");
-//     }
+// //logout
+// review.get('/logout',(req,res)=>{
+//     res.clearCookie('cookietoken');
+//     res.status(200).send("logout")
+//     console.log("logout");
+    
 // })
 
+// export {review}
 
 
-// review.post("/review",authenticate,
-//     upload.fields([
-//       { name: "reviewimage1", maxCount: 1 },
-//       { name: "reviewimage2", maxCount: 1 }
-//     ]),
-//     async (req, res) => {
-//       try {
-//         const { Name, Star, Title, About } = req.body;
-//         console.log("Review for:", Name);
-  
-//         // Find the product in the database
-//         const sameproduct = await PROduct.findOne({ Product_name: Name });
-//         const userr=await PROFILE.findById("67c5a70844134cfe283ba467")
-//         if (!sameproduct) {
-//           console.log("Product not here");
-//           return res.status(404).send("Product not found");
-//         }
-  
-//         let imagebase64_1 = null;
-//         let imagebase64_2 = null;
-  
-//         if (req.files && req.files["reviewimage1"]) {
-//           imagebase64_1 = ConvertToBase64(req.files["reviewimage1"][0].buffer);
-//         }
-//         if (req.files && req.files["reviewimage2"]) {
-//           imagebase64_2 = ConvertToBase64(req.files["reviewimage2"][0].buffer);
-//         }
-  
-//         // Save the review with productId
-//         const REVIEW = new Review({
-            
-//           productId: sameproduct._id, // Using ObjectId reference
-//           userId:userr._id,
-//           star: parseInt(Star), // Ensure it's stored as a number
-//           title: Title,
-//           about: About,
-//           image: imagebase64_1,
-//           image2: imagebase64_2
-//         });
-  
-//         await REVIEW.save();
-//         console.log(REVIEW);
-//         res.status(201).send("Review added successfully");
-//         console.log("Review added");
-//       } catch (error) {
-//         console.error("Error adding review:", error);
-//         res.status(500).send("Internal Server Error");
+
+
+
+
+
+
+
+
+
+
+
+
+// review.post(
+//   "/review",
+//   authenticate,
+//   upload.fields([
+//     { name: "reviewimage1", maxCount: 1 },
+//     { name: "reviewimage2", maxCount: 1 },
+//   ]),
+//   async (req, res) => {
+//     try {
+//       const { Name, Star, Title, About } = req.body;
+
+//       const sameproduct = await PROduct.findOne({ Product_name: Name });
+
+//       if (!sameproduct) {
+//         return res.status(404).send("Product not found");
 //       }
+
+//       let imagebase64_1 = null;
+//       let imagebase64_2 = null;
+
+//       if (req.files?.reviewimage1) {
+//         imagebase64_1 = ConvertToBase64(req.files.reviewimage1[0].buffer);
+//       }
+//       if (req.files?.reviewimage2) {
+//         imagebase64_2 = ConvertToBase64(req.files.reviewimage2[0].buffer);
+//       }
+
+//       const newReview = new Review({
+//         productId: sameproduct._id,
+//         userId: req.user.id,  // ✅ Storing user ID
+//         star: parseInt(Star, 10),
+//         title: Title,
+//         about: About,
+//         image: imagebase64_1,
+//         image2: imagebase64_2,
+//       });
+      
+//       await newReview.save();
+      
+
+//       await newReview.save();
+
+//       res.status(201).json({
+//         message: "Review added successfully",
+//         review: newReview,
+//       });
+//     } catch (error) {
+//       res.status(500).json({ message: "Internal Server Error", error: error.message });
 //     }
-//   );
-  
+//   }
+// );
+
+
+// review.get("/api/review/product", async (req, res) => {
+//   try {
+//     const productName = req.query.name?.trim();
+//     if (!productName) return res.status(400).json({ message: "Product name is required" });
+
+//     const prod = await PROduct.findOne({ Product_name: { $regex: new RegExp(productName, "i") } });
+//     if (!prod) return res.status(404).json({ message: "Product not found" });
+
+//     const reviews = await Review.find({ productId: prod._id })
+//       .populate("userId", "name image")
+//       .exec();
+
+//     res.status(200).json({
+//       product: {
+//         id: prod._id,
+//         name: prod.Product_name,
+//         description: prod.Product_description,
+//         price: prod.price,
+//         images: [prod.image, prod.image2].filter(Boolean),
+//       },
+//       reviews: reviews.map((rev) => ({
+//         username: rev.userId?.name || "Anonymous",
+//         profilePic: rev.userId?.image || "/default-profile.png",
+//         rating: rev.star,
+//         comment: rev.about,
+//         images: [rev.image, rev.image2].filter(Boolean), // Include review images
+//     })),
+    
+//     });
+//   } catch (error) {
+//     console.error("Error fetching product reviews:", error);
+//     res.status(500).json({ message: "Server error", error: error.message });
+//   }
+// });
+
+// review.get("/userreviews", async (req, res) => {
+//   try {
+//     const reviews = await Review.find()
+//       .populate("userId", "name image") // ✅ Fetch 'image' instead of 'profilephoto'
+//       .lean(); // Convert Mongoose documents to plain objects
+
+//     // Convert image buffers to Base64 if needed
+//     const reviewsWithBase64 = reviews.map(review => ({
+//       ...review,
+//       image: review.image ? `data:image/jpeg;base64,${review.image.toString("base64")}` : null,
+//       image2: review.image2 ? `data:image/jpeg;base64,${review.image2.toString("base64")}` : null,
+//       user: {
+//         name: review.userId?.name || "Anonymous",
+//         profilephoto: review.userId?.image || "/default-profile.png", // ✅ Use 'image' for user photo
+//       },
+//     }));
+
+//     res.json(reviewsWithBase64);
+//   } catch (error) {
+//     console.error("Error fetching reviews:", error);
+//     res.status(500).json({ error: "Failed to fetch reviews" });
+//   }
+// });

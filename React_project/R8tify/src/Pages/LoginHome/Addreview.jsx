@@ -1,26 +1,32 @@
-import React, { useState } from 'react';
-import Footerr from '../../components/Footerr';
+import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
+import Footerr from "../../components/Footerr";
+import LoginNavbar from "../../components/LoginNavbar";
 
 const Addreview = () => {
+  const location = useLocation();
+  const product = location.state?.product; // Get the passed product data
+
   const [rating, setRating] = useState(0);
-  const [TITLE, setTitle] = useState('');
-  const [ABOUT, setAbout] = useState('');
+  const [TITLE, setTitle] = useState("");
+  const [ABOUT, setAbout] = useState("");
   const [IMAGES, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const handleRating = (value) => {
-    setRating(value);
-  };
+  const handleRating = (value) => setRating(value);
 
   const handleImageChange = (e) => {
     const files = Array.from(e.target.files);
-    setImages(files);
+    setImages((prevImages) => [...prevImages, ...files]);
+  };
+
+  const removeImage = (index) => {
+    setImages((prevImages) => prevImages.filter((_, i) => i !== index));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validation check
     if (!TITLE || !ABOUT || rating === 0) {
       alert("Please fill all required fields and select a rating.");
       return;
@@ -29,15 +35,16 @@ const Addreview = () => {
     try {
       setLoading(true);
       const formData = new FormData();
-      formData.append("star", rating);
-      formData.append("title", TITLE);
-      formData.append("about", ABOUT);
+      formData.append("Star", rating);
+      formData.append("Title", TITLE);
+      formData.append("About", ABOUT);
+      formData.append("Name", product?.Product_name);
 
       IMAGES.forEach((image, index) => {
         formData.append(`reviewimage${index + 1}`, image);
       });
 
-      const res = await fetch("/api/review", {
+      const res = await fetch("http://localhost:9001/review", {
         method: "POST",
         credentials: "include",
         body: formData,
@@ -49,10 +56,9 @@ const Addreview = () => {
 
       alert("Review added successfully!");
 
-      // Reset form
       setRating(0);
-      setTitle('');
-      setAbout('');
+      setTitle("");
+      setAbout("");
       setImages([]);
     } catch (error) {
       console.error(error);
@@ -64,14 +70,40 @@ const Addreview = () => {
 
   return (
     <>
-      <Navbar />
+      <LoginNavbar />
       <form onSubmit={handleSubmit} encType="multipart/form-data">
         <div className="w-full max-w-3xl mx-auto border border-black p-6 mt-10 bg-gray-100 rounded-lg">
           <p className="text-3xl text-center">What is your review about?</p>
-          <div className="w-full flex items-center border border-black mt-4 p-4 bg-white rounded-lg">
-            <img className="h-44 w-44 object-cover rounded-md" src="/Image/Apple iPhone 14 Pro.jpeg" alt="Apple iPhone 14 Pro" />
-            <p className="text-3xl font-bold ml-6">Apple iPhone 14 Pro</p>
-          </div>
+
+          {/* Product Display */}
+          {product ? (
+            <div className="w-full flex items-center border border-black mt-4 p-4 bg-white rounded-lg">
+              <img
+                className="h-44 w-44 object-cover rounded-md"
+                src={
+                  product.image?.startsWith("data:image")
+                    ? product.image
+                    : `data:image/jpeg;base64,${product.image}`
+                }
+                alt={product.Product_name}
+                onError={(e) => (e.target.src = "/default-image.png")}
+              />
+              <div className="ml-6">
+                <p className="text-3xl font-bold">{product.Product_name}</p>
+                <p className="text-gray-600">{product.Product_description}</p>
+                <p className="text-sm text-gray-500 mt-1">
+                  RAM: {product.ram} | Capacity: {product.capacity}
+                </p>
+                <p className="text-yellow-500 font-semibold flex items-center">
+                  ⭐ {product.rating}
+                </p>
+              </div>
+            </div>
+          ) : (
+            <p className="text-center text-red-500 mt-4">
+              No product details available.
+            </p>
+          )}
 
           <p className="text-2xl mt-4">Rate the performance</p>
           <div id="starRating" className="flex space-x-1 text-gray-300">
@@ -80,7 +112,9 @@ const Addreview = () => {
                 key={value}
                 type="button"
                 onClick={() => handleRating(value)}
-                className={`text-5xl cursor-pointer ${value <= rating ? 'text-yellow-500' : 'text-gray-300'}`}
+                className={`text-5xl cursor-pointer ${
+                  value <= rating ? "text-yellow-500" : "text-gray-300"
+                }`}
               >
                 &#9733;
               </button>
@@ -116,17 +150,36 @@ const Addreview = () => {
               className="hidden"
             />
             <label htmlFor="file-input" className="flex flex-col items-center">
-              <img src="/Image/Add Image free icons designed by nawicon.jpeg" alt="Upload" className="w-16 h-16" />
+              <img
+                src="/Image/Add Image free icons designed by nawicon.jpeg"
+                alt="Upload"
+                className="w-16 h-16"
+              />
               <span className="text-2xl">Attach here</span>
             </label>
           </div>
 
-          {/* Image Preview Section */}
-          <div className="flex flex-wrap mt-4">
-            {IMAGES.map((image, index) => (
-              <img key={index} src={URL.createObjectURL(image)} alt="Preview" className="w-24 h-24 object-cover m-2 rounded-md" />
-            ))}
-          </div>
+          {/* Preview Uploaded Images */}
+          {IMAGES.length > 0 && (
+            <div className="mt-4 flex flex-wrap gap-4">
+              {IMAGES.map((image, index) => (
+                <div key={index} className="relative">
+                  <img
+                    src={URL.createObjectURL(image)}
+                    alt={`Uploaded ${index}`}
+                    className="w-24 h-24 object-cover rounded-lg shadow-md border"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => removeImage(index)}
+                    className="absolute top-0 right-0 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center"
+                  >
+                    &times;
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
 
           <div className="w-full max-w-3xl mx-auto flex justify-center mt-6">
             <button

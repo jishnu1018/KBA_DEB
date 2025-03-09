@@ -6,23 +6,35 @@ const Adminadd = () => {
     const [product, setProduct] = useState("");
     const [description, setDescription] = useState("");
     const [price, setPrice] = useState("");
+    const [category, setCategory] = useState(""); // Added category state
     const [image1, setImage1] = useState(null);
     const [image2, setImage2] = useState(null);
+    const [preview1, setPreview1] = useState(null);
+    const [preview2, setPreview2] = useState(null);
     const [error, setError] = useState("");
     const navigate = useNavigate();
 
-    const handleImageChange = (e, setImage) => {
+    const handleImageChange = (e, setImage, setPreview) => {
         const file = e.target.files[0];
-        setImage(file);
+        if (file) {
+            setImage(file);
+            setPreview(URL.createObjectURL(file)); // Show image preview
+        }
     };
 
     const handleAdd = async (e) => {
         e.preventDefault();
+        if (!category) {
+            setError("Please select a category.");
+            return;
+        }
+
         const formData = new FormData();
         formData.append("Product", product);
         formData.append("Description", description);
         formData.append("Price", price);
-        if (image1) formData.append("productimage1", image1); // Match schema
+        formData.append("Category", category);
+        if (image1) formData.append("productimage1", image1);
         if (image2) formData.append("productimage2", image2);
 
         try {
@@ -74,22 +86,39 @@ const Adminadd = () => {
                     />
                 </div>
                 <div className="mb-4">
+                    <label className="text-sm font-medium text-gray-700">Category</label>
+                    <select
+                        value={category}
+                        onChange={(e) => setCategory(e.target.value)}
+                        required
+                        className="mt-1 p-3 w-full border border-gray-300 rounded-md"
+                    >
+                        <option value="">Select Category</option>
+                        <option value="Phones">Phones</option>
+                        <option value="Laptops">Laptops</option>
+                        <option value="Consoles">Consoles</option>
+                        <option value="Cameras">Cameras</option>
+                    </select>
+                </div>
+                <div className="mb-4">
                     <label className="text-sm font-medium text-gray-700">Product Image 1</label>
                     <input
                         type="file"
                         accept="image/*"
-                        onChange={(e) => handleImageChange(e, setImage1)}
+                        onChange={(e) => handleImageChange(e, setImage1, setPreview1)}
                         className="w-full border border-gray-300 rounded-md mt-1 p-3"
                     />
+                    {preview1 && <img src={preview1} alt="Preview 1" className="mt-2 w-32 h-32 object-cover rounded-md" />}
                 </div>
                 <div className="mb-4">
                     <label className="text-sm font-medium text-gray-700">Product Image 2</label>
                     <input
                         type="file"
                         accept="image/*"
-                        onChange={(e) => handleImageChange(e, setImage2)}
+                        onChange={(e) => handleImageChange(e, setImage2, setPreview2)}
                         className="w-full border border-gray-300 rounded-md mt-1 p-3"
                     />
+                    {preview2 && <img src={preview2} alt="Preview 2" className="mt-2 w-32 h-32 object-cover rounded-md" />}
                 </div>
                 <div className="flex justify-center mt-4">
                     <button type="submit" className="bg-blue-500 text-white font-semibold w-40 h-12 rounded-md">

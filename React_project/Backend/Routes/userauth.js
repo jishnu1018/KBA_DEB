@@ -127,7 +127,7 @@ user.post('/login',async (req,res)=>{
             }
             else{
                 
-                res.status(401).send("Unauthorized access");
+                return res.status(400).json({ msg: "Incorrect password" });
 
             }
             

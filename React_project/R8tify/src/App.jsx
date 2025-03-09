@@ -14,26 +14,50 @@ import Adminusers from './Pages/ADMIN/Adminusers'
 import AdminProducts from './Pages/ADMIN/Adminproducts'
 import EditProduct from './Pages/ADMIN/EditProduct'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-
+import Phones from './Pages/LoginHome/Phones'
+import Consoles from './Pages/LoginHome/Consoles'
+import Laptops from './Pages/LoginHome/Laptops'
+import Cameras from './Pages/LoginHome/Cameras'
+import EditReview from './Pages/LoginHome/Editreview'
+import Seereviews from './Pages/LoginHome/Seereviews'
+import Phones1 from './Pages/Home/Phones1'
+import Laptops1 from './Pages/Home/Laptops1'
+import Consoles1 from './Pages/Home/Consoles1'
+import Cameras1 from './Pages/Home/Cameras1'
 const App = () => {
   return (
     <BrowserRouter>
     <Routes>
-    <Route path='/' element={<Navigate to="/signup" />} />
+    <Route path='/' element={<Navigate to="/home1" />} />
+    <Route path='/home1' element={<Home1 />} />
+    <Route path='/categories1' element={<Categories1 />} />
+    <Route path='/phones1' element= {<Phones1 />} />
+    <Route path='/laptops1' element={<Laptops1/>} />
+    <Route path='/consoles1' element={<Consoles1/>} />
+    <Route path='/cameras1' element={<Cameras1/>} />
+
+    {/* Login Route */}
     <Route path="/login" element={<Login />} />
     <Route path='/signup' element={<Signup />} />
-    <Route path='/home1' element={<Home1 />} />
     <Route path='/home' element={<Home />} />
-    <Route path='/categories1' element={<Categories1 />} />
+    <Route path='/phones' element={<Phones />} />
+    <Route path='/consoles' element={<Consoles />} />
+    <Route path='/laptops' element={<Laptops />} />
+    <Route path='/cameras' element={<Cameras />} />
     <Route path='/categories' element={<Categories />} />
     <Route path='/editprofile' element={<EditProfile />} />
     <Route path='/profile' element={<Profile />} />
-    <Route path='/addreview' element={<Addreview />} />
-    <Route path='/adminadd' element={<Adminadd/>}/>
+    <Route path='/editreview/:id' element={<EditReview />} />
+    <Route path='/seereviews' element={<Seereviews />} />
+    
+     {/* Admin Route */}
     <Route path='/admin' element={<Admin/>}/>
+    <Route path='/adminadd' element={<Adminadd/>}/>
     <Route path='/adminusers' element={<Adminusers/>}/>
     <Route path='/adminproducts' element={<AdminProducts/>}/>
-    <Route path='/editproducts/:id' element={<EditProduct/>}/>  {/* Fixed Route */}
+    <Route path='/editproducts/:id' element={<EditProduct/>}/>
+    <Route path='/addreview' element={<Addreview />} />
+
     </Routes>
     </BrowserRouter>
   ) 
