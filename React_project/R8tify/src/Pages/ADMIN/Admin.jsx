@@ -5,12 +5,12 @@ import axios from "axios";
 const Admin = () => {
     const [stats, setStats] = useState({ totalUsers: 0, totalProducts: 0 });
     const [recentUsers, setRecentUsers] = useState([]);
-    const navigate = useNavigate(); // ✅ For redirecting after logout
+    const navigate = useNavigate(); 
 
     useEffect(() => {
         const fetchStats = async () => {
             try {
-                const response = await axios.get("http://localhost:9001/userstats", { withCredentials: true });
+                const response = await axios.get("/api/userstats", { withCredentials: true });
                 setStats(response.data);
             } catch (error) {
                 console.error("Error fetching statistics:", error);
@@ -19,7 +19,7 @@ const Admin = () => {
 
         const fetchRecentUsers = async () => {
             try {
-                const response = await axios.get("http://localhost:9001/recentusers", { withCredentials: true });
+                const response = await axios.get("/api/recentusers", { withCredentials: true });
                 setRecentUsers(response.data);
             } catch (error) {
                 console.error("Error fetching recent users:", error);
@@ -30,12 +30,11 @@ const Admin = () => {
         fetchRecentUsers();
     }, []);
 
-    // ✅ Logout function
     const handleLogout = async () => {
         try {
-            await axios.get("http://localhost:9001/adminlogout", { withCredentials: true });
+            await axios.get("/api/adminlogout", { withCredentials: true });
             console.log("Admin logged out successfully");
-            navigate("/login"); // ✅ Redirect to Admin Login Page after logout
+            navigate("/login");
         } catch (error) {
             console.error("Logout failed:", error);
         }
@@ -43,7 +42,6 @@ const Admin = () => {
 
     return (
         <div className="bg-gray-100 font-sans flex">
-            {/* Sidebar */}
             <div className="w-64 h-screen bg-gray-800 text-white flex flex-col">
                 <div className="p-4 text-center font-bold text-2xl border-b border-gray-700">
                     Admin Dashboard
@@ -66,7 +64,7 @@ const Admin = () => {
                     </ul>
                 </nav>
                 <div className="p-4 border-t border-gray-700 mt-auto">
-                    {/* ✅ Logout Button */}
+                    
                     <button 
                         onClick={handleLogout} 
                         className="w-full bg-red-500 text-white py-2 rounded hover:bg-red-700 transition">
@@ -75,7 +73,7 @@ const Admin = () => {
                 </div>
             </div>
 
-            {/* Main Content */}
+       
             <div className="flex-1 p-6">
                 <header className="flex items-center justify-between mb-6">
                     <h1 className="text-2xl font-semibold">Welcome, Admin!</h1>
@@ -86,7 +84,7 @@ const Admin = () => {
                     </Link>
                 </header>
 
-                {/* Stats Section */}
+      
                 <div className="grid grid-cols-2 gap-6 mb-6">
                     <div className="bg-white shadow-md rounded p-6">
                         <h2 className="text-gray-600">Total Users</h2>
@@ -98,7 +96,7 @@ const Admin = () => {
                     </div>
                 </div>
 
-                {/* Recent Users Table */}
+      
                 <div className="bg-white shadow-md rounded p-6">
                     <h2 className="text-xl font-bold mb-4">Recent Users</h2>
                     <table className="w-full text-left">

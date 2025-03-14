@@ -5,6 +5,7 @@ import jwt from "jsonwebtoken";
 import { USER } from "../Model/profile.js";
 import { authenticate } from "../Middleware/authenticate.js";
 import { upload } from "../Middleware/Multer.js";
+import { DeletedUser } from "../Model/deleteuser.js";
 
 
 
@@ -100,43 +101,85 @@ user.post('/signup', async (req, res) => {
 
 
 //login
-user.post('/login',async (req,res)=>{
-    try{
-        const {EMAIL,PASSWORD} = req.body;
-        
-        const result = await USER.findOne({email:EMAIL})
-        console.log(result);
-        
-        if(!result){
-            console.log("Enter a valid username");
-            res.status(400).send("Enter a valid username");
-        }
-        else{
-            console.log(result.password);
-            const valid=await bcrypt.compare(PASSWORD,result.password)
-            console.log(valid);
-            if(valid){
-                const token= jwt.sign({id: result._id,email:EMAIL},process.env.SECRET_KEY)
-                console.log(token);
-                res.cookie('cookietoken',token,{
-                    httpOnly:true
-                })
-                console.log("Logged in successfully");
-                
-                res.status(200).json({message:"Logged in successfully"});
-            }
-            else{
-                
-                return res.status(400).json({ msg: "Incorrect password" });
 
-            }
-            
+user.post('/login', async (req, res) => {
+    try {
+        const { EMAIL, PASSWORD } = req.body;
+
+        // Check if the user was deleted
+        const deletedUser = await DeletedUser.findOne({ email: EMAIL });
+        if (deletedUser) {
+            console.log(`Login attempt by deleted user: ${EMAIL}`);
+            return res.status(403).json({ msg: `Your account was deleted. Reason: ${deletedUser.reason}` });
         }
+
+        // Find user in the users collection
+        const result = await USER.findOne({ email: EMAIL });
+        console.log(result);
+
+        if (!result) {
+            console.log("Enter a valid username");
+            return res.status(400).send("Enter a valid username");
+        }
+
+        console.log(result.password);
+        const valid = await bcrypt.compare(PASSWORD, result.password);
+        console.log(valid);
+
+        if (valid) {
+            const token = jwt.sign({ id: result._id, email: EMAIL }, process.env.SECRET_KEY);
+            console.log(token);
+            res.cookie('cookietoken', token, {
+                httpOnly: true
+            });
+            console.log("Logged in successfully");
+
+            return res.status(200).json({ message: "Logged in successfully" });
+        } else {
+            return res.status(400).json({ msg: "Incorrect password" });
+        }
+    } catch (error) {
+        console.error("Error during login:", error);
+        return res.status(500).send("Internal Server Error");
     }
-    catch{
-        res.status(500).send("Internal Server Error")
-    }
-})
+});
+// user.post('/login',async (req,res)=>{
+//     try{
+//         const {EMAIL,PASSWORD} = req.body;
+        
+//         const result = await USER.findOne({email:EMAIL})
+//         console.log(result);
+        
+//         if(!result){
+//             console.log("Enter a valid username");
+//             res.status(400).send("Enter a valid username");
+//         }
+//         else{
+//             console.log(result.password);
+//             const valid=await bcrypt.compare(PASSWORD,result.password)
+//             console.log(valid);
+//             if(valid){
+//                 const token= jwt.sign({id: result._id,email:EMAIL},process.env.SECRET_KEY)
+//                 console.log(token);
+//                 res.cookie('cookietoken',token,{
+//                     httpOnly:true
+//                 })
+//                 console.log("Logged in successfully");
+                
+//                 res.status(200).json({message:"Logged in successfully"});
+//             }
+//             else{
+                
+//                 return res.status(400).json({ msg: "Incorrect password" });
+
+//             }
+            
+//         }
+//     }
+//     catch{
+//         res.status(500).send("Internal Server Error")
+//     }
+// })
 
 
 
@@ -145,7 +188,7 @@ user.post('/login',async (req,res)=>{
 
 
 // Route to fetch user details by email
-user.get("/user/:email", async (req, res) => {
+user.get("/user/:email",authenticate, async (req, res) => {
     try {
       const user = await USER.findOne({ email: req.params.email });
 
@@ -176,7 +219,7 @@ user.get("/user-profile", authenticate, async (req, res) => {
             name: user.name,
             email: user.email,
             phone: user.phn_no,
-            image: user.image || "", // ✅ Ensure image is included
+            image: user.image || "", 
         });
     } catch (error) {
         console.error("Error fetching user profile:", error);
@@ -187,7 +230,7 @@ user.get("/user-profile", authenticate, async (req, res) => {
   
   
 
-user.put("/user-profile", authenticate, upload.single("image"), async (req, res) => {
+user.put("/profileupdate", authenticate, upload.single("image"), async (req, res) => {
     try {
         const { name, phone } = req.body;
         let user = await USER.findById(req.user.id);

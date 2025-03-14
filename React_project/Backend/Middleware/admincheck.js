@@ -1,10 +1,13 @@
-const adminCheck=(req,res,next)=>{
-    if(req.email=='ji2003jishnu@gmail.com'){
-        next();
-    }
-    else{
-        res.status(403).json({msg:"You are not allowed"})
-    }
-}
+const adminCheck = (req, res, next) => {
+    console.log("Checking admin access for email:", req.email);  // Debugging
 
-export {adminCheck};
+    if (req.email === 'Admin@gmail.com') {
+        console.log("Admin access granted");
+        next();
+    } else {
+        console.log("Admin access denied for:", req.email);  // Debugging
+        res.status(403).json({ msg: "You are not allowed" });
+    }
+};
+
+export { adminCheck };

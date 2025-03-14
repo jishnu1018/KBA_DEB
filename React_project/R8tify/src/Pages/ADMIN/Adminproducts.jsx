@@ -11,7 +11,7 @@ const AdminProducts = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch("http://localhost:9001/adminproducts");
+      const response = await fetch("/api/adminproducts");
       if (!response.ok) throw new Error("Failed to fetch products");
 
       const data = await response.json();
@@ -26,7 +26,7 @@ const AdminProducts = () => {
     if (!window.confirm("Are you sure you want to delete this product?")) return;
 
     try {
-      const response = await fetch(`http://localhost:9001/adminproducts/${productId}`, {
+      const response = await fetch(`/api/adminproducts/${productId}`, {
         method: "DELETE",
       });
 

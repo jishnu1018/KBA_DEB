@@ -43,6 +43,12 @@ review.post(
       });
 
       await newReview.save();
+      
+      await PROduct.findByIdAndUpdate(
+        sameproduct._id,
+        { $push: { reviews: newReview._id } },
+        { new: true }
+      );
 
       res.status(201).json({ message: "Review added successfully", review: newReview });
     } catch (error) {
@@ -53,7 +59,7 @@ review.post(
 
 
 // ✅ Get product reviews - Fixed endpoint & response
-review.get("/api/review/product", async (req, res) => {
+review.get("/api/review/product",authenticate, async (req, res) => {
   try {
     const productName = req.query.name?.trim();
     if (!productName) return res.status(400).json({ message: "Product name is required" });
@@ -200,56 +206,8 @@ review.get("/product", authenticate, async (req, res) => {
   }
 });
 
-// review.get("/product", authenticate, async (req, res) => {
-//   try {
-//     const productName = req.query.name?.trim(); // Trim whitespace
 
-//     if (!productName) {
-//       return res.status(400).json({ message: "Product name is required" });
-//     }
-
-//     // Ensure field name matches MongoDB document
-//     const prod = await PROduct.findOne({ Product_name: { $regex: new RegExp(`^${productName}$`, "i") } });
-
-//     if (!prod) {
-//       return res.status(404).json({ message: `Product '${productName}' not found` });
-//     }
-
-//     // Fetch reviews using the product's _id
-//     const reviews = await Review.find({ productId: prod._id }).populate("userId", "username profilePic");
-
-//     console.log(`Found ${reviews.length} reviews for product: ${productName}`);
-
-//     // Clean up images (remove null values)
-//     const images = [prod.image, prod.image2].filter(Boolean);
-
-//     // Format response
-//     const response = {
-//       product: {
-//         Product_name: prod.Product_name,
-//         Product_description: prod.Product_description,
-//         price: prod.price,
-//         category: prod.category,
-//         images: images, // Avoid sending null values
-//       },
-//       reviews: reviews.map((rev) => ({
-//         username: rev.userId.username,
-//         profilePic: rev.userId.profilePic || "/default-profile.png",
-//         rating: rev.rating,
-//         comment: rev.comment,
-//         likes: rev.likes || 0,
-//       })),
-//     };
-
-//     return res.status(200).json(response);
-//   } catch (error) {
-//     console.error("Error fetching reviews:", error.message);
-//     return res.status(500).json({ message: "Server error", error: error.message });
-//   }
-// });
-
-
-review.get("/categoryproduct", async (req, res) => {
+review.get("/categoryproduct",authenticate, async (req, res) => {
   try {
     const products = await PROduct.find(); // Fetch all products
     res.json(products);
@@ -264,7 +222,7 @@ review.get("/categoryproduct", async (req, res) => {
 
 //Upadte profile
 
-review.get("/getUserProfile", async (req, res) => {
+review.get("/getUserProfile",authenticate, async (req, res) => {
   try {
     const userId = req.user.id; // Assuming authentication middleware sets req.user
     const user = await USER.findById(userId).select("-password"); // Exclude password
@@ -284,7 +242,7 @@ review.get("/getUserProfile", async (req, res) => {
 });
 
 // Route to update user profile
-review.put("/profileupdate", upload.single("updatephoto"), async (req, res) => {
+review.put("/profileupdate",authenticate, upload.single("updatephoto"), async (req, res) => {
   try {
     const { email, NAME, PHN } = req.body;  // Accept email from frontend
 
@@ -305,30 +263,56 @@ review.put("/profileupdate", upload.single("updatephoto"), async (req, res) => {
   }
 });
 
-review.get("/userreviews", async (req, res) => {
+
+//getting only the user made reviews
+review.get("/userreviews", authenticate, async (req, res) => {
   try {
-    const reviews = await Review.find().populate("userId", "name image").lean();
+    console.log("Authenticated User:", req.user);
+
+    if (!req.user) {
+      return res.status(401).json({ error: "Unauthorized" });
+    }
+
+    // Fetch user reviews and populate productId and userId
+    const reviews = await Review.find({ userId: req.user.id })
+      .populate("userId", "name image")
+      .populate("productId", "Product_name") // Use Product_name instead of name
+      .lean();
+
+    console.log("Fetched Reviews:", reviews);
+
+    // Convert image buffers to Base64
     const reviewsWithBase64 = reviews.map((review) => ({
       ...review,
-      image: review.image ? `data:image/jpeg;base64,${Buffer.isBuffer(review.image) ? review.image.toString("base64") : review.image}` : null,
-      image2: review.image2 ? `data:image/jpeg;base64,${Buffer.isBuffer(review.image2) ? review.image2.toString("base64") : review.image2}` : null,
+      image: review.image
+        ? `data:image/jpeg;base64,${
+            Buffer.isBuffer(review.image) ? review.image.toString("base64") : review.image
+          }`
+        : null,
+      image2: review.image2
+        ? `data:image/jpeg;base64,${
+            Buffer.isBuffer(review.image2) ? review.image2.toString("base64") : review.image2
+          }`
+        : null,
       user: {
         name: review.userId?.name || "Anonymous",
         profilephoto: review.userId?.image || "/default-profile.png",
       },
+      productName: review.productId?.Product_name || "Unknown Product", // Use Product_name
     }));
 
     res.json(reviewsWithBase64);
   } catch (error) {
-    console.error("Error fetching reviews:", error);
-    res.status(500).json({ error: "Failed to fetch reviews" });
+    console.error("Error fetching user-specific reviews:", error);
+    res.status(500).json({ error: "Failed to fetch user reviews" });
   }
 });
 
 
 
 
-review.delete("/reviews/:id", async (req, res) => {
+
+review.delete("/reviews/:id",authenticate, async (req, res) => {
   try {
     const review = await Review.findByIdAndDelete(req.params.id);
     if (!review) return res.status(404).json({ message: "Review not found" });
@@ -340,7 +324,7 @@ review.delete("/reviews/:id", async (req, res) => {
 });
 
 
-review.get("/api/review/random-products", async (req, res) => {
+review.get("/randomproducts",authenticate, async (req, res) => {
   try {
     const products = await PROduct.aggregate([{ $sample: { size: 3 } }]); // Fetch 3 random products
     const reviews = await Review.find().populate("userId", "name image").lean(); // Fetch all reviews
@@ -361,6 +345,7 @@ review.get("/api/review/random-products", async (req, res) => {
           username: rev.userId?.name || "Anonymous",
           profilePic: rev.userId?.image || "/default-profile.png",
           rating: rev.star,
+          title:rev.title,
           comment: rev.about,
           images: [rev.image, rev.image2].filter(Boolean),
         })),

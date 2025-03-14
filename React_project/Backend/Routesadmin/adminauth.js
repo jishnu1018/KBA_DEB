@@ -58,6 +58,8 @@ admin.post('/adminlogin', async (req, res) => {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production', // Secure in production
             sameSite: 'strict',
+            maxAge: 3600000, // 1 hour
+
         });
 
         console.log("Logged in successfully");

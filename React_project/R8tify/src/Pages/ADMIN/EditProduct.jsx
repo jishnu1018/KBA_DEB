@@ -15,13 +15,13 @@ const EditProduct = () => {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [preview1, setPreview1] = useState(""); // Preview for image1
-  const [preview2, setPreview2] = useState(""); // Preview for image2
+  const [preview1, setPreview1] = useState(""); 
+  const [preview2, setPreview2] = useState(""); 
 
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await fetch(`http://localhost:9001/adminproducts/${id}`);
+        const response = await fetch(`/api/adminproducts/${id}`);
         if (!response.ok) throw new Error("Failed to fetch product");
 
         const data = await response.json();
@@ -44,7 +44,7 @@ const EditProduct = () => {
 
     const fetchCategories = async () => {
       try {
-        const response = await fetch("http://localhost:9001/categories");
+        const response = await fetch("/api/categories");
         if (!response.ok) throw new Error("Failed to fetch categories");
 
         const data = await response.json();
@@ -67,7 +67,6 @@ const EditProduct = () => {
     if (file) {
       setProduct({ ...product, [imageField]: file });
 
-      // Preview image
       const reader = new FileReader();
       reader.onloadend = () => {
         if (imageField === "image") setPreview1(reader.result);
@@ -90,9 +89,9 @@ const EditProduct = () => {
     if (product.image2) formData.append("productimage2", product.image2);
 
     try {
-      const response = await fetch(`http://localhost:9001/adminproducts/${id}`, {
+      const response = await fetch(`/api/adminproducts/${id}`, {
         method: "PUT",
-        body: formData, // Send FormData instead of JSON
+        body: formData, 
       });
 
       if (!response.ok) throw new Error("Failed to update product");
@@ -162,7 +161,6 @@ const EditProduct = () => {
             </select>
           </div>
 
-          {/* Image Upload Fields */}
           <div>
             <label className="block font-medium">Product Image 1</label>
             <input type="file" onChange={(e) => handleImageChange(e, "image")} accept="image/*" />

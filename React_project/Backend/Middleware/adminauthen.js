@@ -1,29 +1,59 @@
 import jwt from 'jsonwebtoken'
 
-const adminauthen=(req,res,next)=>{
-    const cookie=req.headers.cookie
-    console.log(cookie);
-    if(!cookie){
-        res.status(400).send("Login to access")
-        console.log("Login to access");
-    }
-    else{
-        const [name,token]=cookie.trim().split("=");
-        console.log(name);
-        console.log(token);
-        if(name=='cookietoken'){
-            const verified=jwt.verify(token,process.env.SECRET_KEY)
-            console.log(verified);
-            req.email=verified.email,
-            console.log(req.email);
-            next();
-        }
-        
-        
-    }
-}
+const adminauthen = (req, res, next) => {
+    const token = req.cookies.cookietoken; // ✅ This correctly extracts the token
+    console.log("Token received:", token); // Debugging
 
-export {adminauthen}
+    if (!token) {
+        console.log("Login to access - No cookie found");
+        return res.status(400).send("Login to access");
+    }
+
+    try {
+        const verified = jwt.verify(token, process.env.SECRET_KEY);
+        console.log("JWT Verified:", verified);
+        req.email = verified.email;
+        next();
+    } catch (error) {
+        console.error("JWT Verification Error:", error.message);
+        return res.status(403).json({ msg: "Invalid or expired token" });
+    }
+};
+
+
+
+// const adminauthen = (req, res, next) => {
+//     const cookie = req.headers.cookie;
+//     console.log("Cookies received:", cookie);  // Debugging
+
+//     if (!cookie) {
+//         console.log("Login to access - No cookie found");
+//         return res.status(400).send("Login to access");
+//     }
+
+//     const [name, token] = cookie.trim().split("=");
+//     console.log("Extracted cookie name:", name);  // Debugging
+//     console.log("Extracted token:", token);  // Debugging
+
+//     if (name === 'cookietoken') {
+//         try {
+//             const verified = jwt.verify(token, process.env.SECRET_KEY);
+//             console.log("JWT Verified:", verified);  // Debugging
+//             req.email = verified.email;
+//             console.log("User Email Set in req:", req.email);  // Debugging
+//             next();
+//         } catch (error) {
+//             console.error("JWT Verification Error:", error.message);
+//             return res.status(403).json({ msg: "Invalid or expired token" });
+//         }
+//     } else {
+//         console.log("Invalid cookie name:", name);
+//         return res.status(403).json({ msg: "Invalid token" });
+//     }
+// };
+
+export { adminauthen };
+
 
 
 

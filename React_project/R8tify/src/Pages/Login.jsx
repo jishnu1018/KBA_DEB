@@ -12,12 +12,11 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  // Email validation function
+  // Email validation
   const validateEmail = (email) => {
     return /\S+@\S+\.\S+/.test(email);
   };
 
-  // Handle email input change
   const handleEmailChange = (e) => {
     const value = e.target.value;
     setEmail(value);
@@ -38,9 +37,9 @@ const Login = () => {
     }
 
     try {
-      let apiUrl = "/api/login"; // Default user login
+      let apiUrl = "/api/login"; 
       if (Email === "Admin@gmail.com") {
-        apiUrl = "/api/adminlogin"; // Admin login API
+        apiUrl = "/api/adminlogin"; 
       }
 
       const response = await fetch(apiUrl, {
@@ -52,18 +51,21 @@ const Login = () => {
         body: JSON.stringify({ EMAIL: Email, PASSWORD: Password }),
       });
 
-      if (!response.ok) {
-        const errData = await response.json();
-        throw new Error(errData.msg || 'Login failed');
+      const responseData = await response.json();
+
+      if (response.status === 403) {
+        // If the user was deleted, show an alert with the reason
+        alert(`Login failed: ${responseData.msg}`);
+        return;
       }
 
-      const userData = await response.json();
-      console.log("User Data:", userData); // Debugging: Log user data
+      if (!response.ok) {
+        throw new Error(responseData.msg || 'Login failed');
+      }
 
-      // ✅ Save user email in localStorage
+      console.log("User Data:", responseData);
       localStorage.setItem("userEmail", Email);
 
-      // Redirect based on role
       if (Email === "Admin@gmail.com") {
         navigate('/admin');
       } else {

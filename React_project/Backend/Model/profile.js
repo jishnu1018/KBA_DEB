@@ -5,8 +5,7 @@ const UserSchema = new Schema({
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     phn_no: { type: String, default: "" },
-    image: { type: String, default: "" },  // ✅ Now stores Base64 data
-    isProfileComplete: { type: Boolean, default: false }
+    image: { type: String, default: "" },  
 }, {
     timestamps: true
 });

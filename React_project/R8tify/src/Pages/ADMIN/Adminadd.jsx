@@ -6,7 +6,7 @@ const Adminadd = () => {
     const [product, setProduct] = useState("");
     const [description, setDescription] = useState("");
     const [price, setPrice] = useState("");
-    const [category, setCategory] = useState(""); // Added category state
+    const [category, setCategory] = useState(""); 
     const [image1, setImage1] = useState(null);
     const [image2, setImage2] = useState(null);
     const [preview1, setPreview1] = useState(null);
@@ -18,7 +18,7 @@ const Adminadd = () => {
         const file = e.target.files[0];
         if (file) {
             setImage(file);
-            setPreview(URL.createObjectURL(file)); // Show image preview
+            setPreview(URL.createObjectURL(file)); 
         }
     };
 
@@ -38,7 +38,7 @@ const Adminadd = () => {
         if (image2) formData.append("productimage2", image2);
 
         try {
-            const response = await axios.post("http://localhost:9001/productadd", formData, {
+            const response = await axios.post("/api/productadd", formData, {
                 headers: { "Content-Type": "multipart/form-data" },
                 withCredentials: true,
             });

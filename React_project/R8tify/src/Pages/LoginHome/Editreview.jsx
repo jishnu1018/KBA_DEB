@@ -45,7 +45,7 @@ const EditReview = () => {
     if (newImages.image2) formData.append('image2', newImages.image2);
   
     try {
-      const response = await fetch(`http://localhost:9001/reviews/${id}`, {
+      const response = await fetch(`/api/reviews/${id}`, {
         method: 'PUT',
         body: formData,
         credentials: 'include',
@@ -64,7 +64,7 @@ const EditReview = () => {
     if (!window.confirm("Are you sure you want to delete this review?")) return;
 
     try {
-      const response = await fetch(`http://localhost:9001/reviews/${id}`, {
+      const response = await fetch(`/api/reviews/${id}`, {
         method: 'DELETE',
         credentials: 'include',
       });

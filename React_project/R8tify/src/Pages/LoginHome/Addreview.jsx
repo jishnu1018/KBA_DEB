@@ -1,17 +1,18 @@
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Footerr from "../../components/Footerr";
 import LoginNavbar from "../../components/LoginNavbar";
 
 const Addreview = () => {
   const location = useLocation();
-  const product = location.state?.product; // Get the passed product data
+  const product = location.state?.product; 
 
   const [rating, setRating] = useState(0);
   const [TITLE, setTitle] = useState("");
   const [ABOUT, setAbout] = useState("");
   const [IMAGES, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
+  const navigate=useNavigate();
 
   const handleRating = (value) => setRating(value);
 
@@ -44,7 +45,7 @@ const Addreview = () => {
         formData.append(`reviewimage${index + 1}`, image);
       });
 
-      const res = await fetch("http://localhost:9001/review", {
+      const res = await fetch("/api/review", {
         method: "POST",
         credentials: "include",
         body: formData,
@@ -66,6 +67,7 @@ const Addreview = () => {
     } finally {
       setLoading(false);
     }
+    navigate('/home')
   };
 
   return (
@@ -75,7 +77,6 @@ const Addreview = () => {
         <div className="w-full max-w-3xl mx-auto border border-black p-6 mt-10 bg-gray-100 rounded-lg">
           <p className="text-3xl text-center">What is your review about?</p>
 
-          {/* Product Display */}
           {product ? (
             <div className="w-full flex items-center border border-black mt-4 p-4 bg-white rounded-lg">
               <img
@@ -159,7 +160,7 @@ const Addreview = () => {
             </label>
           </div>
 
-          {/* Preview Uploaded Images */}
+          
           {IMAGES.length > 0 && (
             <div className="mt-4 flex flex-wrap gap-4">
               {IMAGES.map((image, index) => (

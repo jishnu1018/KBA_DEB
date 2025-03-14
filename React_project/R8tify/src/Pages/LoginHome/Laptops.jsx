@@ -12,7 +12,7 @@ const Laptops = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await fetch("http://localhost:9001/categoryproduct");
+        const res = await fetch("/api/categoryproduct");
         if (!res.ok) throw new Error("Failed to fetch products");
 
         const data = await res.json();
@@ -36,12 +36,16 @@ const Laptops = () => {
       await Promise.all(
         products.map(async (product) => {
           try {
-            const url = `http://localhost:9001/api/review/product?name=${encodeURIComponent(product.Product_name)}`;
-            console.log("Fetching reviews from:", url);
+            // const url = `http://localhost:9001/api/review/product?name=${encodeURIComponent(product.Product_name)}`;
+            // console.log("Fetching reviews from:", url);
 
-            const res = await fetch(url);
-            if (!res.ok) throw new Error(`Failed to fetch reviews for ${product.Product_name}`);
-
+            const res = await fetch(`http://localhost:9001/api/review/product?name=${encodeURIComponent(product.Product_name)}`, {
+              method: "GET",
+              credentials: "include",  // ✅ Ensures cookies are sent
+              headers: {
+                "Content-Type": "application/json",
+              },
+            })
             const reviewData = await res.json();
             newReviews[product._id] = reviewData.reviews || [];
           } catch (err) {
@@ -81,7 +85,7 @@ const Laptops = () => {
           products.map((product) => (
             <div key={product._id} className="border rounded-lg p-4 shadow-md bg-white flex flex-col md:flex-row gap-4">
               
-              {/* Product Images */}
+              
               <div className="w-full md:w-1/4 flex flex-row items-center justify-center gap-2">
                 {[product.image, product.image2].map((img, index) =>
                   img ? (
@@ -96,16 +100,18 @@ const Laptops = () => {
                 )}
               </div>
 
-              {/* Product Details */}
               <div className="w-full md:w-2/4">
                 <h2 className="text-xl font-bold">{product.Product_name}</h2>
                 <p className="text-gray-600">{product.Product_description}</p>
                 
                 <p className="text-yellow-500 font-semibold flex items-center">
-                  ⭐ {calculateAverageRating(reviews[product._id])}
-                </p>
+  ⭐ {calculateAverageRating(reviews[product._id])} 
+  <span className="text-gray-600 text-sm ml-2">
+    ({reviews[product._id]?.length || 0} reviews)
+  </span>
+</p>
 
-                {/* Reviews Section */}
+
                 <div className="mt-4">
                   <h3 className="text-lg font-semibold">Reviews:</h3>
                   {reviews[product._id]?.length > 0 ? (
@@ -113,7 +119,7 @@ const Laptops = () => {
                       {reviews[product._id]?.slice(0, reviewsExpanded[product._id] ? reviews[product._id].length : 1).map((review, index) => (
                         <div key={review._id || index} className="border-t pt-2 mt-2 flex flex-col gap-3">
                           <div className="flex justify-between items-start gap-3">
-                            {/* Profile Picture & Review Details */}
+
                             <div className="flex items-start gap-3">
                               <img 
                                 src={review.profilePic || "/default-profile.png"} 
@@ -128,7 +134,6 @@ const Laptops = () => {
                               </div>
                             </div>
 
-                            {/* Review Images */}
                             {review.images?.length > 0 && (
                               <div className="flex gap-2 ml-auto">
                                 {review.images.map((img, i) => (
@@ -161,10 +166,10 @@ const Laptops = () => {
                 </div>
               </div>
 
-              {/* Price & Actions */}
+
               <div className="w-full md:w-1/4 flex flex-col items-end justify-between">
                 <span className="text-lg font-bold bg-yellow-400 px-3 py-1 rounded-md">
-                  ${product.price}
+                  Rs{product.price}
                 </span>
                 <Link 
                   to="/addreview"

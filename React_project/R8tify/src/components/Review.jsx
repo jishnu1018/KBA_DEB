@@ -6,7 +6,7 @@ const Review = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:9001/api/review/random-products")
+    fetch("/api/randomproducts")
       .then((res) => res.json())
       .then((data) => {
         console.log("Fetched Data:", data);
@@ -26,8 +26,8 @@ const Review = () => {
 
   const renderStars = (rating) => {
     if (!rating) return <p className="text-gray-500">No rating</p>;
-    const fullStars = "\u2605".repeat(Math.floor(rating)); // Solid stars
-    const emptyStars = "\u2606".repeat(5 - Math.floor(rating)); // Outline stars
+    const fullStars = "\u2605".repeat(Math.floor(rating));
+    const emptyStars = "\u2606".repeat(5 - Math.floor(rating)); 
     return (
       <p className="text-yellow-500 text-lg">
         {fullStars}{emptyStars} ({rating}/5)
@@ -50,7 +50,6 @@ const Review = () => {
           return (
             <div key={index} className="border-2 border-black rounded-3xl p-4">
               <div className="flex items-center space-x-4">
-                {/* User Profile Pic */}
                 <img
                   alt="User"
                   src={firstReview?.profilePic || "/default-user.png"}
@@ -59,24 +58,20 @@ const Review = () => {
 
                 <div>
                   <p className="text-2xl">{firstReview?.username || "Anonymous"}</p>
-                  {/* Display Star Rating */}
                   {renderStars(rating)}
                 </div>
 
-                {/* Product Name */}
                 <div className="text-center text-red-400 text-2xl font-bold">
                   {product.name}
                   <br />
                   <span className="text-black text-lg font-bold">
-                    {firstReview?.comment || "No comment"}
+                    {firstReview?.title || "No comment"}
                   </span>
                 </div>
               </div>
 
-              {/* Review Comment */}
               <p className="mt-2 text-lg">{firstReview?.comment || "No reviews yet."}</p>
 
-              {/* Review Images */}
               {firstReview?.images?.length > 0 && (
                 <div className="flex space-x-2 mt-2">
                   {firstReview.images.map((img, idx) => (
@@ -84,7 +79,7 @@ const Review = () => {
                       key={idx}
                       src={img.startsWith("http") ? img : `data:image/jpeg;base64,${img}`}
                       alt="Review Image"
-                      className="w-32 h-32 rounded-lg"
+                      className="w-20 h-20 rounded-lg"
                     />
                   ))}
                 </div>

@@ -6,7 +6,6 @@ import { phone, console, laptop, camera } from '../assets/Images/Images'
 const Four = () => {
   return (
     <div id="trending">
-    {/* Your existing code remains unchanged */}
   
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-8 px-8">
       <div className="bg-black w-full h-64 rounded-xl flex flex-col items-center">

@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Schema, model,Types } from "mongoose";
 
 const productt = new Schema(
 
@@ -13,6 +13,8 @@ const productt = new Schema(
     },
     image: { type: String }, // First image URL
     image2: { type: String }, // Second image URL
+    reviews: [{ type: Types.ObjectId, ref: "Review" }] // Add this field to reference reviews
+
   },
   {
     timestamps: true,

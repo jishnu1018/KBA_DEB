@@ -5,36 +5,43 @@ import { Link } from "react-router-dom";
 const AdminUsers = () => {
   const [users, setUsers] = useState([]);
 
-  // Fetch user data from backend
   useEffect(() => {
     fetchUsers();
   }, []);
 
-  // Function to fetch users
   const fetchUsers = async () => {
     try {
-      const response = await axios.get("http://localhost:9001/adminusers");
+      const response = await axios.get("/api/adminusers");
+      console.log("Fetched users:", response.data);
       setUsers(response.data);
     } catch (error) {
       console.error("Error fetching users:", error);
     }
   };
 
-  // Function to delete user
   const handleDelete = async (email) => {
     if (!window.confirm("Are you sure you want to delete this user?")) return;
 
-    try {
-        const response = await axios.delete(`http://localhost:9001/userdelete/${email}`);
-        console.log("Delete response:", response.data); // Debugging
-        setUsers(users.filter((user) => user.email !== email)); // Remove from UI
-        alert("User deleted successfully!");
-    } catch (error) {
-        console.error("Error deleting user:", error.response?.data || error.message);
-        alert("Failed to delete user: " + (error.response?.data.error || error.message));
+    const reason = prompt("Please provide a reason for deleting this user:");
+    if (!reason) {
+      alert("Deletion reason is required.");
+      return;
     }
-};
 
+    try {
+      const response = await axios.delete(`http://localhost:9001/api/userdelete/${email}`, {
+        withCredentials: true, 
+
+        data: { reason },
+      });
+      console.log("Delete response:", response.data);
+      setUsers(users.filter((user) => user.email !== email));
+      alert("User deleted successfully! A notification has been sent to the user.");
+    } catch (error) {
+      console.error("Error deleting user:", error.response?.data || error.message);
+      alert("Failed to delete user: " + (error.response?.data.error || error.message));
+    }
+  };
 
   return (
     <div className="bg-gray-100 p-6 w-full max-w-6xl mx-auto">

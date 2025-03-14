@@ -6,9 +6,13 @@ import { user } from "./Routes/userauth.js";
 import { review } from "./Routes/review.js";
 import { admin } from "./Routesadmin/adminauth.js";
 import { adminadd } from "./Routesadmin/adminadd.js";
+import cookieParser from 'cookie-parser';
+
 
 dotenv.config();
 const app=express();
+app.use(cookieParser());  // ✅ Required to read cookies correctly
+
 // app.use(cors({
 //     origin:'*',
 //     credentials:true

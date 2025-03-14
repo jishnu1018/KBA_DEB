@@ -11,7 +11,7 @@ const Laptops1 = () => {
     const [showPopup, setShowPopup] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    // Function to check if authToken cookie is present
+
     const checkAuthCookie = () => {
         return document.cookie.split("; ").some((cookie) => cookie.startsWith("authToken="));
     };
@@ -160,7 +160,7 @@ const Laptops1 = () => {
 
                             <div className="w-full md:w-1/4 flex flex-col items-end justify-between">
                                 <span className="text-lg font-bold bg-yellow-400 px-3 py-1 rounded-md">
-                                    ${product.price}
+                                    Rs{product.price}
                                 </span>
                                 {isLoggedIn ? (
                                     <Link 

@@ -77,7 +77,7 @@ const Consoles1 = () =>{
       if (validRatings.length === 0) return "No ratings yet";
       
       const totalRating = validRatings.reduce((sum, rating) => sum + rating, 0);
-      return (totalRating / validRatings.length).toFixed(1); // One decimal place
+      return (totalRating / validRatings.length).toFixed(1);
     };
 
     const handleWriteReview = () => {
@@ -99,16 +99,15 @@ const Consoles1 = () =>{
             products.map((product) => (
               <div key={product._id} className="border rounded-lg p-4 shadow-md bg-white flex flex-col md:flex-row gap-4">
                 
-                {/* Product Images */}
                 <div className="w-full md:w-1/4 flex flex-row items-center justify-center gap-2">
                   {[product.image, product.image2].map((img, index) =>
                     img ? (
                       <img
                         key={index}
                         src={
-                          img.startsWith("http") // If it's a URL, use it directly
+                          img.startsWith("http") 
                             ? img
-                            : `data:image/jpeg;base64,${img}` // If it's Base64, prepend data type
+                            : `data:image/jpeg;base64,${img}` 
                         }
                         alt={`${product.Product_name} image ${index + 1}`}
                         className="w-32 h-32 object-cover rounded-md"
@@ -118,7 +117,6 @@ const Consoles1 = () =>{
                   )}
                 </div>
   
-                {/* Product Details */}
                 <div className="w-full md:w-2/4">
                   <h2 className="text-xl font-bold">{product.Product_name}</h2>
                   <p className="text-gray-600">{product.Product_description}</p>
@@ -126,25 +124,20 @@ const Consoles1 = () =>{
     ⭐ {calculateAverageRating(reviews[product._id])}
   </p>
   
-                  {/* Reviews Section */}
                   <div className="mt-4">
      <h3 className="text-lg font-semibold">Reviews:</h3>
      {reviews[product._id]?.length > 0 ? (
         <>
-           {/* Show only the latest review */}
            {reviews[product._id]?.slice(0, 1).map((review) => (
               <div key={review._id} className="border-t pt-2 mt-2 flex flex-col gap-3">
                  <div className="flex justify-between items-start gap-3">
-                    {/* Profile Picture & Review Details */}
                     <div className="flex items-start gap-3">
-                       {/* Profile Picture */}
                        <img 
                           src={review.profilePic || "/default-profile.png"} 
                           alt={review.username} 
                           className="w-10 h-10 rounded-full object-cover border"
                           onError={(e) => { e.target.src = "/default-profile.png"; }} 
                        />
-                       {/* Review Details */}
                        <div>
                           <p className="font-semibold">{review.username}</p>
                           <p className="text-yellow-500 flex items-center">⭐ {review.rating}/5</p>
@@ -152,7 +145,6 @@ const Consoles1 = () =>{
                        </div>
                     </div>
   
-                    {/* Review Images */}
                     {review.images?.length > 0 && (
                        <div className="flex gap-2 ml-auto">
                           {review.images.map((img, i) => (
@@ -170,7 +162,6 @@ const Consoles1 = () =>{
               </div>
            ))}
   
-           {/* Show More Button */}
            {reviews[product._id].length > 1 && !reviewsExpanded[product._id] && (
               <button 
                  onClick={() => setReviewsExpanded(prev => ({ ...prev, [product._id]: true }))} 
@@ -180,21 +171,17 @@ const Consoles1 = () =>{
               </button>
            )}
   
-           {/* Expanded Reviews */}
            {reviewsExpanded[product._id] &&
               reviews[product._id].slice(1).map((review) => (
                  <div key={review._id} className="border-t pt-2 mt-2 flex flex-col gap-3">
                     <div className="flex justify-between items-start gap-3">
-                       {/* Profile Picture & Review Details */}
                        <div className="flex items-start gap-3">
-                          {/* Profile Picture */}
                           <img 
                              src={review.profilePic || "/default-profile.png"} 
                              alt={review.username} 
                              className="w-10 h-10 rounded-full object-cover border"
                              onError={(e) => { e.target.src = "/default-profile.png"; }} 
                           />
-                          {/* Review Details */}
                           <div>
                              <p className="font-semibold">{review.username}</p>
                              <p className="text-yellow-500 flex items-center">⭐ {review.rating}/5</p>
@@ -202,7 +189,6 @@ const Consoles1 = () =>{
                           </div>
                        </div>
   
-                       {/* Review Images */}
                        {review.images?.length > 0 && (
                           <div className="flex gap-2 ml-auto">
                              {review.images.map((img, i) => (
@@ -221,7 +207,6 @@ const Consoles1 = () =>{
               ))
            }
   
-           {/* Show Less Button */}
            {reviewsExpanded[product._id] && (
               <button 
                  onClick={() => setReviewsExpanded(prev => ({ ...prev, [product._id]: false }))} 
@@ -238,7 +223,6 @@ const Consoles1 = () =>{
   
                 </div>
   
-                {/* Price & Actions */}
                 <div className="w-full md:w-1/4 flex flex-col items-end justify-between">
                   <span className="text-lg font-bold bg-yellow-400 px-3 py-1 rounded-md">
                     ${product.price}

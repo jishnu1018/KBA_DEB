@@ -16,7 +16,6 @@ const Navbar = () => {
           R8TIFY.com
         </h1>
 
-        {/* Menu Toggle Button for Mobile */}
         <button 
           onClick={() => setMenuOpen(!menuOpen)} 
           className="text-white text-3xl md:hidden ml-auto"
@@ -25,11 +24,9 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Menu Section */}
       <div className={`${menuOpen ? 'block' : 'hidden'} md:flex flex-col md:flex-row w-full md:w-auto items-center mt-4 md:mt-0`}>
         <div className="flex flex-col md:flex-row md:ml-96 w-full md:w-auto items-center">
           
-          {/* Search Bar UI (No Functionality) */}
           <div className="flex w-full md:w-auto mt-2 md:mt-0">
             <input 
               type="text" 
