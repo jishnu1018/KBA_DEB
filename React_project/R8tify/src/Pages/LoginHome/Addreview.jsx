@@ -92,9 +92,8 @@ const Addreview = () => {
               <div className="ml-6">
                 <p className="text-3xl font-bold">{product.Product_name}</p>
                 <p className="text-gray-600">{product.Product_description}</p>
-                <p className="text-sm text-gray-500 mt-1">
-                  RAM: {product.ram} | Capacity: {product.capacity}
-                </p>
+                <p className="text-xl font-bold">RS: {product.price}</p>
+
                 <p className="text-yellow-500 font-semibold flex items-center">
                   ⭐ {product.rating}
                 </p>

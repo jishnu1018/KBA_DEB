@@ -8,6 +8,7 @@ const Laptops = () => {
   const [reviewsExpanded, setReviewsExpanded] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [searchTerm, setSearchTerm] = useState(""); // New state for search term
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -36,16 +37,16 @@ const Laptops = () => {
       await Promise.all(
         products.map(async (product) => {
           try {
-            // const url = `http://localhost:9001/api/review/product?name=${encodeURIComponent(product.Product_name)}`;
-            // console.log("Fetching reviews from:", url);
-
-            const res = await fetch(`http://localhost:9001/api/review/product?name=${encodeURIComponent(product.Product_name)}`, {
-              method: "GET",
-              credentials: "include",  // ✅ Ensures cookies are sent
-              headers: {
-                "Content-Type": "application/json",
-              },
-            })
+            const res = await fetch(
+              `http://localhost:9001/api/review/product?name=${encodeURIComponent(product.Product_name)}`,
+              {
+                method: "GET",
+                credentials: "include", // ✅ Ensures cookies are sent
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              }
+            );
             const reviewData = await res.json();
             newReviews[product._id] = reviewData.reviews || [];
           } catch (err) {
@@ -72,6 +73,11 @@ const Laptops = () => {
     return (totalRating / validRatings.length).toFixed(1);
   };
 
+  // Filter products based on the search term (case-insensitive)
+  const filteredProducts = products.filter((product) =>
+    product.Product_name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   if (loading) return <p className="text-center text-gray-500 text-lg">Loading...</p>;
   if (error) return <p className="text-center text-red-500 text-lg">{error}</p>;
 
@@ -79,12 +85,24 @@ const Laptops = () => {
     <>
       <LoginNavbar />
       <div className="p-8 space-y-6">
-        {products.length === 0 ? (
-          <p className="text-center text-gray-500 text-lg">No products available</p>
+        {/* Search Bar */}
+        <div className="mb-4">
+          <input
+            type="text"
+            placeholder="Search Laptops..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="border p-2  w-[500px] rounded-2xl ml-[600px]"
+          />
+        </div>
+
+        {filteredProducts.length === 0 ? (
+          <p className="text-center text-gray-500 text-lg">
+            {products.length > 0 ? "No products match your search." : "No products available"}
+          </p>
         ) : (
-          products.map((product) => (
+          filteredProducts.map((product) => (
             <div key={product._id} className="border rounded-lg p-4 shadow-md bg-white flex flex-col md:flex-row gap-4">
-              
               
               <div className="w-full md:w-1/4 flex flex-row items-center justify-center gap-2">
                 {[product.image, product.image2].map((img, index) =>
@@ -103,14 +121,14 @@ const Laptops = () => {
               <div className="w-full md:w-2/4">
                 <h2 className="text-xl font-bold">{product.Product_name}</h2>
                 <p className="text-gray-600">{product.Product_description}</p>
+                <p className="text-xl font-bold">RS: {product.price}</p>
                 
                 <p className="text-yellow-500 font-semibold flex items-center">
-  ⭐ {calculateAverageRating(reviews[product._id])} 
-  <span className="text-gray-600 text-sm ml-2">
-    ({reviews[product._id]?.length || 0} reviews)
-  </span>
-</p>
-
+                  ⭐ {calculateAverageRating(reviews[product._id])} 
+                  <span className="text-gray-600 text-sm ml-2">
+                    ({reviews[product._id]?.length || 0} reviews)
+                  </span>
+                </p>
 
                 <div className="mt-4">
                   <h3 className="text-lg font-semibold">Reviews:</h3>
@@ -165,7 +183,6 @@ const Laptops = () => {
                   )}
                 </div>
               </div>
-
 
               <div className="w-full md:w-1/4 flex flex-col items-end justify-between">
                 <span className="text-lg font-bold bg-yellow-400 px-3 py-1 rounded-md">
