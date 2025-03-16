@@ -30,51 +30,46 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
+  
     if (!validateEmail(Email)) {
       setError('Please enter a valid email');
       return;
     }
-
+  
     try {
       let apiUrl = "/api/login"; 
       if (Email === "Admin@gmail.com") {
         apiUrl = "/api/adminlogin"; 
       }
-
+  
       const response = await fetch(apiUrl, {
         method: 'POST',
         credentials: 'include',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ EMAIL: Email, PASSWORD: Password }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: Email, password: Password }), // ✅ Fix key casing
       });
-
-      const responseData = await response.json();
-
-      if (response.status === 403) {
-        // If the user was deleted, show an alert with the reason
-        alert(`Login failed: ${responseData.msg}`);
-        return;
+  
+      let responseData;
+      try {
+        responseData = await response.json();
+      } catch (err) {
+        throw new Error("Invalid server response");
       }
-
+  
       if (!response.ok) {
         throw new Error(responseData.msg || 'Login failed');
       }
-
+  
       console.log("User Data:", responseData);
       localStorage.setItem("userEmail", Email);
-
-      if (Email === "Admin@gmail.com") {
-        navigate('/admin');
-      } else {
-        navigate('/home');
-      }
+  
+      navigate(Email === "Admin@gmail.com" ? '/admin' : '/home');
+  
     } catch (err) {
       setError(err.message || 'Invalid credentials: Please try again!');
     }
   };
+  
 
   return (
     <div className="text-gray-800">

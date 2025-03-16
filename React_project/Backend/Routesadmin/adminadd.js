@@ -216,7 +216,7 @@ adminadd.get("/adminusers",adminauthen,
 
 
 // ✅ Delete User
-adminadd.delete("/api/userdelete/:email", adminauthen, adminCheck, async (req, res) => {
+adminadd.delete("/userdelete/:email", adminauthen, adminCheck, async (req, res) => {
   const { email } = req.params;
   const { reason } = req.body;
 

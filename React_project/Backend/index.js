@@ -32,7 +32,7 @@ app.listen(process.env.PORT, function(){
     console.log(`server is listening at ${process.env.PORT}`);
     
 });
-mongoose.connect('mongodb://localhost:27017/R8tify').then(()=>{
+mongoose.connect('mongodb://mongodb:27017/R8tify').then(()=>{
     console.log("Mongodb connected succesfully");})
     .catch((error)=>{
         console.error("Mongodb connection failed",error);})

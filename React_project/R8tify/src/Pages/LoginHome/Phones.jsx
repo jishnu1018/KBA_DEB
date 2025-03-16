@@ -38,7 +38,7 @@ const Phones = () => {
         products.map(async (product) => {
           try {
             const res = await fetch(
-              `http://localhost:9001/api/review/product?name=${encodeURIComponent(product.Product_name)}`,
+              `api/review/product?name=${encodeURIComponent(product.Product_name)}`,
               {
                 method: "GET",
                 credentials: "include", // ✅ Ensures cookies are sent
@@ -151,6 +151,7 @@ const Phones = () => {
                               <div>
                                 <p className="font-semibold">{review.username}</p>
                                 <p className="text-yellow-500 flex items-center">⭐ {review.rating}/5</p>
+                                <p className="text-red-600 font-bold text-lg">{review.title}</p>
                                 <p className="text-gray-700">{review.comment}</p>
                               </div>
                             </div>

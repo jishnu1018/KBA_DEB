@@ -59,37 +59,38 @@ review.post(
 
 
 // ✅ Get product reviews - Fixed endpoint & response
-review.get("/api/review/product",authenticate, async (req, res) => {
-  try {
-    const productName = req.query.name?.trim();
-    if (!productName) return res.status(400).json({ message: "Product name is required" });
+  review.get("/review/product",authenticate, async (req, res) => {
+    try {
+      const productName = req.query.name?.trim();
+      if (!productName) return res.status(400).json({ message: "Product name is required" });
 
-    const prod = await PROduct.findOne({ Product_name: { $regex: new RegExp(productName, "i") } });
-    if (!prod) return res.status(404).json({ message: "Product not found" });
+      const prod = await PROduct.findOne({ Product_name: { $regex: new RegExp(productName, "i") } });
+      if (!prod) return res.status(404).json({ message: "Product not found" });
 
-    const reviews = await Review.find({ productId: prod._id }).populate("userId", "name image").exec();
+      const reviews = await Review.find({ productId: prod._id }).populate("userId", "name image").exec();
 
-    res.status(200).json({
-      product: {
-        id: prod._id,
-        name: prod.Product_name,
-        description: prod.Product_description,
-        price: prod.price,
-        images: [prod.image, prod.image2].filter(Boolean),
-      },
-      reviews: reviews.map((rev) => ({
-        username: rev.userId?.name || "Anonymous",
-        profilePic: rev.userId?.image || "/default-profile.png",
-        rating: rev.star,
-        comment: rev.about,
-        images: [rev.image, rev.image2].filter(Boolean),
-      })),
-    });
-  } catch (error) {
-    console.error("Error fetching product reviews:", error);
-    res.status(500).json({ message: "Server error", error: error.message });
-  }
-});
+      res.status(200).json({
+        product: {
+          id: prod._id,
+          name: prod.Product_name,
+          description: prod.Product_description,
+          price: prod.price,
+          images: [prod.image, prod.image2].filter(Boolean),
+        },
+        reviews: reviews.map((rev) => ({
+          username: rev.userId?.name || "Anonymous",
+          profilePic: rev.userId?.image || "/default-profile.png",
+          rating: rev.star,
+          title: rev.title || "No Title", // ✅ Add this line
+          comment: rev.about,
+          images: [rev.image, rev.image2].filter(Boolean),
+        })),
+      });
+    } catch (error) {
+      console.error("Error fetching product reviews:", error);
+      res.status(500).json({ message: "Server error", error: error.message });
+    }
+  });
 
 
 

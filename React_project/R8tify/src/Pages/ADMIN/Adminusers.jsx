@@ -29,7 +29,7 @@ const AdminUsers = () => {
     }
 
     try {
-      const response = await axios.delete(`http://localhost:9001/api/userdelete/${email}`, {
+      const response = await axios.delete(`api/userdelete/${email}`, {
         withCredentials: true, 
 
         data: { reason },

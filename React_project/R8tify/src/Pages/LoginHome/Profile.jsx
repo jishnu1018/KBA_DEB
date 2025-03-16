@@ -7,6 +7,12 @@ const Profile = () => {
   const [reviews, setReviews] = useState([]);
   const [deletedReviews, setDeletedReviews] = useState([]);
   const [showDeletedReviews, setShowDeletedReviews] = useState(false);
+  // ===== Added state for review editing =====
+  const [editingReviewId, setEditingReviewId] = useState(null);
+  const [editTitle, setEditTitle] = useState("");
+  const [editAbout, setEditAbout] = useState("");
+  const [editDescription, setEditDescription] = useState("");
+  // ============================================
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -58,6 +64,43 @@ const Profile = () => {
     }
   };
 
+  // ===== Added functions for editing reviews =====
+  const handleEditClick = (review) => {
+    setEditingReviewId(review._id);
+    setEditTitle(review.title);
+    setEditAbout(review.about);
+    setEditDescription(review.description);
+  };
+
+  const handleSaveEdit = async (reviewId) => {
+    try {
+      const formData = new FormData();
+      formData.append("title", editTitle);
+      formData.append("about", editAbout);
+      formData.append("description", editDescription);
+
+      const response = await fetch(`/api/reviews/${reviewId}`, {
+        method: "PUT",
+        credentials: "include",
+        body: formData,
+      });
+      if (!response.ok) throw new Error("Failed to update review");
+      const updatedReview = await response.json();
+
+      setReviews((prevReviews) =>
+        prevReviews.map((rev) => (rev._id === reviewId ? updatedReview : rev))
+      );
+      setEditingReviewId(null);
+    } catch (error) {
+      console.error("Error updating review:", error);
+    }
+  };
+
+  const handleCancelEdit = () => {
+    setEditingReviewId(null);
+  };
+  // ===================================================
+
   return (
     <div className="text-gray-800">
       <Link to="/home">
@@ -79,14 +122,21 @@ const Profile = () => {
           </div>
         </div>
         <div className="flex justify-center gap-4 mt-4">
-          <button onClick={() => navigate("/editprofile")} className="bg-blue-500 text-white px-4 py-2 rounded">Edit Profile</button>
-          <button onClick={handleLogout} className="bg-red-500 text-white px-4 py-2 rounded">Logout</button>
+          <button onClick={() => navigate("/editprofile")} className="bg-blue-500 text-white px-4 py-2 rounded">
+            Edit Profile
+          </button>
+          <button onClick={handleLogout} className="bg-red-500 text-white px-4 py-2 rounded">
+            Logout
+          </button>
         </div>
       </div>
 
       {deletedReviews.length > 0 && (
         <div className="flex justify-center mt-4">
-          <button onClick={() => setShowDeletedReviews(!showDeletedReviews)} className="bg-red-500 text-white px-4 py-2 rounded">
+          <button
+            onClick={() => setShowDeletedReviews(!showDeletedReviews)}
+            className="bg-red-500 text-white px-4 py-2 rounded"
+          >
             {showDeletedReviews ? "Hide Deleted Reviews" : "See Deleted Reviews"}
           </button>
         </div>
@@ -124,14 +174,69 @@ const Profile = () => {
                     <p className="text-gray-500 text-sm">⭐ {review.star} Rating</p>
                   </div>
                   <div className="flex-1">
-                    <p className="text-red-600 font-bold text-lg">{review.title}</p>
-                    <p className="text-gray-800 font-semibold">Product: {review.productName || "Unknown Product"}</p>
-                    <p className="text-gray-700 font-semibold">{review.about}</p>
-                    <p className="text-sm text-gray-500 mt-1">{review.description}</p>
-                    <div className="flex space-x-2 mt-2">
-                      {review.image && <img src={review.image} alt="Review" className="w-20 h-20 rounded-lg border" />}
-                      {review.image2 && <img src={review.image2} alt="Review 2" className="w-20 h-20 rounded-lg border" />}
-                    </div>
+                    {/* ===== Added conditional rendering for editing ===== */}
+                    {editingReviewId === review._id ? (
+                      <div className="flex flex-col gap-2">
+                        <input
+                          type="text"
+                          value={editTitle}
+                          onChange={(e) => setEditTitle(e.target.value)}
+                          className="border p-2 rounded"
+                          placeholder="Edit title"
+                        />
+                        <textarea
+                          value={editAbout}
+                          onChange={(e) => setEditAbout(e.target.value)}
+                          className="border p-2 rounded"
+                          placeholder="Edit about"
+                        />
+                        <textarea
+                          value={editDescription}
+                          onChange={(e) => setEditDescription(e.target.value)}
+                          className="border p-2 rounded"
+                          placeholder="Edit description"
+                        />
+                        <div className="flex gap-2">
+                          <button
+                            onClick={() => handleSaveEdit(review._id)}
+                            className="bg-green-500 text-white px-4 py-2 rounded"
+                          >
+                            Save
+                          </button>
+                          <button
+                            onClick={handleCancelEdit}
+                            className="bg-gray-400 text-white px-4 py-2 rounded"
+                          >
+                            Cancel
+                          </button>
+                        </div>
+                      </div>
+                    ) : (
+                      <>
+                        <p className="text-red-600 font-bold text-lg">{review.title}</p>
+                        <p className="text-gray-800 font-semibold">
+                          Product: {review.productName || "Unknown Product"}
+                        </p>
+                        <p className="text-gray-700 font-semibold">{review.about}</p>
+                        <p className="text-sm text-gray-500 mt-1">{review.description}</p>
+                        <div className="flex space-x-2 mt-2">
+                          {review.image && (
+                            <img src={review.image} alt="Review" className="w-20 h-20 rounded-lg border" />
+                          )}
+                          {review.image2 && (
+                            <img src={review.image2} alt="Review 2" className="w-20 h-20 rounded-lg border" />
+                          )}
+                        </div>
+                        {/* ===== Added Edit button ===== */}
+                        <button
+                          onClick={() => handleEditClick(review)}
+                          className="bg-blue-500 text-white px-4 py-2 rounded mt-2"
+                        >
+                          Edit Review
+                        </button>
+                      </>
+                    )}
+                    {/* =================================================== */}
                   </div>
                 </div>
               );

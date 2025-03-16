@@ -38,7 +38,7 @@ const Consoles = () => {
         products.map(async (product) => {
           try {
             const res = await fetch(
-              `http://localhost:9001/api/review/product?name=${encodeURIComponent(product.Product_name)}`,
+              `/api/review/product?name=${encodeURIComponent(product.Product_name)}`,
               {
                 method: "GET",
                 credentials: "include",  // ✅ Ensures cookies are sent

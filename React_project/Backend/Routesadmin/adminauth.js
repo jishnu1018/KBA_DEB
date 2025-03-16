@@ -35,25 +35,25 @@ admin.post('/adminsignup',async(req,res)=>{
 //login
 admin.post('/adminlogin', async (req, res) => {
     try {
-        const { EMAIL, PASSWORD } = req.body;
+        const { email, password } = req.body;
 
-        if (!EMAIL || !PASSWORD) {
+        if (!email || !password) {
             return res.status(400).json({ msg: "Email and Password are required" });
         }
 
-        const result = await Adminsign.findOne({ email: EMAIL });
+        const result = await Adminsign.findOne({ email });
 
         if (!result) {
             console.log("Enter a valid username");
             return res.status(400).json({ msg: "Enter a valid username" });
         }
 
-        const valid = await bcrypt.compare(PASSWORD, result.password);
+        const valid = await bcrypt.compare(password, result.password);
         if (!valid) {
             return res.status(401).json({ msg: "Unauthorized access" });
         }
 
-        const token = jwt.sign({ email: EMAIL }, process.env.SECRET_KEY);
+        const token = jwt.sign({ email:email }, process.env.SECRET_KEY);
         res.cookie('cookietoken', token, {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production', // Secure in production

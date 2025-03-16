@@ -39,7 +39,7 @@ const Cameras = () => {
           try {
             // const url = `http://localhost:9001/api/review/product?name=${encodeURIComponent(product.Product_name)}`;
             // console.log("Fetching reviews from:", url);
-            const res = await fetch(`http://localhost:9001/api/review/product?name=${encodeURIComponent(product.Product_name)}`, {
+            const res = await fetch(`/api/review/product?name=${encodeURIComponent(product.Product_name)}`, {
               method: "GET",
               credentials: "include", // ✅ Ensures cookies are sent
               headers: {

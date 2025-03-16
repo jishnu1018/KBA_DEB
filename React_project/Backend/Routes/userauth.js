@@ -104,45 +104,107 @@ user.post('/signup', async (req, res) => {
 
 user.post('/login', async (req, res) => {
     try {
-        const { EMAIL, PASSWORD } = req.body;
+        const { email, password } = req.body;
+
+        if (!email || !password) {
+            return res.status(400).json({ msg: "Email and password are required" });
+        }
+
+        const lowerCaseEmail = email.toLowerCase(); // Ensure case consistency
 
         // Check if the user was deleted
-        const deletedUser = await DeletedUser.findOne({ email: EMAIL });
+        const deletedUser = await DeletedUser.findOne({ email: lowerCaseEmail });
         if (deletedUser) {
-            console.log(`Login attempt by deleted user: ${EMAIL}`);
+            console.log(`Login attempt by deleted user: ${lowerCaseEmail}`);
             return res.status(403).json({ msg: `Your account was deleted. Reason: ${deletedUser.reason}` });
         }
 
         // Find user in the users collection
-        const result = await USER.findOne({ email: EMAIL });
-        console.log(result);
-
+        const result = await USER.findOne({ email: lowerCaseEmail });
         if (!result) {
             console.log("Enter a valid username");
-            return res.status(400).send("Enter a valid username");
+            return res.status(400).json({ msg: "Invalid email or password" });
         }
 
         console.log(result.password);
-        const valid = await bcrypt.compare(PASSWORD, result.password);
-        console.log(valid);
+        
+        let valid = false;
+        try {
+            valid = await bcrypt.compare(password, result.password);
+        } catch (err) {
+            console.error("Error comparing passwords:", err);
+            return res.status(500).json({ msg: "Internal error during authentication" });
+        }
 
-        if (valid) {
-            const token = jwt.sign({ id: result._id, email: EMAIL }, process.env.SECRET_KEY);
-            console.log(token);
-            res.cookie('cookietoken', token, {
-                httpOnly: true
-            });
-            console.log("Logged in successfully");
-
-            return res.status(200).json({ message: "Logged in successfully" });
-        } else {
+        if (!valid) {
             return res.status(400).json({ msg: "Incorrect password" });
         }
+
+        // Generate JWT token
+        const token = jwt.sign({ id: result._id, email: result.email }, process.env.SECRET_KEY, {
+            expiresIn: "7d" // Optional: Set token expiration
+        });
+
+        console.log("Generated token:", token);
+
+        res.cookie('cookietoken', token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production' // Ensures HTTPS-only in production
+        });
+
+        console.log("Logged in successfully");
+        return res.status(200).json({ message: "Logged in successfully", token });
+
     } catch (error) {
         console.error("Error during login:", error);
-        return res.status(500).send("Internal Server Error");
+        return res.status(500).json({ msg: "Internal Server Error" });
     }
 });
+
+
+
+
+// user.post('/login', async (req, res) => {
+//     try {
+//         const { email, password } = req.body;
+
+//         // Check if the user was deleted
+//         const deletedUser = await DeletedUser.findOne({ email: email });
+//         if (deletedUser) {
+//             console.log(`Login attempt by deleted user: ${email}`);
+//             return res.status(403).json({ msg: `Your account was deleted. Reason: ${deletedUser.reason}` });
+//         }
+
+//         // Find user in the users collection
+//         const result = await USER.findOne({ email: email.toLowerCase() });
+//         console.log(result);
+
+//         if (!result) {
+//             console.log("Enter a valid username");
+//             return res.status(400).send("Enter a valid username");
+//         }
+
+//         console.log(result.password);
+//         const valid = await bcrypt.compare(password, result.password);
+//         console.log(valid);
+
+//         if (valid) {
+//             const token = jwt.sign({ id: result._id, email: result.email }, process.env.SECRET_KEY);
+//             console.log(token);
+//             res.cookie('cookietoken', token, {
+//                 httpOnly: true
+//             });
+//             console.log("Logged in successfully");
+
+//             return res.status(200).json({ message: "Logged in successfully" });
+//         } else {
+//             return res.status(400).json({ msg: "Incorrect password" });
+//         }
+//     } catch (error) {
+//         console.error("Error during login:", error);
+//         return res.status(500).send("Internal Server Error");
+//     }
+// });
 // user.post('/login',async (req,res)=>{
 //     try{
 //         const {EMAIL,PASSWORD} = req.body;
@@ -255,6 +317,11 @@ user.put("/profileupdate", authenticate, upload.single("image"), async (req, res
     }
 });
 
+user.post("logout", (req, res) => {
+    res.clearCookie("cookietoken"); // Assuming you're using cookies for authentication
+    res.status(200).json({ message: "Logged out successfully" });
+  });
+  
 
 
 export { user };
